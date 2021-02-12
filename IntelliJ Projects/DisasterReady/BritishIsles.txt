@@ -1,0 +1,14 @@
+13
+0 Glasgow 1 6
+1 Edinburgh 3 0 6
+2 Belfast 4
+3 Newcastle 1 7
+4 Dublin 2 8
+5 Liverpool 6
+6 Manchester 5 0 1 7 9
+7 Leeds 3 12 9 6
+8 Cork 4
+9 Birmingham 6 7 11 12
+10 Cardiff 11
+11 Bristol 10 9 12
+12 London 11 9 7

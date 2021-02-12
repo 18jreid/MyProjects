@@ -1,0 +1,34 @@
+SoftwareDevelopment Life Cycle:
+
+Requirement Specifications -
+(The Account class) Design a class named Account that contains:
+
+A private int data field named id for the account.
+A private float data field named balance for the account.
+A private float data field named annualInterestRate that stores the current interest rate.
+A constructor that creates an account with the specified id (default 0), initial balance (default 100), and annual
+interest rate (default 0).
+The accessor and mutator methods for id , balance , and annualInterestRate .
+A method named getMonthlyInterestRate() that returns the monthly interest rate.
+A method named getMonthlyInterest() that returns the monthly interest.
+A method named withdraw that withdraws a specified amount from the account.
+A method named deposit that deposits a specified amount to the account.
+
+System Analysis -
+Use this formula to calculate the monthly interest: balance *
+monthlyInterestRate . monthlyInterestRate is annualInterestRate / 12 . Note that annualInterestRate is a percent
+(like 4.5%). You need to divide it by 100 .)
+
+System Design -
+1. get user input
+2. display menu
+3. let user interact with menu
+4. each item on menu is interactable
+5. 8 ends the program
+
+Test -
+Input: Write a test program that creates an Account object with an account id of 1122, a balance of $20,000, and an annual
+interest rate of 4.5%. Use the withdraw method to withdraw $2,500, use the deposit method to deposit $3,000, and print
+the id, balance, monthly interest rate, and monthly interest.
+
+Output: 1122, 20000, 4.5%, 1122, 20500, 0,38 %, 76,88 dollars

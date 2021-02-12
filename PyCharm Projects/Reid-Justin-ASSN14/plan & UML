@@ -1,0 +1,70 @@
+Software Development Plan:
+
+Requirement Specification -
+Create a program that uses Turtle to draw shapes. Show the following menu:
+
+Enter Circle
+Enter Rectangle
+Remove Shape
+Draw Shapes
+Exit
+
+
+Circles – User inputs position, radius, and color. The position is the CENTER of the circle
+
+Rectangles – User inputs position, height, width, color. The position is the lower left-hand corner
+
+Colors – Allow red, yellow, blue, and green only
+
+Remove – Show the number of items in the list and let the user enter a number and remove that shape from the list.
+You may assume that they only enter a number within the range that you display.
+
+Draw Shapes – Draw the shapes in the order they are in the list. Clear the screen if shapes had been drawn before.
+The color is the fill color of the shape. Shapes are only drawn after this selection, not after entering or removing a
+shape.
+
+System Analysis -
+I need to make sure that when drawing the circle I make the center of the circle at the coordinates the user enters.
+I need to make sure that when removing items from the list i subtract one from the users choice so that it is the one
+    they want removed.
+I need to make sure I remove all shapes when drawing them.
+
+System Design -
+1. Display menu for user.
+2. Evaluate user input.
+3. Execute selection based off of user input.
+4. Repeat the menu to draw again.
+
+Testing -
+Test 1:
+    Input: Circle, (0, 0), 100, red, draw
+    Output: A correct circle drawn around 0, 0 with a radius of 100 and a color of red.
+
+Test 2:
+    Input: Circle, (0, 0), 100, red, Circle, (0, 0), 50, green, Circle, (0, 0), 25, blue, Remove, 2, draw
+    Output: A large red circle drawn, and a blue circle drawn a fourth of the size, the second circle has been removed.
+
+
+
+UML -
+
+*************
+Rectangle
+_____________
+-xCor
+-yCor
+-height
+-width
+-recColor
++get_Rec_Color
++draw
+
+*************
+Circle
+_____________
+-xCor
+-yCor
+-radius
+-circColor
++get_Circ_Color
++draw

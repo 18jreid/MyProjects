@@ -1,0 +1,59 @@
+SoftwareDevelopment Plan 1:
+    Requirement Specifications -
+        Go back to the drawing the chessboard assignment. Turn the program into an Object-Oriented program. Use the
+        starter file assn13-task1.py. This is where your program starts, and it cannot be modified. Create a
+        hessboard.py file that creates a Chessboard class. It should follow the pattern of the chessboard assignment.
+        However, drawing will be occur with the call of draw(), as indicated in ass13-task1.py.
+    System Analysis -
+        Use this if user enters in nothing for width or height:
+                    if width == "" and height == "":
+                drawChessboard(startX, startY)
+            elif height == "":
+                drawChessboard(startX, startY, width=eval(width))
+            elif width == "":
+                drawChessboard(startX, startY, height=eval(height))
+            else:
+                drawChessboard(startX, startY, eval(width), eval(height))
+        I need to make sure that it is all proportional, if the user enters different height and width, then I will need
+        to proportion it based off of a 250 X 250 pixels board. height / 8 and width / 8
+    System Design -
+        1. Ask user for coordinates
+        2. Ask user for width
+        3. Ask user for height
+        4. Draw board first
+        5. Draw all individual squares
+
+    Testing -
+        Test 1:
+            Input: 0, 0
+                   Enter
+                   Enter
+            Output: A board at (0, 0) with a width and height of 250.
+
+        Test 2:
+            Input: -100, -200
+                   300
+                   500
+            Output: A board at (-100, -200), with a width of 300, and a height of 500.
+
+SoftwareDevelopment Plan 2:
+    Requirement Specifications -
+        Your program should define a class called Password, which is in its own file called password.py. You should have
+        another file called assn12-task2.py that has code the creates and uses a Password object. All input and print
+        functions should be in in this file. Your program will prompt the user for a password, and after completing will
+        ask the user if they want to enter another. The program should only ever create one instance of Password.
+    System Analysis -
+        Use pythons in built functions to check for valid numbers and characters
+    System Design -
+        1. Ask user for password
+        2. Display if the password is valid
+        3. Ask if user wants to check another password
+    Testing
+        Test 1:
+            Input: plati4tUdes27
+            Output: is a valid password
+        Test 2:
+            Input: password123
+            output: not a valid password
+                    password cannot contain password
+                    password cannot end in 123

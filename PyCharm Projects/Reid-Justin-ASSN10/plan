@@ -1,0 +1,48 @@
+# Justin Reid
+# CS-1400-001
+# ASSN10
+
+Software Development Plan:
+
+    Requirement Specifications -
+        Programming Exercise 6.47. You will be submitting three files: assn10.py, chessboard.py, and plan.txt.
+        We are going to modify the requirements a bit from the book. You will prompt the user for input. You will ask
+        for the starting location (x, y) and a height and width of the board. You will use this information to draw the
+        chessboard (just a single chessboard). Keep in mind that it may not be a square.
+
+        The user must enter the location, but if they do not enter a value for height or width you will use a default
+        value of 250. Note, that input() returns an empty string(“”) if the user just hits enter without giving input.
+        Here is some code that you must use in your program. It should be placed in a main() function.
+
+    System Analysis -
+        Use this if user enters in nothing for width or height:
+                    if width == "" and height == "":
+                drawChessboard(startX, startY)
+            elif height == "":
+                drawChessboard(startX, startY, width=eval(width))
+            elif width == "":
+                drawChessboard(startX, startY, height=eval(height))
+            else:
+                drawChessboard(startX, startY, eval(width), eval(height))
+        I need to make sure that it is all proportional, if the user enters different height and width, then I will need
+        to proportion it based off of a 250 X 250 pixels board. height / 8 and width / 8
+
+    System Design -
+        1. Ask user for coordinates
+        2. Ask user for width
+        3. Ask user for height
+        4. Draw board first
+        5. Draw all individual squares
+
+    Testing -
+        Test 1:
+            Input: 0, 0
+                   Enter
+                   Enter
+            Output: A board at (0, 0) with a width and height of 250.
+
+        Test 2:
+            Input: -100, -200
+                   300
+                   500
+            Output: A board at (-100, -200), with a width of 300, and a height of 500.

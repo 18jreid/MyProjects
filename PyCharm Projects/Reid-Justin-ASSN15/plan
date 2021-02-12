@@ -1,0 +1,49 @@
+Software Development Plan:
+
+Requirement Specifications:
+    You will create a program for a brand-new kind of card game. The game is called Gubbins. It is based on two common ways
+    to select between two people or teams. You will create a deck of cards that can be used to play the game, as well as
+    implement a usage of the cards to show that your deck of cards works properly.
+
+System Analysis:
+    When using the sort and search functions, I need to make sure that I'm converting the item of my list into a value or
+    id.
+
+System Design:
+    1. Intro
+    2. Create menu for user (Each item in list is interactable)
+        Sort by Value: sorts by card value
+        Sort by ID: sort by card id
+        Find card: search for card in deck
+        New deck: create new deck
+        Quit: End function
+    3. User can interact with menu
+
+Test:
+    Test 1 -
+        Sort by value
+            values are sorted corrected
+    Test 2 -
+        New Deck
+            New deck is different from old deck
+
+
+
+UML:
+
+-----------
+CARD
+-----------
+-getCoin
+-getValue
+-getHand
+-getCardID
++__str__
+___________
+
+            -----------
+            DECK
+            -----------
+            +shuffle
+            +draw
+            ___________

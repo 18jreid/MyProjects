@@ -1,0 +1,22 @@
+21
+0 ACoruna 3
+1 Oviedo 4
+2 Bilbao 9 8
+3 Vigo 0 4 6
+4 Leon 1 3 8
+5 Huesca 9
+6 Porto 3 7 11 
+7 Salamanca 6 8 
+8 Valladolid 4 2 12 7
+9 Zaragoza 5 2 10 12
+10 Barcelona 9 14
+11 Lisboa 6 15 12 
+12 Madrid 8 11 13 9 14 
+13 Toledo 12 14 17
+14 Valencia 10 18 12 13 
+15 Faro 11 16
+16 Sevilla 15 19 17 
+17 Cordoba 16 13 20
+18 Alicante 14
+19 Cadiz 16
+20 Malaga 17

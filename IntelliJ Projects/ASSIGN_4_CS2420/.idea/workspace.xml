@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="01b5b6c0-84a4-45b4-a43b-53b00ded6b6a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1iqFaUXXyPNGhfP69Ik2XktXBBD" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AVLTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AVLTree" />
+      <module name="ASSIGN_4_CS2420" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.AVLTree" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="01b5b6c0-84a4-45b4-a43b-53b00ded6b6a" name="Default Changelist" comment="" />
+      <created>1602627278739</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602627278739</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1398" height="382" key="GridCell.Tab.0.bottom" timestamp="1603775080112">
+      <screen x="0" y="23" width="1440" height="815" />
+    </state>
+    <state width="1398" height="382" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603774994463" />
+    <state width="1398" height="382" key="GridCell.Tab.0.bottom/0.23.1440.815@0.23.1440.815" timestamp="1603775080112" />
+    <state width="1398" height="382" key="GridCell.Tab.0.bottom/0.23.1440.817@0.23.1440.817" timestamp="1603180586140" />
+    <state width="1398" height="382" key="GridCell.Tab.0.center" timestamp="1603775080111">
+      <screen x="0" y="23" width="1440" height="815" />
+    </state>
+    <state width="1398" height="382" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603774994461" />
+    <state width="1398" height="382" key="GridCell.Tab.0.center/0.23.1440.815@0.23.1440.815" timestamp="1603775080111" />
+    <state width="1398" height="382" key="GridCell.Tab.0.center/0.23.1440.817@0.23.1440.817" timestamp="1603180586138" />
+    <state width="1398" height="382" key="GridCell.Tab.0.left" timestamp="1603775080110">
+      <screen x="0" y="23" width="1440" height="815" />
+    </state>
+    <state width="1398" height="382" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603774994460" />
+    <state width="1398" height="382" key="GridCell.Tab.0.left/0.23.1440.815@0.23.1440.815" timestamp="1603775080110" />
+    <state width="1398" height="382" key="GridCell.Tab.0.left/0.23.1440.817@0.23.1440.817" timestamp="1603180586136" />
+    <state width="1398" height="382" key="GridCell.Tab.0.right" timestamp="1603775080111">
+      <screen x="0" y="23" width="1440" height="815" />
+    </state>
+    <state width="1398" height="382" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603774994462" />
+    <state width="1398" height="382" key="GridCell.Tab.0.right/0.23.1440.815@0.23.1440.815" timestamp="1603775080111" />
+    <state width="1398" height="382" key="GridCell.Tab.0.right/0.23.1440.817@0.23.1440.817" timestamp="1603180586139" />
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1603774964699">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="397" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1603774964699" />
+  </component>
+</project>

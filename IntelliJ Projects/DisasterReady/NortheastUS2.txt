@@ -1,0 +1,33 @@
+32
+0 GrandRapids 1 15 
+1 Lansing 0 2 6 
+2 Detroit 1 6 16 
+3 WhiteRiverJunction 5 9 
+4 Portland 10 
+5 Concord 3 10 
+6 BattleCreek 1 15 2 22 
+7 Syracuse 8 11 17 
+8 Albany 7 9 12 
+9 Springfield 8 3 13 10 
+10 Boston 4 5 9 14 
+11 Scranton 7 19 12 
+12 Newburgh 8 11 13 20 
+13 Hartford 12 9 14 
+14 NewHaven 10 13 20 
+15 Chicago 0 6 22 16 
+16 Toledo 2 17 23 15 
+17 Cleveland 16 18 25 7 24
+18 Erie 17 19 26 
+19 Wilkes-Barre 18 11 20 27 
+20 NewYorkCity 12 14 27 21 19
+21 Philadelphia 20 27 28 
+22 Indianapolis 15 23 6 
+23 Dayton 16 22 29 24 
+24 Columbus 23 17 25 29 
+25 Cambridge 24 26 17 
+26 Pittsburgh 25 18 27 
+27 Harrisburg 19 26 28 30 20 21 
+28 Baltimore 21 27 31 
+29 Cincinnati 23 24 
+30 FrontRoyal 27 31 
+31 DC 28 30 

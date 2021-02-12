@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f0dce7e2-12dc-4ef4-b331-664167a41a7e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1jRm6XoTxPXi7HsbFOvpfUKfJhE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.SpellChecker">
+    <configuration name="HashTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HashTable" />
+      <module name="CS2420 Assign. 5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpellChecker" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SpellChecker" />
+      <module name="CS2420 Assign. 5" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.SpellChecker" />
+        <item itemvalue="Application.HashTable" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f0dce7e2-12dc-4ef4-b331-664167a41a7e" name="Default Changelist" comment="" />
+      <created>1603775103067</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603775103067</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser" timestamp="1603779833814">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="166" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1603779833814" />
+    <state width="248" height="801" key="GridCell.Tab.0.bottom" timestamp="1603866127728">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="248" height="801" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1603866127728" />
+    <state width="1398" height="439" key="GridCell.Tab.0.bottom/0.23.1440.817@0.23.1440.817" timestamp="1603775200210" />
+    <state width="248" height="801" key="GridCell.Tab.0.center" timestamp="1603866127727">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="248" height="801" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1603866127727" />
+    <state width="1398" height="439" key="GridCell.Tab.0.center/0.23.1440.817@0.23.1440.817" timestamp="1603775200208" />
+    <state width="248" height="801" key="GridCell.Tab.0.left" timestamp="1603866127727">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="248" height="801" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1603866127727" />
+    <state width="1398" height="439" key="GridCell.Tab.0.left/0.23.1440.817@0.23.1440.817" timestamp="1603775200207" />
+    <state width="248" height="801" key="GridCell.Tab.0.right" timestamp="1603866127728">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="248" height="801" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1603866127728" />
+    <state width="1398" height="439" key="GridCell.Tab.0.right/0.23.1440.817@0.23.1440.817" timestamp="1603775200209" />
+  </component>
+</project>

@@ -1,0 +1,25 @@
+24
+0 Salzburg 6 1
+1 Ljubljana 0 7 2 6
+2 Split 1 7 14
+3 Berlin 9 4
+4 Dresden 3 10 5 
+5 Praha 4 11 12 6 
+6 Wien 5 12 13 17 1 0
+7 Zagreb 1 2 14 18 17
+8 Gdansk 9 15
+9 Poznan 3 8 15 10 
+10 Wroclaw 9 16 4
+11 Ostrava 16 20 21 12 5 13
+12 Brno 11 5 6 13
+13 Bratislava 6 12 11 20 21 
+14 Sarajevo 2 7 18
+15 Warszawa 9 8 16 20 
+16 Katowice 19 11 10 20 15
+17 Budapest 6 21 18 7
+18 Beograd 14 7 17 23 
+19 Krakow 16 20
+20 Lwiw 21 19 15 11 13 16
+21 Cluj-Napoca 22 17 20 11 13
+22 Brasov 21 23
+23 Bucuresti 22 18 

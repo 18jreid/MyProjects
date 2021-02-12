@@ -1,0 +1,18 @@
+17
+0 zero 11
+1 One 12 
+2 Two 13 
+3 Three 14  
+4 Four 15 
+5 Five 16
+6 Six 11 12 13
+7 Seven 14 15 16 
+8 Eight 11 12
+9 Nine 13 14
+10 Ten 15 16
+11 Eleven 6 8 0
+12 Twelve 6 8 1
+13 Thirteen 6 9 2
+14 Fourteen 7 9 3
+15 Fifteen 7 10 4
+16 Sixteen 7 10 5

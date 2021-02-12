@@ -1,0 +1,15 @@
+14
+0 Seattle 1 2
+1 Butte 0 5
+2 Portland 0 5 4
+3 SanFrancisco 4
+4 Sacramento 3 2 5 10
+5 SaltLakeCity 1 2 4 6
+6 Monroe 5 7
+7 LasVegas 6 8
+8 Barstow 7 10 9
+9 Flagstaff 8 11
+10 LosAngeles 4 8 11 12
+11 Phoenix 9 10 13
+12 SanDiego 10 13
+13 Nogales 12 11

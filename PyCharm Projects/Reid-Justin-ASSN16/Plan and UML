@@ -1,0 +1,57 @@
+Software Development Plan - Task 2
+
+Requirement Specifications:
+Create a program that uses the deck and card classes provided. Name your file assn16-task2.py. You will implement the
+Blackjack game. The goal is to have a higher score than the dealer without going over 21 points. This version does not
+have all features of regular blackjack
+
+System Analysis -
+I need to make sure I'm always getting the correct card values for the cards. For example, 2-10 are worth their numerical
+values. But an ace is worth 11 and a jack queen and king are worth 10.
+
+System Design -
+1. Introduction
+2. Ask how many players
+3. Deal cards
+4. Display dealers second card.
+5. Ask player to place bet.
+6. Tell player their cards, and total.
+7. Ask if they want to hit or stand, continue to do so until bust or stand.
+8. Have dealer take its turn.
+9. Calculate winners.
+10. Give correct payout.
+11. Ask if play again.
+12. Thanks for playing.
+
+Testing -
+Test 1 -
+        1 player
+        50 dollar bet
+        Hit until close to 21
+        Stand
+        Player 1 wins
+        Added balance of 50
+Test 2 -
+        2 player
+        25 dollar bet
+        hit until close to 21
+        whatever player wins
+        balance of 50 added to winning player
+
+
+UML
+
+-------------
+Player
+-------------
+cash+ = players cash
+_____________
+getCash
+betcash
+addcash
+addcard
+showcards
+showlastcard
+getcardtotal
+
+All are not private cause task 2 must access these functions

@@ -1,0 +1,31 @@
+# Justin Reid
+# CS-1400-001
+# ASSN 11
+
+Software Development Plan:
+
+    Requirement Specifications -
+
+        You are going to create a program that draws cool patterns. The user will have three modes to choose from:
+
+        Rectangle Pattern - A circular pattern created by drawing multiple rectangles
+        Circle Pattern - A circular pattern created by drawing multiple circles
+        Super Pattern - A random selection of some number of Rectangle and Circle Patterns
+
+    System Analysis -
+        When the user is asked for input, I need to make sure all given values are in terms of floats or integers, no
+        strings allowed.
+
+    System Design -
+        1. Ask user what mode they want (Rectangle, circle, super pattern).
+        2. Ask user for correct input according to what mode they want.
+        3. Draw the shapes for the user.
+
+    Test -
+        Test 1
+            Input: Square
+            50 Offset
+            200 Height
+            100 Width
+            60 Count
+            45 Rotation

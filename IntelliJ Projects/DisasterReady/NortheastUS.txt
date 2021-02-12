@@ -1,0 +1,27 @@
+26
+0 WhiteRiverJunction 2 5 
+1 Portland 6
+2 Concord 0 6
+3 Syracuse 4 7 12
+4 Albany 3 5 8
+5 Springfield 4 0 9 6 
+6 Boston 1 2 5 10
+7 Scranton 3 14 8 
+8 Newburgh 4 7 9 15 
+9 Hartford 8 5 10
+10 NewHaven 6 9 15
+11 Toledo 12 17
+12 Cleveland 11 13 19 3 18
+13 Erie 12 14 20
+14 Wilkes-Barre 13 7 15 21 
+15 NewYorkCity 8 10 21 16 14
+16 Philadelphia 15 21 22
+17 Dayton 11 23 18
+18 Columbus 17 12 19 23 
+19 Cambridge 18 20 12
+20 Pittsburgh 19 13 21
+21 Harrisburg 14 20 22 24 15 16 
+22 Baltimore 16 21 25
+23 Cincinnati 17 18
+24 FrontRoyal 21 25 
+25 DC 22 24
