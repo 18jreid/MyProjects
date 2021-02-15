@@ -25,7 +25,7 @@ else:
     tmp2 = int(sys.argv[3])
 
 # Load and show data
-File = "Companies/DOGE-USD.csv"
+File = "Companies/" + compTmp
 Company = pd.read_csv(File)
 
 # Create Simple Moving Average of # of days
