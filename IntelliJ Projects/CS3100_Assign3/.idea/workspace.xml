@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b3d44a7-74d3-4935-9b06-d18c835d53ae" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/CS3100_Assign3/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/CS3100_Assign3/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../myProjects/Android Studio Projects/Calculator/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../myProjects/Android Studio Projects/Calculator/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../myProjects/Android Studio Projects/Calculator/.idea/codeStyles/Project.xml" beforeDir="false" />
@@ -1439,7 +1440,7 @@
     </projectState>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1opCKgrMEURr9l2skWA2WMdVSfx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
