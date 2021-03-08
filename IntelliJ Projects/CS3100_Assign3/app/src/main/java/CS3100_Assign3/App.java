@@ -158,8 +158,8 @@ public class App {
             boolean fileFound = false;
             assert allFiles != null;
             for (String file : allFiles) {
-                if (file.equals(newDir)) {
-                    System.setProperty("user.dir", getCurrDirectory() + "/" + newDir);
+                if (file.equals(newDir) || file.startsWith(newDir)) {
+                    System.setProperty("user.dir", getCurrDirectory() + "/" + file.toString());
                     fileFound = true;
                 }
             }
