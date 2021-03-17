@@ -1,0 +1,117 @@
+h1 {
+	text-align: center;
+	color: white;
+	font-size: 4.5em;
+	background-color: rgb(69, 201, 36);
+	margin-bottom: 0em;
+	font-family: 'Sigmar One', cursive;
+	text-shadow: 2px 2px #ff0000;
+}
+
+h2 {
+	margin-left: 1em;
+}
+
+h3 {
+	margin-left: 1.5em;
+}
+
+h4 {
+	margin-left: 3em;
+}
+
+code {
+	font-family: monospace;
+	font-size: 1.25em;
+	font-style: italic;
+}
+
+.post {
+	margin: 1.5em;
+	background-color: rgb(237, 237, 237);
+	text-indent: 50px;
+}
+
+.postContent {
+	border-radius: 20%;
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+.photoGallery {
+	border-radius: 20%;
+	margin: 1em;
+	text-align: center;
+}
+
+.profilePic {
+	border-radius: 40%;
+	margin-left: 2em;
+	margin-right: 2em;
+	text-align: center;
+}
+
+#menu > a {
+	margin-left: 3em;
+	margin-right: 3em;
+	font-size: 1.5em;
+	color: white;
+	text-decoration: none;
+}
+
+#menuBar {
+	text-align: center;
+	background-color: rgb(53, 173, 31);
+	font-family: 'Sigmar One', cursive;
+	text-shadow: 2px 2px #ff0000;
+}
+
+#htmlCheatSheet {
+	background-color: rgb(237, 237, 237);
+	margin-left: 4em;
+	margin-right: 4em;
+	font-size: 1.25em;
+	padding: 3em;
+}
+
+#htmlCheatSheet > ul > li:nth-child(odd) {
+	background-color: lightgrey;
+}
+
+#htmlCheatSheet > ul > li:nth-child(even) {
+	background-color: rgb(161, 161, 161);
+}
+
+#cssSelectorsSheet {
+	background-color: rgb(171, 255, 168);
+	margin-top: 2.5em;
+	margin-left: 4em;
+	margin-right: 4em;
+	font-size: 1.25em;
+	padding: 3em;
+}
+
+#cssSelectorsSheet > ul > li:nth-child(odd) {
+	background-color: rgb(137, 255, 133);
+}
+
+#cssSelectorsSheet > ul > li:nth-child(even) {
+	background-color: rgb(75, 255, 69);
+}
+
+#cssPropertiesSheet {
+	background-color: rgb(212, 222, 255);
+	margin-top: 2.5em;
+	margin-left: 4em;
+	margin-right: 4em;
+	font-size: 1.25em;
+	padding: 3em;
+}
+
+#cssPropertiesSheet > ul > li:nth-child(odd) {
+	background-color: rgb(179, 196, 255);
+}
+
+#cssPropertiesSheet > ul > li:nth-child(even) {
+	background-color: rgb(140, 165, 255);
+}

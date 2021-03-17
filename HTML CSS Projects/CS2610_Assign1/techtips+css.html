@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>TechTips - CSS Edition</title>
+        <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <h1>Techtips - CSS Edition</h1>
+        <div id="menuBar">
+            <p id="menu">
+                <a href="index.html" style="text-decoration: none;">Blog</a> 
+                <a href="about.html" style="text-decoration: none;">About</a>
+                <a href="techtips+css.html" style="text-decoration: none;">Tech Tips - CSS Edition</a>
+                <a href="techtips-css.html" style="text-decoration: none;">Tech Tips - 90's Edtion</a>
+            </p>
+        </div>
+
+        <h2>W3C Validators</h2>
+        <ul style="margin-left: 3em;">
+            <li><a href="https://validator.w3.org/#validate_by_upload">W3C HTML Validator</a></li>
+            <li><a href="https://jigsaw.w3.org/css-validator/#validate_by_upload">W3C CSS Validator</a></li>
+        </ul>
+        <hr>
+
+        <div id="htmlCheatSheet">
+            <h5 style="font-size: 1.5em;">HTML Elements Catalog</h5>
+            <p><code><strong>&lt;html&gt;</strong></code></p>
+            <ul>
+                <li>purpose: HTML document root element; must be unique in document</li>
+                <li>display: N/A</li>
+                <li>contents:
+                <ol>
+                    <li>&lt;head&gt;</li>
+                    <li>&lt;body&gt;</li>
+                </ol></li>
+            </ul>
+
+            <p><code><strong>&lt;head&gt;</strong></code></p>
+            <ul>
+                <li>purpose: container for metadata (data about data)</li>
+                <li>display: N/A</li>
+                <li>contents: metadata</li>
+            </ul>
+
+            <p><code><strong>&lt;title&gt;</strong></code></p>
+            <ul>
+                <li>purpose: defines the title of the document.</li>
+                <li>display: top of webpage tab</li>
+                <li>contents: title</li>
+            </ul>
+
+            <p><code><strong>&lt;body&gt;</strong></code></p>
+            <ul>
+                <li>name: idem.</li>
+                <li>purpose: Defines the documents body</li>
+                <li>display: Holds all structure and information of document</li>
+                <li>contents: contains all the contents of an HTML document, such as headings, paragraphs, images, hyperlinks, tables, lists, etc.</li>
+            </ul>
+
+            <p><code><strong>&lt;h1&gt;</strong> </code> to <code><strong>&lt;h6&gt;</strong></code></p>
+            <ul>
+                <li>purpose: used to define HTML headings</li>
+                <li>display: desired image</li>
+                <li>contents: none</li>
+            </ul>
+
+            <p><code><strong>&lt;p&gt;</strong></code></p>
+            <ul>
+                <li>purpose: used to contain paragraphs</li>
+                <li>display: Holds all paragraph content in a contained box</li>
+                <li>contents: any desired information</li>
+            </ul>
+
+            <p><code><strong>&lt;strong&gt;</strong></code></p>
+            <ul>
+                <li>purpose: turns text bold</li>
+                <li>display: bolded text</li>
+                <li>contents: desired text to be bolded</li>
+            </ul>
+
+            <p><code><strong>&lt;div&gt;</strong></code></p>
+            <ul>
+                <li>purpose: divides html tags into a section</li>
+                <li>display: can be used to change margin, text, background-color, etc. of entire divisions</li>
+                <li>contents: anything inside the tag</li>
+            </ul>
+
+            <p><code><strong>&lt;img&gt;</strong></code></p>
+            <ul>
+                <li>purpose: used to embed an image in an HTML page</li>
+                <li>display: top of webpage tab</li>
+                <li>contents: title</li>
+            </ul>
+
+            <p><code><strong>&lt;ul&gt;</strong></code></p>
+            <ul>
+                <li>purpose: an unordered (bulleted) list</li>
+                <li>display: framework for bulleted list items</li>
+                <li>contents: contains the &lt;li&gt; tag</li>
+            </ul>
+
+            <p><code><strong>&lt;ol&gt;</strong></code></p>
+            <ul>
+                <li>purpose: defines an ordered list</li>
+                <li>display: framework for numbered list items</li>
+                <li>contents: desired information</li>
+            </ul>
+
+            <p><code><strong>&lt;li&gt;</strong></code></p>
+            <ul>
+                <li>purpose: defines a list item</li>
+                <li>display: either numbered or bulleted list items depending on the list type</li>
+                <li>contents: desired information</li>
+            </ul>
+        </div>
+
+        <div id="cssSelectorsSheet">
+            <h5 style="font-size: 1.5em;">CSS Selectors Sheet</h5>
+            <p><code><strong>element</strong></code></p>
+            <ul>
+                <li>description: the element selector selects HTML elements based on the element name</li>
+                <li>purpose: to change any characteristic of all specific elements</li>
+            </ul>
+
+            <p><code><strong>class</strong></code></p>
+            <ul>
+                <li>description: The class selector selects HTML elements with a specific class attribute</li>
+                <li>purpose: to change any characteristic of any specific element with the class type</li>
+            </ul>
+
+            <p><code><strong>id</strong></code></p>
+            <ul>
+                <li>description: The id selector uses the id attribute of an HTML element to select a specific element</li>
+                <li>purpose: to change any characteristic of all any specific element with the id type</li>
+            </ul>
+        </div>
+
+        <div id="cssPropertiesSheet">
+            <h5 style="font-size: 1.5em;">CSS Properties Sheet</h5>
+            <p><code><strong>margin</strong></code></p>
+            <ul>
+                <li>description: the space around an element</li>
+                <li>purpose: sets all the margin properties in one declaration</li>
+            </ul>
+
+            <p><code><strong>background-color</strong></code></p>
+            <ul>
+                <li>description: the background color of the element</li>
+                <li>purpose: changes the background color of an element</li>
+            </ul>
+
+            <p><code><strong>border-radius</strong></code></p>
+            <ul>
+                <li>description: a shorthand property for the four border-*-radius properties</li>
+                <li>purpose: changes the radius of an image</li>
+            </ul>
+
+            <p><code><strong>text-align</strong></code></p>
+            <ul>
+                <li>description: the horizontal alignment of where the text is</li>
+                <li>purpose: changes the horizontal alignment of text</li>
+            </ul>
+
+            <p><code><strong>font-size</strong></code></p>
+            <ul>
+                <li>description: the specific size of the font</li>
+                <li>purpose: changes the font size</li>
+            </ul>
+
+            <p><code><strong>color</strong></code></p>
+            <ul>
+                <li>description: the color of the text</li>
+                <li>purpose: changes the color of the text</li>
+            </ul>
+
+            <p><code><strong>font-family</strong></code></p>
+            <ul>
+                <li>description: the font of the text</li>
+                <li>purpose: changes the font of the text</li>
+            </ul>
+
+            <p><code><strong>text-decoration</strong></code></p>
+            <ul>
+                <li>description: specifies the decoration added to text</li>
+                <li>purpose: changes text decoration</li>
+            </ul>
+
+            <p><code><strong>text-indent</strong></code></p>
+            <ul>
+                <li>description: specifies the indentation of the first line in a text-block</li>
+                <li>purpose: changes the indentation</li>
+            </ul>
+
+            <p><code><strong>text-shadow</strong></code></p>
+            <ul>
+                <li>description: enables user to add shadow behind text</li>
+                <li>purpose: adds shadow to text</li>
+            </ul>
+        </div>
+    </body>
+</html>
