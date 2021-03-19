@@ -1,15 +1,15 @@
 h1 {
 	text-align: center;
 	color: white;
-	font-size: 4.5em;
+	font-size: 6em;
 	background-color: rgb(69, 201, 36);
 	margin-bottom: 0em;
-	font-family: 'Sigmar One', cursive;
+	font-family: 'Changa', sans-serif;
 	text-shadow: 2px 2px #ff0000;
 }
 
 h2 {
-	margin-left: 1em;
+	margin-left: 3em;
 }
 
 h3 {
@@ -17,7 +17,7 @@ h3 {
 }
 
 h4 {
-	margin-left: 3em;
+	margin-left: 6em;
 }
 
 code {
@@ -27,21 +27,37 @@ code {
 }
 
 .post {
-	margin: 1.5em;
+	margin: 1em;
 	background-color: rgb(237, 237, 237);
 	text-indent: 50px;
+	padding: 1em;
+	border-radius: 10%;
+}
+
+.postTitle {
+	background-color: lightgrey;
+	margin-bottom: 0em;
 }
 
 .postContent {
+	margin: 2em;
 	border-radius: 20%;
-	margin-left: 2em;
-	margin-right: 2em;
+	border: 4px rgb(102, 102, 102);
+	border-style: solid;
 }
 
 .photoGallery {
 	border-radius: 20%;
 	margin: 1em;
 	text-align: center;
+	background-color: lightgrey;
+}
+
+.photo {
+	border-radius: 20%;
+	border: 4px rgb(102, 102, 102);
+	border-style: solid;
+	margin: 1.5em;
 }
 
 .profilePic {
@@ -49,12 +65,21 @@ code {
 	margin-left: 2em;
 	margin-right: 2em;
 	text-align: center;
+	border: 4px rgb(102, 102, 102);
+	border-style: solid;
+}
+
+.wholePost {
+	border: 8px black;
+	border-style: solid;
+	border-color: darkgrey;
+	margin: 2em;
 }
 
 #menu > a {
 	margin-left: 3em;
 	margin-right: 3em;
-	font-size: 1.5em;
+	font-size: 1.75em;
 	color: white;
 	text-decoration: none;
 }
@@ -62,7 +87,7 @@ code {
 #menuBar {
 	text-align: center;
 	background-color: rgb(53, 173, 31);
-	font-family: 'Sigmar One', cursive;
+	font-family: 'Changa', sans-serif;
 	text-shadow: 2px 2px #ff0000;
 }
 
@@ -72,6 +97,7 @@ code {
 	margin-right: 4em;
 	font-size: 1.25em;
 	padding: 3em;
+	border-radius: 5%;
 }
 
 #htmlCheatSheet > ul > li:nth-child(odd) {
@@ -89,6 +115,7 @@ code {
 	margin-right: 4em;
 	font-size: 1.25em;
 	padding: 3em;
+	border-radius: 10%;
 }
 
 #cssSelectorsSheet > ul > li:nth-child(odd) {
@@ -104,8 +131,10 @@ code {
 	margin-top: 2.5em;
 	margin-left: 4em;
 	margin-right: 4em;
+	margin-bottom: 2.5em;
 	font-size: 1.25em;
 	padding: 3em;
+	border-radius: 5%;
 }
 
 #cssPropertiesSheet > ul > li:nth-child(odd) {
