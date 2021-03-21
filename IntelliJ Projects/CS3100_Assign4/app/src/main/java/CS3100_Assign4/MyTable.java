@@ -13,8 +13,13 @@ public class MyTable {
         this.myHashTable = new HashMap<>();
     }
 
+    /***
+     * Inserts calculated decimal place digit into hash table.
+     * @param myDigit decimal place digit to be calculated.
+     */
     void insertDigit(int myDigit) {
-        this.myHashTable.put(myDigit, calculateDigit(myDigit));
+        int calculatedDigit = calculateDigit(myDigit);
+        this.myHashTable.put(myDigit, calculatedDigit);
 
         if ((this.myHashTable.size()) % 10 == 0) {
             System.out.flush();
@@ -22,10 +27,18 @@ public class MyTable {
         }
     }
 
+    /***
+     * Calculates desired decimal place digit.
+     * @param digit
+     * @return
+     */
     int calculateDigit(int digit) {
         return calculator.getDecimal(digit);
     }
 
+    /***
+     * Prints entire calculated PI.
+     */
     void printPi() {
         stopClock();
         StringBuilder builder = new StringBuilder("\n3.");
@@ -62,14 +75,24 @@ public class MyTable {
         System.out.println("Program Run-Time: " + df.format(num) + " seconds\n");
     }
 
+    /***
+     * Starts clock time for calculating PI.
+     */
     void startClock() {
         this.startTime = System.nanoTime();
     }
 
+    /***
+     * Ends clock time for calculating PI.
+     */
     void stopClock() {
         this.endTime = System.nanoTime();
     }
 
+    /***
+     * Computes total time it took to calculate PI.
+     * @return total time in milliseconds it took.
+     */
     double computeTime() {
         return this.endTime - this.startTime;
     }

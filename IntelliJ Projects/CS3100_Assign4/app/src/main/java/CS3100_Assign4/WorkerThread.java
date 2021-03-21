@@ -9,9 +9,16 @@ public class WorkerThread extends Thread{
         this.myTable = table;
     }
 
-    public synchronized void run() {
+    /***
+     * Runs thread. Grabs decimal digit to be calculated from queue, and inserts it into the hash table.
+     */
+    public void run() {
         while(!myQueue.isEmpty()) {
-            int myDigit = (int) myQueue.queue.poll();
+            int myDigit;
+            synchronized (myQueue.queue) {
+                myDigit = myQueue.queue.poll();
+            }
+
             myTable.insertDigit(myDigit);
         }
     }
