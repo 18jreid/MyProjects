@@ -1,4 +1,4 @@
-package Assign3;
+package CS3100_Assign4;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,10 +10,6 @@ public class TaskQueue {
         for (int task : tasks) {
             queue.offer(task);
         }
-    }
-
-    int poll() {
-        return this.queue.poll();
     }
 
     Boolean isEmpty() {

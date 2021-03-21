@@ -4,8 +4,7 @@
  * @author feltocraig
  */
 
-package Assign3;
-
+package CS3100_Assign4;
 
 public class Bpp {
 

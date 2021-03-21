@@ -26,5 +26,13 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'Assign3.App'
+    mainClass = 'CS3100_Assign4.App'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'CS3100_Assign4.App'
+        )
+    }
 }

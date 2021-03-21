@@ -1,11 +1,11 @@
-package Assign3;
+package CS3100_Assign4;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class MyTable {
     HashMap<Integer, Integer> myHashTable;
-    private Bpp calculator = new Bpp();
+    private final Bpp calculator = new Bpp();
     private double startTime;
     private double endTime;
 
@@ -13,20 +13,12 @@ public class MyTable {
         this.myHashTable = new HashMap<>();
     }
 
-    void insertDigit(TaskQueue queue) {
-        if (!queue.isEmpty()) {
-            int myDigit = queue.poll();
-            this.myHashTable.put(myDigit, calculateDigit(myDigit));
+    void insertDigit(int myDigit) {
+        this.myHashTable.put(myDigit, calculateDigit(myDigit));
 
-            if ((this.myHashTable.size()) % 10 == 0) {
-                System.out.flush();
-                System.out.print(".");
-            }
-
-            if (myDigit == 1000) {
-                stopClock();
-                printPi();
-            }
+        if ((this.myHashTable.size()) % 10 == 0) {
+            System.out.flush();
+            System.out.print(".");
         }
     }
 
@@ -35,11 +27,13 @@ public class MyTable {
     }
 
     void printPi() {
+        stopClock();
         StringBuilder builder = new StringBuilder("\n3.");
         for (int i = 1; i < myHashTable.size() + 1; i++) {
             builder.append(myHashTable.get(i));
         }
 
+        System.out.print("\nThe value of pi up to 1000 decimals is: ");
         System.out.println(builder.toString());
         String testPi = "\n3.14159265358979323846264338327950288419716939937510" +
                 "58209749445923078164062862089986280348253421170679" +
@@ -61,11 +55,11 @@ public class MyTable {
                 "71010003137838752886587533208381420617177669147303" +
                 "59825349042875546873115956286388235378759375195778" +
                 "18577805321712268066130019278766111959092164201989";
-        System.out.println(testPi.equals(builder.toString()));
+        System.out.println("Is this calculation correct: " + testPi.equals(builder.toString()) + "!");
 
         DecimalFormat df = new DecimalFormat("###.##");
         double num = computeTime() / 1000000000;
-        System.out.println("The program took " + df.format(num) + " seconds long!");
+        System.out.println("Program Run-Time: " + df.format(num) + " seconds\n");
     }
 
     void startClock() {
