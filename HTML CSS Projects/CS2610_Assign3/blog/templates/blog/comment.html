@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}"/>
+</head>
+<body>
+    <h1>Justin's Blog</h1>
+        <div id="menuBar">
+            <p id="menu">
+                <a href="{% url 'home' %}" style="text-decoration: none;">Home</a>
+                <a href="{% url 'about' %}" style="text-decoration: none;">About</a>
+                <a href="{% url 'tips' %}" style="text-decoration: none;">Tech Tips - CSS Edition</a>
+            </p>
+        </div>
+    <h2 style="margin-left: 1em;">{{blog.title}}</h2>
+    <h3 style="margin-left: 2em;">By {{blog.author}}</h3>
+    <p style="margin-left: 1.5em;">{{blog.content}}</p>
+    <p style="margin-left: 3em;">- {{blog.posted}}</p>
+    <form action="{% url 'commented' blog.id %}" method="post">
+        {% csrf_token %}
+        <p style="margin-left: 8em;">
+            <label for="commenter">Commenter:</label>
+            <input id="commenter" placeholder="Enter your name." type="text" name="commenter">
+        </p>
+
+        <p style="margin-left: 8em;">
+            <label for="email">Email:</label>
+            <input id="email" type="email" placeholder="Enter your email." name="email">
+        </p>
+
+        <p style="margin-left: 8em;">
+            <label for="posted">Posted:</label>
+            <input id="posted" type="date" name="posted">
+        </p>
+
+        <div>
+            <textarea id="content" placeholder="Enter your comment." name="content"  style="margin-left: 12em;"></textarea>
+        </div>
+
+        <p>
+            <button type="submit"  style="margin-left: 23em; margin-top: 1em;">Submit</button>
+        </p>
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}"/>
+</head>
+<body>
+<h1>Blog Archive</h1>
+        <div id="menuBar">
+            <p id="menu">
+                <a href="{% url 'home' %}" style="text-decoration: none;">Home</a>
+                <a href="{% url 'about' %}" style="text-decoration: none;">About</a>
+                <a href="{% url 'tips' %}" style="text-decoration: none;">Tech Tips - CSS Edition</a>
+            </p>
+        </div>
+
+        <div>
+            {% if latest_blogs_list %}
+            {% for blog in latest_blogs_list %}
+            <h2 style="margin-left: 1em"><a href="{% url 'entry' blog.id %}" style="text-decoration: none;">{{blog.title}}</a></h2>
+            <h4 style="margin-left: 3em">By {{blog.author}}</h4>
+            <p style="margin-left: 1.5em">{{blog.content|truncatewords:100}}</p>
+            <p style="margin-left: 4em">- {{blog.posted}}</p>
+            <p style="margin-left: 4em">Total Comments: {{blog.num_of_comments}}</p>
+
+            {% endfor %}
+            {% else %}
+            <p>There are no blogs to view :(</p>
+            {% endif %}
+        </div>
+</body>
+</html>
