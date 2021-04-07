@@ -3,7 +3,7 @@ from django.urls import path
 from blog import views
 
 urlpatterns = [
-    path('', views.aboutPage, name='index'),
+    path('', views.aboutPage, name='about'),
     path('about/', views.aboutPage, name='about'),
     path('tips/', views.tipsPage, name='tips'),
     path('home/', views.homePage, name='home'),
