@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>The minimal, valid HTML5 document</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'fib/style.css'%}">
+    </head>
+    <body>
+        <div>
+        	<div class="top-box">
+        		<h2>Compute the Nth Fibonacci number via our awesome API and <code>fetch()</code></h2>
+        		<input type="number" id="fib" name="fib">
+        		<button type="button" onclick="calculate()">Calculate</button>
+        		<h3 id="result">Result goes here</h3>
+        		<p id="duration">Duration goes here</p>
+        	</div>
+        </div>
+
+        <script type="text/javascript">
+            let protocol = window.location.protocol;
+            let hostname = window.location.hostname;
+            let port = window.location.port;
+
+            function calculate() {
+                document.querySelector('#result').textContent = "Hang on... I'm calculating.";
+
+                let url = `${protocol}//${hostname}:${port}/fib/fibAPI?n=${document.querySelector('#fib').value}`;
+
+                let before = new Date();
+                fetch(url)
+                    .then(response => response.json())
+                    .then(json => {
+                        let duration = new Date() - before;
+                        if (json.error) { document.querySelector('#result').textContent = json.error; }
+                        else { document.querySelector('#result').textContent = `Fib(${json.n}) = ${json.fibonacci}`; }
+                        document.querySelector('#duration').textContent = `Why, that only took ${duration} milliseconds!`;
+                });
+            }
+        </script>
+    </body>
+</html>

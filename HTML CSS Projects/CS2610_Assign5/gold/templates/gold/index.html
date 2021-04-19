@@ -1,0 +1,85 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gold</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'gold/style.css'%}">
+</head>
+<body>
+    <div>
+        <div class="green-box">
+            <h1>What's your weight's Worth In Gold</h1>
+            <h2>Input Your Weight And Press The = Button To See What You're Worth</h2>
+            <h2>For Your Privacy, Results Are Removed When Clicked</h2>
+            <input type="number" id="weight" name="weight">
+            <select id="unit">
+                <option>lb</option>
+                <option>oz</option>
+                <option>t_oz</option>
+                <option>kg</option>
+                <option>g</option>
+            </select>
+            <button id="compute" onclick="calculate()" name="compute">Compute</button>
+            <p id="price">Please Wait</p>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var theData;
+        var url = 'https://www.quandl.com/api/v3/datasets/LBMA/GOLD.json?api_key=9-nGjX5CracQmcxXtb69';
+        let price = document.querySelector('#price');
+        price.textContent = 'Please Wait While Retrieving Price Of Gold'
+
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                theData = json;
+                price.textContent = `The Price Of Gold As Of ${theData.dataset.data[0][0]} is $${theData.dataset.data[0][1]} Per Troy Oz`;
+            });
+
+        function calculate() {
+            let protocol = window.location.protocol;
+            let hostname = window.location.hostname;
+            let port = window.location.port;
+
+            let weight = document.querySelector('#weight');
+            let unit = document.querySelector('#unit');
+            let value = theData.dataset.data[0][1];
+
+            let url = `${protocol}//${hostname}:${port}/unitconvert/convert?from=${unit.value}&to=t_oz&value=${weight.value}`
+
+            fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                let calculatedElementDiv = document.createElement('div')
+                calculatedElementDiv.setAttribute('class', 'green-box');
+                calculatedElementDiv.setAttribute('id', 'calculatedDiv')
+                calculatedElementDiv.setAttribute('onclick', 'deleteDiv(this)')
+
+                if (json['Error']) {
+                    let calculatedText = document.createElement('p');
+                    calculatedText.textContent = `${json['Error']}`
+                    calculatedElementDiv.setAttribute('id', 'errorDiv')
+                    calculatedElementDiv.append(calculatedText);
+
+                    document.body.insertAdjacentElement("afterend", calculatedElementDiv)
+                }
+                else {
+                    let calculatedText = document.createElement('p');
+                    let date = new Date();
+                    calculatedText.textContent = `At ${theData.dataset.data[0][0]  + " " + date.getHours()}:${date.getMinutes()} ${weight.value}${unit.value} Of Gold Is Worth $${json['value'] * value}`;
+                    calculatedElementDiv.append(calculatedText);
+
+                    document.body.insertAdjacentElement("afterend", calculatedElementDiv)
+                }
+            });
+        }
+
+        function deleteDiv(div) {
+            div.remove();
+        }
+    </script>
+</body>
+</html>

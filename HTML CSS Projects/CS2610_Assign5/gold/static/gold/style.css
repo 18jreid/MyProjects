@@ -1,0 +1,38 @@
+.green-box {
+    background-color: mediumseagreen;
+    text-align: center;
+    color: white;
+    border-radius: 10%;
+    border-style: solid;
+    border-width: thick;
+    border-color: green;
+}
+
+#calculatedDiv {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: gold;
+    text-align: center;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+#errorDiv {
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: red;
+    text-align: center;
+    color: white;
+    border-radius: 20%;
+    border-style: solid;
+    border-width: thick;
+    border-color: darkred;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
