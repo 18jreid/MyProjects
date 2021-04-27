@@ -15,8 +15,8 @@ class CS2610Assn1(BaseHTTPRequestHandler):
 
             self.getHeaders()
 
-            self.wfile.write(b"Location: http://localhost:8000/index.html\n\n")
-            print("Location: http://localhost:8000/index.html")
+            self.wfile.write(b"Location: http://10.0.0.202:8000/index.html\n\n")
+            print("Location: http://10.0.0.202:8000/index.html")
         elif resource.is_file():
             self.wfile.write(b"HTTP/1.1 200 OK\n")
             print("HTTP/1.1 200 OK")
@@ -46,8 +46,8 @@ class CS2610Assn1(BaseHTTPRequestHandler):
 
                 self.getHeaders()
 
-                self.wfile.write(b"Location: http://localhost:8000/techtips+css.html\n\n")
-                print("Location: http://localhost:8000/techtips+css.html")
+                self.wfile.write(b"Location: http://10.0.0.202:8000/techtips+css.html\n\n")
+                print("Location: http://10.0.0.202:8000/techtips+css.html")
             else:
                 self.getError404()
         print("\n-------------------------------------\n")
@@ -92,9 +92,9 @@ class CS2610Assn1(BaseHTTPRequestHandler):
                                         <a href= "index.html">Blog</a>
                                         <a href= "about.html">About</a>
                                         <a href= "techtips+css.html">Tech Tips</a>
-                                        <a href= "http://localhost:8000/debugging">Debugging</a>
-                                        <a href= "http://localhost:8000/teapot">Teapot</a>
-                                        <a href= "http://localhost:8000/classified">Authorized</a>
+                                        <a href= "http://10.0.0.202:8000/debugging">Debugging</a>
+                                        <a href= "http://10.0.0.202:8000/teapot">Teapot</a>
+                                        <a href= "http://10.0.0.202:8000/classified">Authorized</a>
                                     </p>
                                     <h1>I'm a teapot!</h1>
                                     <p>Go back <a href="index.html">Home</a></p>
@@ -146,8 +146,8 @@ class CS2610Assn1(BaseHTTPRequestHandler):
     def redirectToAbout(self):
         self.getHeaders()
 
-        self.wfile.write(b"Location: http://localhost:8000/about.html\n")
-        print("Location: http://localhost:8000/about.html")
+        self.wfile.write(b"Location: http://10.0.0.202:8000/about.html\n")
+        print("Location: http://10.0.0.202:8000/about.html")
 
         self.getResource("about.html")
 
@@ -220,7 +220,7 @@ class CS2610Assn1(BaseHTTPRequestHandler):
 
 
 if __name__ == '__main__':
-    server_address = ('localhost', 8000, )
+    server_address = ('10.0.0.202', 8000, )
     print(f"Serving from http://{server_address[0]}:{server_address[1]}")
     print("Press Ctrl-C to quit\n")
     try:

@@ -1,0 +1,55 @@
+.title {
+	text-align: center;
+	background-color: lightgrey;
+	margin: 2em;
+	padding: 1em;
+	border-radius: 5%;
+}
+
+.location {
+	text-align: center;
+	background-color: blue;
+	margin: 2em;
+	border-radius: 5%;
+	color: white;
+}
+
+.currentWeather {
+	text-align: center;
+	background-color: goldenrod;
+	margin: 2em;
+	border-radius: 5%;
+	color: white;
+}
+
+.multiDayWeather {
+	text-align: center;
+	background-color: cadetblue;
+	margin: 2em;
+	border-radius: 5%;
+	color: white;
+}
+
+.singleDayWeatherNeutral {
+	text-align: center;
+	background-color: grey;
+	margin: 2em;
+	border-radius: 5%;
+	color: white;
+}
+
+.singleDayWeatherLikely {
+	text-align: center;
+	background-color: green;
+	margin: 2em;
+	border-radius: 5%;
+	color: white;
+}
+
+.singleDayWeatherUnlikely {
+	text-align: center;
+	background-color: red;
+	margin: 2em;
+	border-radius: 5%;
+	color: white;
+}

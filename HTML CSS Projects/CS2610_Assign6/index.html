@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Weather App!</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+	<div class="title">
+		<h1>Vue.JS Weather App</h1>
+	</div>
+	<div id="myApp">
+		<div class="location">
+			<h4>Your Location</h4>
+			<p v-if="location === undefined">LOADING</p>
+			<p v-else>{{ location }}</p>
+		</div>
+		<div class="currentWeather">
+			<h4>Current Conditions</h4>
+			<p v-if="currentWeatherData === undefined">LOADING</p>
+			<div v-else>
+				<ul>
+					<li>Currently {{ currentTemperature }} degrees Fahrenheit</li>
+					<li>High {{ currentTemperatureHigh }}</li>
+					<li>Low {{ currentTemperatureLow }}</li>
+					<li>{{ currentWeatherDescription }}</li>
+					<li>{{ currentHumidity }}% Humidity</li>
+					<li>{{ currentPressure }} hPa Pressure</li>
+				</ul>
+			</div>
+		</div>
+		<div class="multiDayWeather">
+			<h4 v-if="this.multiDayForecastData === undefined">LOADING</h4>
+			<div v-else>
+				<h4>5 Day 3-Hour Forecast</h4>
+				<p>{{ unlikely }} unlikely {{ neutral }} neutral {{ likely }} likely</p>
+				<div class="singleDayWeatherNeutral"
+					 v-on:click="toggle"
+					 v-for="day of this.multiDayForecastData">
+					<h5>Conditions for {{day['dt_txt']}}</h5>
+					<ul>
+						<li>Temperature {{day['main']['temp']}}F</li>
+						<li>{{day['weather']['0']['description']}}</li>
+						<li>{{day['main']['humidity']}}% HumidityF</li>
+						<li>{{day['main']['pressure']}} hPa</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
