@@ -8,33 +8,36 @@
 </head>
 <body>
 	<div class="title">
-		<h1>Vue.JS Weather App</h1>
+		<h1 style="font-size: 3em;">Vue.JS Weather App</h1>
 	</div>
 	<div id="myApp">
 		<div class="location">
-			<h4>Your Location</h4>
-			<p v-if="location === undefined">LOADING</p>
-			<p v-else>{{ location }}</p>
+			<h1>Your Location</h1>
+			<p v-if="location_JSON_data === undefined">LOADING</p>
+			<p v-else>{{ "You are located in " + location_JSON_data['city'] + ", " + location_JSON_data['region_name'] + ", " + location_JSON_data['country_name'] +
+			" at coordinates {" + location_JSON_data['latitude'] + ", " + location_JSON_data['longitude'] + "}" }}</p>
 		</div>
 		<div class="currentWeather">
-			<h4>Current Conditions</h4>
+			<h1>Current Conditions</h1>
 			<p v-if="currentWeatherData === undefined">LOADING</p>
 			<div v-else>
 				<ul>
-					<li>Currently {{ currentTemperature }} degrees Fahrenheit</li>
-					<li>High {{ currentTemperatureHigh }}</li>
-					<li>Low {{ currentTemperatureLow }}</li>
-					<li>{{ currentWeatherDescription }}</li>
-					<li>{{ currentHumidity }}% Humidity</li>
-					<li>{{ currentPressure }} hPa Pressure</li>
+					<li>Currently {{ currentWeatherData['main']['temp'] }} degrees Fahrenheit</li>
+					<li>High {{ currentWeatherData['main']['temp_max'] }}</li>
+					<li>Low {{ currentWeatherData['main']['temp_min'] }}</li>
+					<li>{{ currentWeatherData['weather'][0]['description'] }}</li>
+					<li>{{ currentWeatherData['main']['humidity'] }}% Humidity</li>
+					<li>{{ currentWeatherData['main']['pressure'] }} hPa Pressure</li>
 				</ul>
 			</div>
 		</div>
 		<div class="multiDayWeather">
-			<h4 v-if="this.multiDayForecastData === undefined">LOADING</h4>
+			<h1 v-if="this.multiDayForecastData === undefined">LOADING</h1>
 			<div v-else>
-				<h4>5 Day 3-Hour Forecast</h4>
-				<p>{{ unlikely }} unlikely {{ neutral }} neutral {{ likely }} likely</p>
+				<h1>5 Day 3-Hour Forecast</h1>
+				<unlikely style="color: red;">{{ unlikely }} unlikely </unlikely>
+				<neutral>{{ neutral }} neutral </neutral>
+				<likely style="color: green;">{{ likely }} likely </likely>
 				<div class="singleDayWeatherNeutral"
 					 v-on:click="toggle"
 					 v-for="day of this.multiDayForecastData">

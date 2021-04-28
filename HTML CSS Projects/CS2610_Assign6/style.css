@@ -1,55 +1,92 @@
 .title {
 	text-align: center;
 	background-color: lightgrey;
-	margin: 2em;
+	margin: 2em 3em;
 	padding: 1em;
 	border-radius: 5%;
+	border-style: solid;
+	border-color: darkgrey;
+	border-width: 6px;
+	color: white;
+	text-shadow: 2px 2px black;
 }
 
 .location {
 	text-align: center;
 	background-color: blue;
-	margin: 2em;
+	margin: 2em 3em;
 	border-radius: 5%;
 	color: white;
+	padding: 1em;
+	border-style: solid;
+	border-color: darkblue;
+	border-width: 6px;
+	color: white;
+	text-shadow: 1px 1px black;
 }
 
 .currentWeather {
 	text-align: center;
 	background-color: goldenrod;
-	margin: 2em;
-	border-radius: 5%;
+	margin: 2em 5em;
+	border-radius: 10%;
 	color: white;
+	padding: 1em;
+	border-style: solid;
+	border-color: forestgreen;
+	border-width: 6px;
+	text-shadow: 1px 1px black;
 }
 
 .multiDayWeather {
 	text-align: center;
 	background-color: cadetblue;
-	margin: 2em;
-	border-radius: 5%;
+	margin: 2em 5em;
+	border-radius: 10%;
 	color: white;
+	padding: 1em;
+	border-style: solid;
+	border-color: dimgrey;
+	border-width: 6px;
+	text-shadow: 1px 1px black;
 }
 
 .singleDayWeatherNeutral {
 	text-align: center;
 	background-color: grey;
-	margin: 2em;
-	border-radius: 5%;
+	margin: 2em 5em;
+	border-radius: 10%;
 	color: white;
+	padding: 1em;
+	border-style: solid;
+	border-color: dimgrey;
+	border-width: 6px;
+	font-size: larger;
 }
 
 .singleDayWeatherLikely {
 	text-align: center;
 	background-color: green;
-	margin: 2em;
-	border-radius: 5%;
+	margin: 2em 5em;
+	border-radius: 10%;
 	color: white;
+	padding: 1em;
+	border-style: solid;
+	border-color: darkgreen;
+	border-width: 6px;
+	font-size: larger;
+
 }
 
 .singleDayWeatherUnlikely {
 	text-align: center;
 	background-color: red;
-	margin: 2em;
-	border-radius: 5%;
+	margin: 2em 5em;
+	border-radius: 10%;
 	color: white;
+	padding: 1em;
+	border-style: solid;
+	border-color: darkred;
+	border-width: 6px;
+	font-size: larger;
 }

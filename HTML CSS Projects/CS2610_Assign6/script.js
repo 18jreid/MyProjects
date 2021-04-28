@@ -2,17 +2,9 @@ const myApp = Vue.createApp({
     data() {
         return {
             location_JSON_data: undefined,
-            location: undefined,
-
             currentWeatherData: undefined,
-            currentTemperature: undefined,
-            currentTemperatureHigh: undefined,
-            currentTemperatureLow: undefined,
-            currentWeatherDescription: undefined,
-            currentHumidity: undefined,
-            currentPressure: undefined,
-
             multiDayForecastData: undefined,
+
             neutral: 40,
             likely: 0,
             unlikely: 0,
@@ -20,7 +12,6 @@ const myApp = Vue.createApp({
     },
 
     created() {
-
         fetch('http://api.ipstack.com/check?access_key=ee2062a1e104d1970d5279be79f88e84')
             .then(response => response.json())
             .then(json => {
@@ -33,12 +24,6 @@ const myApp = Vue.createApp({
             .then(response => response.json())
             .then(json => {
                 this.currentWeatherData = json;
-                this.currentTemperature = json['main']['temp'];
-                this.currentTemperatureHigh = json['main']['temp_max']
-                this.currentTemperatureLow = json['main']['temp_min']
-                this.currentWeatherDescription = json['weather'][0]['description'];
-                this.currentHumidity = json['main']['humidity'];
-                this.currentPressure = json['main']['pressure'];
 
                 return fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${json['coord']['lat']}&lon=${json['coord']['lon']}&appid=f3ef08eb804b6a9af7751b81347b1d43&units=imperial`);
             })
