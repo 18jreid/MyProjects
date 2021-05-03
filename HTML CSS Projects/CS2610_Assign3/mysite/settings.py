@@ -26,7 +26,8 @@ SECRET_KEY = 'sp=a5twmc3-rq)jp6=u#*6!lby###(nur1x4qopx70=n=fwx&f'
 DEBUG = True
 
 ALLOWED_HOSTS = ['67.177.33.222',
-                 'goobygoo.ddns.net']
+                 'goobygoo.ddns.net',
+                 '127.0.0.1']
 
 
 # Application definition

@@ -4,7 +4,6 @@ const myApp = Vue.createApp({
             location_JSON_data: undefined,
             currentWeatherData: undefined,
             multiDayForecastData: undefined,
-
             neutral: 40,
             likely: 0,
             unlikely: 0,
@@ -16,8 +15,6 @@ const myApp = Vue.createApp({
             .then(response => response.json())
             .then(json => {
                 this.location_JSON_data = json;
-                this.location = "You are located in " + json['city'] + ", " + json['region_name'] + ", " + json['country_name'] +
-                    " at coordinates {" + json['latitude'] + ", " + json['longitude'] + "}";
 
                 return fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${json['latitude']}&lon=${json['longitude']}&appid=f3ef08eb804b6a9af7751b81347b1d43&units=imperial`);
             })
@@ -35,20 +32,29 @@ const myApp = Vue.createApp({
 
     methods: {
         toggle(event) {
-            let forecastClass = event.target.getAttribute('class');
+            let element = event.target;
+            if (element.nodeName === "DIV") {
+                // Do nothing
+            } else if (element.nodeName === "UL") {
+                element = element.parentNode;
+            } else if (element.nodeName === "LI") {
+                element = element.parentNode.parentNode;
+            } else if (element.nodeName === "H5") {
+                element = element.parentNode;
+            }
 
-            if (forecastClass === 'singleDayWeatherNeutral') {
-                event.target.setAttribute('class', 'singleDayWeatherLikely');
+            if (element.getAttribute('class') === 'singleDayWeatherNeutral') {
+                element.setAttribute('class', 'singleDayWeatherLikely');
                 this.likely++;
                 this.neutral--;
             }
-            else if (forecastClass === 'singleDayWeatherLikely') {
-                event.target.setAttribute('class', 'singleDayWeatherUnlikely');
+            else if (element.getAttribute('class') === 'singleDayWeatherLikely') {
+                element.setAttribute('class', 'singleDayWeatherUnlikely');
                 this.unlikely++;
                 this.likely--;
             }
-            else if (forecastClass === 'singleDayWeatherUnlikely') {
-                event.target.setAttribute('class', 'singleDayWeatherNeutral');
+            else if (element.getAttribute('class') === 'singleDayWeatherUnlikely') {
+                element.setAttribute('class', 'singleDayWeatherNeutral');
                 this.neutral++;
                 this.unlikely--;
             }

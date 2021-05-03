@@ -13,21 +13,21 @@
 	<div id="myApp">
 		<div class="location">
 			<h1>Your Location</h1>
-			<p v-if="location_JSON_data === undefined">LOADING</p>
-			<p v-else>{{ "You are located in " + location_JSON_data['city'] + ", " + location_JSON_data['region_name'] + ", " + location_JSON_data['country_name'] +
-			" at coordinates {" + location_JSON_data['latitude'] + ", " + location_JSON_data['longitude'] + "}" }}</p>
+			<p v-if="this.location_JSON_data === undefined">LOADING</p>
+			<p v-else>{{ "You are located in " + this.location_JSON_data['city'] + ", " + this.location_JSON_data['region_name'] + ", " + this.location_JSON_data['country_name'] +
+			" at coordinates {" + this.location_JSON_data['latitude'] + ", " + this.location_JSON_data['longitude'] + "}" }}</p>
 		</div>
 		<div class="currentWeather">
 			<h1>Current Conditions</h1>
-			<p v-if="currentWeatherData === undefined">LOADING</p>
+			<p v-if="this.currentWeatherData === undefined">LOADING</p>
 			<div v-else>
 				<ul>
-					<li>Currently {{ currentWeatherData['main']['temp'] }} degrees Fahrenheit</li>
-					<li>High {{ currentWeatherData['main']['temp_max'] }}</li>
-					<li>Low {{ currentWeatherData['main']['temp_min'] }}</li>
-					<li>{{ currentWeatherData['weather'][0]['description'] }}</li>
-					<li>{{ currentWeatherData['main']['humidity'] }}% Humidity</li>
-					<li>{{ currentWeatherData['main']['pressure'] }} hPa Pressure</li>
+					<li>Currently {{ this.currentWeatherData['main']['temp'] }} degrees Fahrenheit</li>
+					<li>High {{ this.currentWeatherData['main']['temp_max'] }}</li>
+					<li>Low {{ this.currentWeatherData['main']['temp_min'] }}</li>
+					<li>{{ this.currentWeatherData['weather'][0]['description'] }}</li>
+					<li>{{ this.currentWeatherData['main']['humidity'] }}% Humidity</li>
+					<li>{{ this.currentWeatherData['main']['pressure'] }} hPa Pressure</li>
 				</ul>
 			</div>
 		</div>
@@ -35,9 +35,9 @@
 			<h1 v-if="this.multiDayForecastData === undefined">LOADING</h1>
 			<div v-else>
 				<h1>5 Day 3-Hour Forecast</h1>
-				<unlikely style="color: red;">{{ unlikely }} unlikely </unlikely>
-				<neutral>{{ neutral }} neutral </neutral>
-				<likely style="color: green;">{{ likely }} likely </likely>
+				<unlikely style="color: red;">{{ this.unlikely }} unlikely </unlikely>
+				<neutral>{{ this.neutral }} neutral </neutral>
+				<likely style="color: green;">{{ this.likely }} likely </likely>
 				<div class="singleDayWeatherNeutral"
 					 v-on:click="toggle"
 					 v-for="day of this.multiDayForecastData">

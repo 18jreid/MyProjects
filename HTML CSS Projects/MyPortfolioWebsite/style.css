@@ -1,0 +1,262 @@
+.Page-Title {
+	text-align: right;
+	background-color: #34495e;
+	font-family: Copperplate, serif;
+	padding: 1em 4em 1em 1em;
+	color: white;
+	font-size: 1.75em;
+	text-shadow: 3px 2px black;
+}
+
+.Name {
+	transition: all .25s ease;
+	display: inline-block;
+	transform: translateY(30px);
+}
+
+.Name.fade {
+	transform: translateY(0px);
+}
+
+.Name.hover {
+	transform: translateY(-15px);
+	color: #f1c40f;
+	position: sticky;
+}
+
+span {
+	opacity: 0;
+	transition: all 1s ease;
+	transform: translateY(300px);
+	display: inline-block;
+}
+
+span.fade {
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+portfolio {
+	opacity: 0;
+	transition: all 1s ease;
+	transform: translateX(100px);
+	display: inline-block;
+}
+
+portfolio.fade {
+	opacity: 1;
+	transform: translateX(0px);
+}
+
+project {
+	opacity: 0;
+	transition: all 1s ease;
+	transform: translateX(100px);
+	display: inline-block;
+}
+
+project.fade {
+	opacity: 1;
+	transform: translateX(0px);
+}
+
+.Tool-Bar {
+	text-align: right;
+	background-color: #2c3e50;
+	padding: .3em;
+	text-shadow: 3px 2px black;
+}
+
+.Tool-Bar-Link {
+	text-decoration: none;
+	color: white;
+	font-family: Copperplate, serif;
+	font-size: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	transform: translateY(0px);
+	transition: all .25s ease;
+	display: inline-block;
+}
+
+.Tool-Bar-Link.hover {
+	animation: 1.5s shake infinite alternate;
+}
+
+body {
+	margin: 0;
+}
+
+.About-Section {
+	text-indent: 2em;
+	font-size: 1.5em;
+	margin: 2em;
+	opacity: 0;
+	transition: all 1s ease;
+}
+
+.About-Section.fade {
+	opacity: 1;
+}
+
+.Profile-Pic1 {
+	border-radius: 50%;
+	image-resolution: from-image;
+	width: 300px;
+	border-style: solid;
+	border-color: #2c3e50;
+	border-width: 6px;
+	margin-left: 4em;
+	opacity: 0;
+	transition: all 1s ease;
+	transform: translateY(-300px);
+}
+
+.Profile-Pic1.fade {
+	opacity: 1;
+	transition: all .5s ease;
+	transform: translateY(0px);
+}
+
+.Profile-Pic1.hover {
+	transform: translateY(-40px);
+	border-color: #f1c40f;
+}
+
+.Profile-Pic2 {
+	border-radius: 50%;
+	image-resolution: from-image;
+	width: 310px;
+	border-style: solid;
+	border-color: #2c3e50;
+	border-width: 6px;
+	margin-left: 2em;
+	opacity: 0;
+	transition: all 1s ease;
+	transform: translateY(-300px);
+}
+
+.Profile-Pic2.fade {
+	opacity: 1;
+	transition: all .5s ease;
+	transform: translateY(0px);
+}
+
+.Profile-Pic2.hover {
+	transform: translateY(-40px);
+	border-color: #f1c40f;
+}
+
+.Profile-Pic3 {
+	border-radius: 50%;
+	image-resolution: from-image;
+	width: 310px;
+	border-style: solid;
+	border-color: #2c3e50;
+	border-width: 6px;
+	margin-left: 2em;
+	opacity: 0;
+	transition: all 1s ease;
+	transform: translateY(-300px);
+}
+
+.Profile-Pic3.fade {
+	opacity: 1;
+	transition: all .5s ease;
+	transform: translateY(0px);
+}
+
+.Profile-Pic3.hover {
+	transform: translateY(-40px);
+	border-color: #f1c40f;
+}
+
+.Utah-State-Logo {
+	margin-bottom: 1.5em;
+	margin-left: 1.5em;
+}
+
+.Bountiful-High-Logo {
+	margin-left: 5.5em;
+	width:200px;
+}
+
+.CS-Logo {
+	width: 400px;
+	margin-bottom: 3.5em;
+	margin-left: 1.5em;
+}
+
+.Education h2 {
+	text-align: right;
+	margin-right: 3em;
+}
+
+.Birch-Creek {
+	width: 580px;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #34495e;
+	margin-left: 1em;
+	transition: all .5s ease;
+}
+
+.Birch-Creek.hover {
+	border-color: #f1c40f;
+}
+
+.Beaver-Mountain {
+	width: 520px;
+	border-style: solid;
+	border-color: #34495e;
+	border-width: 5px;
+	transition: all .5s ease;
+}
+
+.Beaver-Mountain.hover {
+	border-color: #f1c40f;
+}
+
+.Gallery {
+	padding-top: 2em;
+	padding-bottom: 2em;
+	margin-left: 4em;
+	margin-right: 0;
+	padding-right: 1em;
+	padding-left: 1em;
+}
+
+.Title {
+	font-family: Copperplate, serif;
+}
+
+.Skills-Img {
+	width: 100px;
+}
+
+ul {
+	margin-left: 1.5em;
+	margin-right: 1.5em;
+}
+
+h4 {
+	display: inline-block;
+}
+
+.hover {
+	transform: translateY(-10px);
+	color: #f1c40f;
+}
+
+.Skills {
+	text-align: center;
+}
+
+@keyframes shake {
+	0% { transform: skewX(-15deg); }
+	5% { transform: skewX(15deg); }
+	10% { transform: skewX(-15deg); }
+	15% { transform: skewX(15deg); }
+	20% { transform: skewX(0deg); }
+	100% { transform: skewX(0deg); }
+}
