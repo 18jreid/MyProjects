@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1450">
+    <title>Projects</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mySite/style.css' %}">
+</head>
+<body>
+    <div class="Page-Title">
+      <h1 class="Name">Justin Reid, Developer / Programmer</h1>
+    </div>
+    <div class="Tool-Bar">
+      <nav class="Tool-Bar">
+			<a href="{% url 'portfolio' %}" class="Tool-Bar-Link" onmouseenter="hoverEnter()" onmouseleave="hoverExit()">Portfolio</a>
+			<a href="{% url 'projects' %}" class="Tool-Bar-Link" onmouseenter="hoverEnter()" onmouseleave="hoverExit()">Projects</a>
+			<a href="{% url 'contact' %}" class="Tool-Bar-Link" onmouseenter="hoverEnter()" onmouseleave="hoverExit()">Contact</a>
+		</nav>
+    </div>
+    <script src="{% static 'mySite/script.js' %}"></script>
+</body>
+</html>
