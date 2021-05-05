@@ -19,6 +19,32 @@
 			<a href="{% url 'contact' %}" class="Tool-Bar-Link" onmouseenter="hoverEnter()" onmouseleave="hoverExit()">Contact</a>
 		</nav>
     </div>
+    <div class="Contact-Information">
+      <div style="display: inline-block;">
+        <img src="{% static 'mySite/IMG/IMG_1143.JPG' %}" class="Profile-Pic1" style="margin: 3em; margin-left: 10em; margin-top: 6em; width: 500px;"
+        onmouseenter="hoverEnter()" onclick="hoverEnter()" onmouseleave="hoverExit()">
+      </div>
+      <div style="display: inline-block; float: right; margin-right: 10em;">
+        <ul style="list-style: none;">
+          <li>
+            <img src="{% static 'mySite/IMG/linkedin.png' %}" style="width: 150px; transform: translateY(70px); margin-right: 1em;">
+            <p style="display: inline-block; font-size: xx-large;"><a href="https://www.linkedin.com/in/justin-reid-0a7322133/">Linked-In</a></p>
+          </li>
+          <li>
+            <img src="{% static 'mySite/IMG/instagram.png' %}" style="width: 150px; transform: translateY(70px); margin-right: 1em;">
+            <p style="display: inline-block; font-size: xx-large;"><a href="https://www.instagram.com/j_reeeiiid/">Instagram</a></p>
+          </li>
+          <li style="font-weight: lighter;">
+            <img src="{% static 'mySite/IMG/email.png' %}" style="width: 150px; transform: translateY(70px);">
+            <p style="display: inline-block; font-size: xx-large">jsreid27@gmail.com</p>
+          </li>
+        </ul>
+      </div>
+      <p style="font-size: 2em; margin: 3em; background-color: lightgray; padding: 1em; border-radius: 15%; 
+      border-style: solid; border-width: 3px; border-color:#34495e;">If you have any need to contact me, you are more than welcome to use any of the methods above to do so!
+        I will get back to you as soon as I can! Emailing will be most effictive.
+      </p>
+    </div>
     <script src="{% static 'mySite/script.js' %}"></script>
 </body>
 </html>

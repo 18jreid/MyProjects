@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '10.0.0.202',
     '67.177.33.222',
+    '127.0.0.1',
     'goobygoo.ddns.net',
 ]
 

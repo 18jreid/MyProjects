@@ -260,3 +260,14 @@ h4 {
 	20% { transform: skewX(0deg); }
 	100% { transform: skewX(0deg); }
 }
+
+.Contact-Information {
+	
+}
+
+.Contacts {
+	background-color: lightgray;
+	border-radius: 35%;
+	padding: 1em;
+	margin: 1em;
+}
