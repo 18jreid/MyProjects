@@ -2,6 +2,18 @@
     margin: 0;
 }
 
+.color {
+    transition: .5s ease-in;
+    transform: translateY(-300px);
+    opacity: 0;
+}
+
+.color.fade {
+    transform: translateY(0px);
+    opacity: 1;
+    transition: .25s ease-in-out
+}
+
 .grid {
     display: grid;
     grid-template-columns: 20% 20% 20% 20% 20%;

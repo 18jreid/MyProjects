@@ -1,3 +1,17 @@
+let index = 0;
+let timer = setInterval(onTick, 150);
+
+function onTick() {
+    let divs = document.querySelectorAll(".color");
+    divs[index].classList.add('fade');
+    index++;
+
+    if (index === divs.length) {
+        clearInterval(timer);
+        timer = null;
+    }
+}
+
 function onHoverEnter() {
     let element = event.target;
 
