@@ -3,7 +3,7 @@
 }
 
 .color {
-    transition: .5s ease-in;
+    transition: .35s ease-in;
     transform: translateY(-300px);
     opacity: 0;
 }
@@ -11,7 +11,6 @@
 .color.fade {
     transform: translateY(0px);
     opacity: 1;
-    transition: .25s ease-in-out
 }
 
 .grid {
@@ -30,4 +29,8 @@
 
 .hover {
     border: darkslategrey 8px solid;
+}
+
+.colorArea {
+    margin: 3em;
 }
