@@ -13,3 +13,6 @@ def projectsPage(request):
 
 def contactPage(request):
     return render(request, 'mySite/contact.html')
+
+def colorPage(request):
+    return render(request, 'mySite/color.html')

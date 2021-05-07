@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    text-align: center;
+    text-shadow: 2px 2px black;
+    font-size: 1.5em;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+.grid > div {
+    padding: 4.3em;
+    color: white;
+}
+
+.hover {
+    border: darkslategrey 8px solid;
+}

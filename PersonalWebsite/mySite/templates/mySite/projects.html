@@ -19,7 +19,11 @@
 			<a href="{% url 'contact' %}" class="Tool-Bar-Link" onmouseenter="hoverEnter()" onmouseleave="hoverExit()">Contact</a>
 		</nav>
     </div>
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" style="padding: 5em; font-size: 4em;">Click here for a surprise!</a>
+    <ul style="font-size: 2em;">
+      <h2>My Projects</h2>
+      <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Click here for a surprise!</a></li>
+      <li><a href="{% url 'color'%}">Color Picker</a></li>
+    </ul>
     <script src="{% static 'mySite/script.js' %}"></script>
 </body>
 </html>
