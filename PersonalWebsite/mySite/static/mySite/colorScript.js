@@ -24,6 +24,18 @@ function onHoverExit() {
     element.classList.remove('hover');
 }
 
+function linkHoverEnter() {
+    let element = event.target;
+
+    element.classList.add('linkHover');
+}
+
+function linkHoverExit() {
+    let element = event.target;
+
+    element.classList.remove('linkHover');
+}
+
 function copy() {
     let element = event.target;
     let style = getComputedStyle(element);
@@ -35,6 +47,6 @@ function copy() {
         .then(response => response.json())
         .then(json => {
             let hexColor = json['hex']['value'];
-            alert(hexColor);
+            alert("The Hexa-Decimal is:\n\n" + hexColor);
         })
 }
