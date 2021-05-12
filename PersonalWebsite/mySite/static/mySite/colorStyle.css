@@ -5,12 +5,12 @@
 
 .color {
     transition: .25s ease-in;
-    transform: translateY(-300px);
+    transform: scale(0);
     opacity: 0;
 }
 
 .color.fade {
-    transform: translateY(0px);
+    transform: scale(1);
     opacity: 1;
 }
 
@@ -32,7 +32,7 @@
 
 .hover {
     border: gold 8px solid !important;
-    transform: scale(1.2);
+    transform: scale(1.05) !important;
 }
 
 .colorArea {
