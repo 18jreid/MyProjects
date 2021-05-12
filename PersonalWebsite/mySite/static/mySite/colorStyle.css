@@ -32,7 +32,7 @@
 
 .hover {
     border: gold 8px solid !important;
-    transform: translate3d(10px, 10px, 10px)!important;
+    transform: scale(1.2);
 }
 
 .colorArea {
