@@ -1,0 +1,68 @@
+(filter.ps) run
+
+/Times-Roman findfont        % Find the font 
+14 scalefont                 % Make it a bigger font
+setfont                      % Now load the font as the current font
+
+/print-top {                
+   5 string                 % Create a string of length 5 on the operand stack
+   cvs                       % Convert the top value of the stack to the string
+   show
+} def                        
+
+/print-stack {                
+ 1 dict begin
+   count 0 ne {
+     /x exch def
+     print-stack
+     /x load
+     100 string              % Create a string of length 5 on the operand stack
+     cvs                   % Convert the top value of the stack to the string
+     show
+     ( ) show
+   } 
+   if
+ end
+} def   
+
+% move coordinates
+100 750 translate
+0 0 moveto
+
+0 -20 translate
+0 0 moveto
+
+% test code
+(Executing "5 2 3 7 1 {3 eq} filter" got ) show
+5 2 3 7 1 {3 eq} filter print-stack
+
+0 -20 translate
+0 0 moveto
+
+% test code
+(Executing "5 2 3 7 1 {3 lt} filter" got ) show
+5 2 3 7 1 {3 lt} filter print-stack
+
+0 -20 translate
+0 0 moveto
+
+
+% test code
+(Executing "5 2 3 7 1 {3 gt} filter" got ) show
+5 2 3 7 1 {3 gt} filter print-stack
+
+0 -20 translate
+0 0 moveto
+
+% test code
+(Executing "3 3 3 3 {3 ne} filter" got ) show
+3 3 3 3 {3 ne} filter print-stack
+
+0 -20 translate
+0 0 moveto
+
+% test code
+(Executing "{3 ne} filter" got ) show
+{3 ne} filter print-stack
+
+showpage

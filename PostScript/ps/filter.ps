@@ -1,0 +1,11 @@
+/filter {
+	1 dict begin  % Create a dict. to hold local names, push onto dict. stack
+		/func exch def
+		count % loop repeated as many times as the stack
+		{
+			dup func {pop} {count 1 roll} 
+			ifelse % if the top stack value returns a true expression then it will be removed from the stack. Else it is moved off the top of the stack.
+		}
+		repeat
+	end % pop local dictionary from dictionary stack and discard
+} def

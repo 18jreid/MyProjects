@@ -1,0 +1,31 @@
+(epitrochoid.ps) run
+
+/Times-Roman findfont        % Find the font 
+14 scalefont                 % Make it a bigger font
+setfont                      % Now load the font as the current font
+
+200 750 translate
+
+0 0 moveto
+(50 5 10 1 epitrochoid) show
+0 -100 translate
+0 0 moveto
+50 5 10 1 epitrochoid 
+stroke
+0 -100 translate
+0 -20 translate
+
+0 0 moveto
+(50 10 5 1 epitrochoid) show
+0 -100 translate
+50 10 5 1 epitrochoid
+stroke
+0 -120 translate
+
+0 0 moveto
+(29 7 43 5 epitrochoid) show
+0 -100 translate
+29 7 43 5 epitrochoid
+stroke
+0 -120 translate
+showpage

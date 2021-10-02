@@ -1,0 +1,27 @@
+/foldAndCut {
+	1 dict begin % Create a dict. to hold local names, push onto dict. stack
+		/folds exch def
+				folds 0 gt % if folds is 0 just draw the regular shape unfolded	
+			{
+				% If folds is more than 0 then save its graphics, scale, translate, and recursively call the function while alternating axis.
+				gsave
+				.5 .5 scale
+				/folds folds 1 sub def
+				100 100 translate
+				-1 1 scale
+				folds foldAndCut
+				1 -1 scale
+				folds foldAndCut
+				-1 1 scale
+				folds foldAndCut
+				1 -1 scale
+				folds foldAndCut
+				-1 1 scale
+				folds foldAndCut				
+				grestore
+			}
+			{
+				shape
+			} ifelse
+	end % pop local dictionary from dictionary stack and discard
+} def

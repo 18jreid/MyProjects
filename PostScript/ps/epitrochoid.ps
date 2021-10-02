@@ -1,0 +1,57 @@
+/epitrochoid {
+	1 dict begin % Create a dict. to hold local names, push onto dict. stack
+		/r exch def
+		/d exch def
+		/b exch def
+		/a exch def
+
+		/count 1 def
+
+		0 .5 0 setrgbcolor
+		360 
+			{
+				/t count r mul def
+
+				
+				% All these variables are used to calculate x(t), yes I know it's disgusting
+				/a_plus_b a b add def
+				/cos_of_t t cos def
+				/leftSide_x_of_t a_plus_b cos_of_t mul def
+
+				/a_plus_b_multipliedBy_t a_plus_b t mul def
+				/a_plus_b_multipliedBy_t_dividedBy_b a_plus_b_multipliedBy_t b div def
+				/cos_of_a_plus_b_multipliedBy_t_dividedBy_b a_plus_b_multipliedBy_t_dividedBy_b cos def
+				/rightSide_x_of_t d cos_of_a_plus_b_multipliedBy_t_dividedBy_b mul def
+
+				/x_of_t leftSide_x_of_t rightSide_x_of_t add def
+
+				
+				% All these variables are used to calculate y(t), equally disgusting
+				/sin_of_t t sin def
+				/leftSide_y_of_t a_plus_b sin_of_t mul def
+
+				/sin_of_a_plus_b_multipliedBy_t_dividedBy_b a_plus_b_multipliedBy_t_dividedBy_b sin def
+				/rightSide_y_of_t d sin_of_a_plus_b_multipliedBy_t_dividedBy_b mul def
+
+				/y_of_t leftSide_y_of_t rightSide_y_of_t sub def
+				
+				count 1 eq 
+					{
+						x_of_t y_of_t moveto
+
+					}
+
+					{
+						x_of_t y_of_t lineto
+
+					} ifelse
+		
+
+				/count count 1 add def
+				x_of_t
+			}
+		repeat
+		stroke
+		0 0 0 setrgbcolor
+	end % pop local dictionary from dictionary stack and discard
+} def

@@ -1,0 +1,12 @@
+/remove {
+	1 dict begin % Create a dict. to hold local names, push onto dict. stack
+		/value exch def
+		count % loop repeated as many times as the stack
+		{
+			dup value eq {pop} {count 1 roll}
+			ifelse % if the top stack value is equal to the remove value, then pop it off the stack. Else move it off the top.
+
+		}
+		repeat
+	end % pop local dictionary from dictionary stack and discard
+} def

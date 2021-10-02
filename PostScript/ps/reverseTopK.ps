@@ -1,0 +1,15 @@
+/reverseTopK {
+	1 dict begin % Create a dict. to hold local names, push onto dict. stack
+		/items exch def
+		count 1 gt % Make sure there is more than one thing in the stack before using recursion.
+			{
+			items 1 lt {} % If we're not on the last item, move the top to the nth position and negate one.
+			{
+				items 1 roll
+			/items items 1 sub def
+			items reverseTopK
+			} ifelse
+
+			} if
+		end % pop local dictionary from dictionary stack and discard
+} def

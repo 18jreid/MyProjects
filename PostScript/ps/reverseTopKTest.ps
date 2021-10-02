@@ -1,0 +1,57 @@
+(reverseTopK.ps) run
+
+/Times-Roman findfont        % Find the font 
+14 scalefont                 % Make it a bigger font
+setfont                      % Now load the font as the current font
+
+/print-top {                
+   5 string                 % Create a string of length 5 on the operand stack
+   cvs                       % Convert the top value of the stack to the string
+   show
+} def                        
+
+/print-stack {                
+ 1 dict begin
+   count 0 ne {
+     /x exch def
+     print-stack
+     /x load
+     100 string              % Create a string of length 5 on the operand stack
+     cvs                   % Convert the top value of the stack to the string
+     show
+     ( ) show
+   } 
+   if
+ end
+} def   
+
+% move coordinates
+100 750 translate
+0 0 moveto
+
+% test code
+(Executing "1 2 3 4 5 3 reverseTopK" got ) show
+1 2 3 4 5 3 reverseTopK print-stack
+
+0 -20 translate
+0 0 moveto
+% test code
+(Executing "1 2 3 4 5 5 reverseTopK" got ) show
+1 2 3 4 5 5 reverseTopK print-stack
+
+0 -20 translate
+0 0 moveto
+(Executing "2 1 reverseTopK" got ) show
+2 1 reverseTopK print-stack
+
+0 -20 translate
+0 0 moveto
+(Executing " 3 reverseTopK " got ) show
+3 reverseTopK print-stack
+
+0 -20 translate
+0 0 moveto
+(Executing " 3 2 1 reverseTopK " got ) show
+3 2 1 reverseTopK print-stack
+
+showpage

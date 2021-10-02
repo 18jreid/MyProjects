@@ -1,0 +1,75 @@
+% The shape operator draws a shape assuming that the shape is drawn in a
+% 100 x 100 square. 
+/shape {
+  1 dict begin
+    gsave
+      newpath
+        100 0 moveto
+        20 20 lineto
+        25 30 lineto
+        20 40 lineto
+        25 50 lineto
+        20 60 lineto
+        0  100 lineto
+        0 0 lineto
+        80 0 lineto
+      closepath
+      fill
+      stroke
+    grestore
+  end
+} def
+
+(foldAndCut.ps) run 
+/Times-Roman findfont        % Find the font 
+20 scalefont                 % Make it a 50 point font
+setfont                      % Now load the font as the current font
+
+/print-top {                
+%   160 0 moveto
+   5 string                 % Create a string of length 10 on the operand stack
+   cvs                       % Convert the top value of the stack to the string
+   show
+} def                        
+
+% move coordinates
+200 700 translate
+
+% first test
+0 0 moveto
+(0 foldAndCut) show
+0 -100 translate
+0 foldAndCut stroke 
+0 -20 translate
+0 0 moveto
+count print-top
+( things left on the stack.) show
+
+% move coordinates
+0 -100 translate
+
+% second test
+0 0 moveto
+(1 foldAndCut) show
+0 -100 translate
+1 foldAndCut stroke 
+0 -20 translate
+0 0 moveto
+count print-top
+( things left on the stack.) show
+
+% move coordinates
+0 -100 translate
+
+% third test
+0 0 moveto
+(4 foldAndCut) show
+0 -100 translate
+4 foldAndCut stroke
+0 -20 translate
+0 0 moveto
+count print-top
+( things left on the stack.) show
+
+
+
