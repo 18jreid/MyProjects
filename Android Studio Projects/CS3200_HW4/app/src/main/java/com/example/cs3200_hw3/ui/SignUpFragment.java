@@ -2,7 +2,9 @@ package com.example.cs3200_hw3.ui;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -10,28 +12,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.cs3200_hw3.R;
+import com.example.cs3200_hw3.databinding.FragmentSigninBinding;
+import com.example.cs3200_hw3.databinding.FragmentSignupBinding;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpFragment extends Fragment {
-    public SignUpFragment() {
-        super(R.layout.fragment_signup);
-    }
-
+    @Nullable
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        FragmentManager manager = getActivity().getSupportFragmentManager();
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        UserViewModel userViewModel = new UserViewModel();
+        FragmentSignupBinding binding = FragmentSignupBinding.inflate(inflater, container, false);
+        NavController controller = NavHostFragment.findNavController(this);
 
-        view.findViewById(R.id.signUpConfirmButton).setOnClickListener((v) -> {
-            UserViewModel userViewModel = new UserViewModel();
-            EditText email = view.findViewById(R.id.emailSignUpEditText);
-            EditText emailConfirmation = view.findViewById(R.id.emailSignUpConfirmEditText);
-            EditText password = view.findViewById(R.id.passwordSignUpEditText);
-            EditText passwordConfirmation = view.findViewById(R.id.passwordSignUpConfirmEditText);
-            TextView errorText = view.findViewById(R.id.signUpErrorText);
+        EditText email = binding.emailSignUpEditText;
+        EditText emailConfirmation = binding.emailSignUpConfirmEditText;
+        EditText password = binding.passwordSignUpEditText;
+        EditText passwordConfirmation = binding.passwordSignUpConfirmEditText;
+        TextView errorText = binding.signUpErrorText;
+
+        binding.signUpConfirmButton.setOnClickListener((v) -> {
 
             if (checkFields(
                     email.getText().toString(),
@@ -39,9 +43,11 @@ public class SignUpFragment extends Fragment {
                     password.getText().toString(),
                     passwordConfirmation.getText().toString(),
                     errorText)) {
-                userViewModel.signUp(emailConfirmation.getText().toString(), passwordConfirmation.getText().toString(), manager, errorText);
+                userViewModel.signUp(emailConfirmation.getText().toString(), passwordConfirmation.getText().toString(), controller, errorText);
             }
         });
+
+        return binding.getRoot();
     }
 
     private boolean checkEmailsConfirm(String email, String emailConfirm, TextView error) {

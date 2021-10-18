@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_create_note.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_fullscreen.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_note_viewer.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_signin.xml" value="0.335" />
