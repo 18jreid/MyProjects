@@ -83,6 +83,11 @@ public class UserViewModel {
         db.collection("notes").document(note).delete();
     }
 
+    public void updateNote(String note, String title, String body) {
+        db.collection("notes").document(note).update("title", title);
+        db.collection("notes").document(note).update("note", body);
+    }
+
     public void logout() {
         auth.signOut();
     }

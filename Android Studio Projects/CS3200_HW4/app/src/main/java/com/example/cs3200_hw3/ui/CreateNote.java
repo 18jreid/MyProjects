@@ -30,8 +30,19 @@ public class CreateNote extends Fragment {
         NavController controller = NavHostFragment.findNavController(this);
 
         binding.saveNote.setOnClickListener((view) -> {
-            userViewModel.createNote(binding.titleText.getText().toString(), binding.noteText.getText().toString());
-            controller.navigate(R.id.action_createNote_to_profileFragment);
+            if (!binding.titleText.getText().toString().equals("")) {
+                binding.saveNote.setEnabled(false);
+                if(!binding.noteText.getText().toString().equals("")) {
+                    userViewModel.createNote(binding.titleText.getText().toString(), binding.noteText.getText().toString());
+                    controller.navigate(R.id.action_createNote_to_profileFragment);
+                }
+                else {
+                    binding.noteText.setError("Note cannot be empty!");
+                }
+            }
+            else {
+                binding.titleText.setError("Title cannot be empty!");
+            }
         });
 
         return binding.getRoot();

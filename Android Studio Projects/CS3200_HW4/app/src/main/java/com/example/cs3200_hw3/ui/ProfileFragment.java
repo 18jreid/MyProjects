@@ -24,6 +24,7 @@ import com.example.cs3200_hw3.models.Note;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -40,7 +41,7 @@ public class ProfileFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("notes")
-                .orderBy("stamp")
+                .orderBy("stamp", Query.Direction.DESCENDING)
                 .whereEqualTo("user", userViewModel.getUser())
                 .get().addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {

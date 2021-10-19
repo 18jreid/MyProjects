@@ -34,7 +34,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/titleEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:freezesText="false"
+            android:inputType="" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -53,7 +55,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/bodyEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="52dp"
+            android:inputType="textLongMessage"
+            android:isScrollContainer="true"
+            android:singleLine="false" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

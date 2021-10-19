@@ -29,8 +29,21 @@ public class NoteViewer extends Fragment {
         binding.bodyEditText.setText(myArgs.get("body").toString());
 
         binding.saveButton.setOnClickListener((view) -> {
-            userViewModel.createNote(binding.titleEditText.getText().toString(), binding.bodyEditText.getText().toString());
-            controller.navigate(R.id.action_noteViewer_to_profileFragment);
+            if (!binding.titleEditText.getText().toString().equals("")) {
+                if (!binding.bodyEditText.getText().toString().equals("")) {
+                    userViewModel.updateNote(
+                            myArgs.get("id").toString(),
+                            binding.titleEditText.getText().toString(),
+                            binding.bodyEditText.getText().toString());
+                    controller.navigate(R.id.action_noteViewer_to_profileFragment);
+                }
+                else {
+                    binding.bodyEditText.setError("Note cannot be empty!");
+                }
+            }
+            else {
+                binding.titleEditText.setError("Title cannot be empty!");
+            }
         });
 
         binding.deleteButton.setOnClickListener((view) -> {
