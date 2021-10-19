@@ -1,10 +1,15 @@
 package com.example.cs3200_hw3.viewmodels;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.ObservableArrayList;
 import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
@@ -13,9 +18,15 @@ import com.example.cs3200_hw3.R;
 import com.example.cs3200_hw3.models.Note;
 import com.example.cs3200_hw3.models.User;
 import com.example.cs3200_hw3.ui.ProfileFragment;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.Source;
 import com.google.firestore.v1.Document;
 
 import org.w3c.dom.Text;
@@ -24,7 +35,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class UserViewModel {
-    ObservableArrayList<User> clients = new ObservableArrayList<>();
     FirebaseFirestore db;
     FirebaseAuth auth;
     String currentNoteTitle;
@@ -37,33 +47,6 @@ public class UserViewModel {
         currentNoteBody = "NO BODY";
     }
 
-    public ObservableArrayList<User> getClients() {
-        return clients;
-    }
-
-    public void saveUser(String email, String password) {
-        User user = new User(email, password);
-        db.collection("users").add(user)
-                .addOnCompleteListener((task) -> {
-                    if (task.isSuccessful()) {
-                        clients.add(user);
-                    } else {
-                        // Use databinding to display error
-                    }
-                });
-    }
-
-    public void loadClients() {
-        db.collection("user").get().addOnCompleteListener((task) -> {
-            if (task.isSuccessful()) {
-                QuerySnapshot collection = task.getResult();
-                clients.addAll(collection.toObjects(User.class));
-            } else {
-                // DISPLAY ERROR
-            }
-        });
-    }
-
     public void signUp(String email, String password, NavController controller, TextView error) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
@@ -72,12 +55,12 @@ public class UserViewModel {
                 controller.navigate(R.id.action_signUpFragment_to_profileFragment);
             } else {
                 Log.d("__FIREBASE", task.getException().toString());
-                error.setText(task.getException().toString());
+                error.setText(task.getException().getMessage());
             }
         });
     }
 
-    public void login(String email, String password, NavController controller, TextView error) {
+    public void login(String email, String password, NavController controller,TextView error) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
                 Log.d("__FIREBASE", "USER LOGGED IN");
@@ -85,7 +68,7 @@ public class UserViewModel {
                 controller.navigate(R.id.action_signInFragment_to_profileFragment);
             } else {
                 Log.d("__FIREBASE", task.getException().toString());
-                error.setText(task.getException().toString());
+                error.setText(task.getException().getMessage());
             }
         });
     }
@@ -95,23 +78,20 @@ public class UserViewModel {
         db.collection("notes").add(newNote);
     }
 
+    public void deleteNote(String note) {
+        Log.d("__FIREBASE", db.collection("notes").document(note).toString());
+        db.collection("notes").document(note).delete();
+    }
+
     public void logout() {
         auth.signOut();
     }
 
     public String getUser() {
-        return auth.getCurrentUser().getEmail().toString();
+        return auth.getCurrentUser().getEmail();
     }
 
-    public void setNoteViewer(String title,String body) {
-        currentNoteTitle = title;
-        currentNoteBody = body;
-    }
-
-    public void refreshNoteViewer(TextView title, TextView body) {
-        System.out.println(title);
-        System.out.println(body);
-        title.setText(currentNoteTitle);
-        body.setText(currentNoteBody);
+    public FirebaseAuth getAuth() {
+        return auth;
     }
 }

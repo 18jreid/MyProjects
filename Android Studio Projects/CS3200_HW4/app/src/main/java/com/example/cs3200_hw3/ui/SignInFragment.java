@@ -30,26 +30,31 @@ public class SignInFragment extends Fragment {
         EditText password = binding.editTextTextPassword;
         TextView errorText = binding.signInErrorText;
 
-        binding.loginButton.setOnClickListener((v) -> {
-            if (checkEmailAndPassword(email.getText().toString(), password.getText().toString(), errorText)) {
-                userViewModel.login(email.getText().toString(), password.getText().toString(), controller, errorText);
-            }
-        });
+        if (userViewModel.getAuth().getCurrentUser() != null) {
+            controller.navigate(R.id.action_signInFragment_to_profileFragment);
+        }
+        else {
+            binding.loginButton.setOnClickListener((v) -> {
+                if (checkEmailAndPassword(email, password)) {
+                    userViewModel.login(email.getText().toString(), password.getText().toString(), controller, errorText);
+                }
+            });
 
-        binding.signUpButton.setOnClickListener((view) -> {
-            controller.navigate(R.id.action_signInFragment_to_signUpFragment);
-        });
+            binding.signUpButton.setOnClickListener((view) -> {
+                controller.navigate(R.id.action_signInFragment_to_signUpFragment);
+            });
+        }
 
         return binding.getRoot();
     }
 
-    private boolean checkEmail(String email, TextView error) {
+    private boolean checkEmail(TextView email) {
         if (email.equals("")) {
-            error.setText("Enter an email");
+            email.setError("Enter an email");
             return false;
         }
-        if (!email.endsWith(".com")) {
-            error.setText("Enter a valid email");
+        if (!email.getText().toString().endsWith(".com")) {
+            email.setError("Enter a valid email");
             return false;
         }
 
@@ -57,17 +62,17 @@ public class SignInFragment extends Fragment {
         return true;
     }
 
-    private boolean checkPassword(String password, TextView error) {
-        if(password.equals("")) {
-            error.setText("Enter a password");
+    private boolean checkPassword(TextView password) {
+        if(password.getText().toString().equals("")) {
+            password.setError("Enter a password");
             return false;
         }
 
         return true;
     }
 
-    private boolean checkEmailAndPassword(String email, String password, TextView error) {
-        if (!checkEmail(email, error) || !checkPassword(password, error)) {
+    private boolean checkEmailAndPassword(TextView email, TextView password) {
+        if (!checkEmail(email) || !checkPassword(password)) {
             return false;
         }
 

@@ -37,12 +37,7 @@ public class SignUpFragment extends Fragment {
 
         binding.signUpConfirmButton.setOnClickListener((v) -> {
 
-            if (checkFields(
-                    email.getText().toString(),
-                    emailConfirmation.getText().toString(),
-                    password.getText().toString(),
-                    passwordConfirmation.getText().toString(),
-                    errorText)) {
+            if (checkFields(email, emailConfirmation, password, passwordConfirmation)) {
                 userViewModel.signUp(emailConfirmation.getText().toString(), passwordConfirmation.getText().toString(), controller, errorText);
             }
         });
@@ -50,52 +45,52 @@ public class SignUpFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private boolean checkEmailsConfirm(String email, String emailConfirm, TextView error) {
-        if (email.equals(emailConfirm)) {
+    private boolean checkEmailsConfirm(TextView email, TextView emailConfirm) {
+        if (email.getText().toString().equals(emailConfirm.getText().toString())) {
             return true;
         } else {
-            error.setText("Emails do not match");
+            emailConfirm.setError("Emails do not match");
             return false;
         }
     }
 
-    private boolean checkPasswordsConfirm(String password, String passwordConfirm, TextView error) {
-        if (password.equals(passwordConfirm)) {
+    private boolean checkPasswordsConfirm(TextView password, TextView passwordConfirm) {
+        if (password.getText().toString().equals(passwordConfirm.getText().toString())) {
             return true;
         } else {
-            error.setText("Passwords do not match");
+            passwordConfirm.setError("Passwords do not match");
             return false;
         }
     }
 
-    private boolean checkPassword(String password, TextView error) {
-        if (password.equals("")) {
-            error.setText("Enter a password");
+    private boolean checkPassword(TextView password) {
+        if (password.getText().toString().equals("")) {
+            password.setError("Enter a password");
             return false;
         }
-        if (password.length() < 8) {
-            error.setText("Password must be greater than 8 characters");
+        if (password.getText().toString().length() < 8) {
+            password.setError("Password must be greater than 8 characters");
             return false;
         }
 
         return true;
     }
 
-    private boolean checkEmail(String email, TextView error) {
+    private boolean checkEmail(TextView email) {
         if (email.equals("")) {
-            error.setText("Enter an email");
+            email.setError("Enter an email");
             return false;
         }
-        if (!email.endsWith(".com")) {
-            error.setText("Enter a valid email");
+        if (!email.getText().toString().endsWith(".com")) {
+            email.setError("Enter a valid email");
             return false;
         }
 
         return true;
     }
 
-    private boolean checkFields(String email, String emailConfirm, String password, String passwordConfirm, TextView error) {
-        if (!checkEmail(email, error) || !checkPassword(password, error) || !checkEmailsConfirm(email, emailConfirm, error) || !checkPasswordsConfirm(password, passwordConfirm, error)) {
+    private boolean checkFields(TextView email, TextView emailConfirm, TextView password, TextView passwordConfirm) {
+        if (!checkEmail(email) || !checkPassword(password) || !checkEmailsConfirm(email, emailConfirm) || !checkPasswordsConfirm(password, passwordConfirm)) {
             return false;
         }
 

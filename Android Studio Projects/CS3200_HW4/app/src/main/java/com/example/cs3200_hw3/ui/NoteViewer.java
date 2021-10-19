@@ -15,6 +15,8 @@ import com.example.cs3200_hw3.databinding.FragmentNoteViewerBinding;
 import com.example.cs3200_hw3.databinding.FragmentProfileBinding;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
 
+import java.sql.SQLOutput;
+
 public class NoteViewer extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +30,11 @@ public class NoteViewer extends Fragment {
 
         binding.saveButton.setOnClickListener((view) -> {
             userViewModel.createNote(binding.titleEditText.getText().toString(), binding.bodyEditText.getText().toString());
+            controller.navigate(R.id.action_noteViewer_to_profileFragment);
+        });
+
+        binding.deleteButton.setOnClickListener((view) -> {
+            userViewModel.deleteNote(myArgs.get("id").toString());
             controller.navigate(R.id.action_noteViewer_to_profileFragment);
         });
 

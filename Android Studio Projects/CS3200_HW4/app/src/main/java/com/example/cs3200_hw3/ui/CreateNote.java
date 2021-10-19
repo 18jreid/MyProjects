@@ -30,9 +30,6 @@ public class CreateNote extends Fragment {
         NavController controller = NavHostFragment.findNavController(this);
 
         binding.saveNote.setOnClickListener((view) -> {
-            System.out.println(binding.titleText.getText().toString());
-            System.out.println(binding.noteText.getText().toString());
-
             userViewModel.createNote(binding.titleText.getText().toString(), binding.noteText.getText().toString());
             controller.navigate(R.id.action_createNote_to_profileFragment);
         });
