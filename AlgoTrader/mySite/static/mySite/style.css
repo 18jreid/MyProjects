@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: white;
+}
+
+.Algorithms-Container {
+    display: grid;
+    margin-top: 2em;
+    margin-left: 4em;
+    margin-right: 42em;
+    margin-bottom: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-radius: 20px;
+    grid-template-columns: 50% 50%;
+    text-align: center;
+}
+
+.Algorithm-Button {
+    width: 300px; 
+    height: 150px; 
+    font-size: 20px;
+    margin-bottom: 1em;
+    background-color: #00d8d6;
+    border-radius: 5px;
+    border-color: #485460;
+    border-width: 3px;
+}
+
+.Algorithm-Button:hover {
+    background-color: #0be881;
+}
+
+.Algorithm-Button:active {
+    transform: translateY(4px);
+}
+
+.Header-Container {
+    background-color: #1e272e;
+    color: white;
+    padding-top: 1.25em;
+    padding-bottom: 1em;
+    box-shadow: 0px 6px 6px darkslategray;
+}
+
+.Dashboard-Header-Container {
+    display: grid;
+    background-color: #1e272e;
+    color: white;
+    padding-top: 1.25em;
+    padding-bottom: 1em;
+    box-shadow: 0px 6px 6px darkslategray;
+    grid-template-columns: 50% 50%;
+}
+
+.Login-Container {
+    display: inline-block;
+    color: white;
+    background-color: #1e272e;
+    margin-top: 6em;
+    border-color:#485460;
+    border-width: 15px;
+    border-style:ridge;
+    box-shadow: 5px 5px 3px gray;
+}
+
+.Login-Button {
+    width: 80px;
+    height: 35px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #485460;
+    border-width: 3px;
+}
+
+.Login-Button:hover {
+    background-color: lightgray;
+}
+
+.Login-Button:active {
+    transform: translateY(4px);
+}

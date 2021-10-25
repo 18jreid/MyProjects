@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Sign Up</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'mySite/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    </head>
+    <body style="text-align: center;">
+        <div class="Header-Container">
+            <h1 style="font-size: 60px;">M A T</h1>
+            <h1 style="font-size: 20px;">MACHINE ALGORITHMIC TRADER</h1>
+        </div>
+        <div class="Login-Container" style="margin-bottom: 2em;">
+            <form action="/registerUser" method="POST">
+                {% csrf_token %}
+                <h1 style="padding-top: .5em; padding-bottom: 1.5em;">Sign Up</h1>
+                <div style="padding-left: 5em; padding-right: 5em;">
+                    <input type="text" id="firstName" name="firstName" placeholder="First Name" style="font-size: 15px;"><br><br>
+                    <input type="text" id="lastName" name="lastName" placeholder="Last Name" style="font-size: 15px;"><br><br>
+                    <input type="text" id="userID" name="userID" placeholder="Username" style="font-size: 15px;"><br><br>
+                    <input type="email" id="userEmail" name="userEmail" placeholder="Email" style="font-size: 15px;"><br><br>
+                    <input type="email" id="userEmailConfirmation" name="userEmailConfirmation" placeholder="Email Confirmation" style="font-size: 15px;"><br><br>
+                    <input type="password" id="password" name="password" placeholder="Password" style="font-size: 15px;"><br><br>
+                    <input type="password" id="passwordConfirmation" name="passwordConfirmation" placeholder="Password Confirmation" style="font-size: 15px;"><br><br>
+                    <input type="submit" value="Sign Up" class="Login-Button">
+                    <br><br>
+                </div>
+            </form>
+        </div>
+        {% if error %}
+            <br>
+            <p>{{error}}</p>
+            {% endif %}
+    </body>
+</html>

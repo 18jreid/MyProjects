@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <title>Login</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'mySite/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="Dashboard-Header-Container">
+            <div style="text-align: left; margin-top: 4em; margin-left: 2em;">
+                <form action="/logout">
+                    <button style="width: 90px; height: 40px; font-size: 20px;">Logout</button>
+                </form>
+            </div>
+            <div style="text-align: right;">
+                <h1 class="User-Title" style="margin-right: 1em; font-size: 40px;">Welcome, {{user}}</h1>
+                <h1 style="margin-right: 2em; font-size: 25px;">Account Balance: $0</h1>
+            </div>
+        </div>
+        <span class="Algorithms-Container">
+            <div>
+                <button class="Algorithm-Button">Algorithm 1</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 2</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 3</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 4</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 5</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 6</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 6</button>
+            </div>
+            <div>
+                <button class="Algorithm-Button">Algorithm 7</button>
+            </div>
+        </span>
+    </body>
+</html>

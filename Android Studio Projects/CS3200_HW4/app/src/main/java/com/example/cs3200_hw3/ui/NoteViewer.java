@@ -30,16 +30,11 @@ public class NoteViewer extends Fragment {
 
         binding.saveButton.setOnClickListener((view) -> {
             if (!binding.titleEditText.getText().toString().equals("")) {
-                if (!binding.bodyEditText.getText().toString().equals("")) {
-                    userViewModel.updateNote(
-                            myArgs.get("id").toString(),
-                            binding.titleEditText.getText().toString(),
-                            binding.bodyEditText.getText().toString());
-                    controller.navigate(R.id.action_noteViewer_to_profileFragment);
-                }
-                else {
-                    binding.bodyEditText.setError("Note cannot be empty!");
-                }
+                userViewModel.updateNote(
+                        myArgs.get("id").toString(),
+                        binding.titleEditText.getText().toString(),
+                        binding.bodyEditText.getText().toString());
+                controller.navigate(R.id.action_noteViewer_to_profileFragment);
             }
             else {
                 binding.titleEditText.setError("Title cannot be empty!");
