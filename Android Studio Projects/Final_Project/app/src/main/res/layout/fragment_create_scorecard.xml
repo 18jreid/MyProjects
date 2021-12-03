@@ -1,0 +1,1124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10px"
+    android:textAlignment="center">
+
+    <Button
+        android:id="@+id/nineHolesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9 Holes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole2"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole2Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="162dp">
+
+            <TextView
+                android:id="@+id/hole2text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 2"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="162dp" />
+
+            <EditText
+                android:id="@+id/hole2par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="162dp" />
+
+            <EditText
+                android:id="@+id/hole2distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="162dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole3"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="116dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole3Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="210dp">
+
+            <TextView
+                android:id="@+id/hole3text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 3"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="210dp" />
+
+            <EditText
+                android:id="@+id/hole3par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="210dp" />
+
+            <EditText
+                android:id="@+id/hole3distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="210dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole4"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="164dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole4Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="258dp">
+
+            <TextView
+                android:id="@+id/hole4text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 4"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+            <EditText
+                android:id="@+id/hole4par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+            <EditText
+                android:id="@+id/hole4distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="258dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole5"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="212dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole5Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="306dp">
+
+            <TextView
+                android:id="@+id/hole5text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 5"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="306dp" />
+
+            <EditText
+                android:id="@+id/hole5par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="306dp" />
+
+            <EditText
+                android:id="@+id/hole5distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="306dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole6"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="260dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole6Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="354dp">
+
+            <TextView
+                android:id="@+id/hole6text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 6"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+            <EditText
+                android:id="@+id/hole6par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+            <EditText
+                android:id="@+id/hole6distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="354dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole7"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="308dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole7Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="402dp">
+
+            <TextView
+                android:id="@+id/hole7text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 7"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="402dp" />
+
+            <EditText
+                android:id="@+id/hole7par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="402dp" />
+
+            <EditText
+                android:id="@+id/hole7distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="402dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole8"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="356dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole8Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="450dp">
+
+            <TextView
+                android:id="@+id/hole8text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 8"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="450dp" />
+
+            <EditText
+                android:id="@+id/hole8par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="450dp" />
+
+            <EditText
+                android:id="@+id/hole8distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="450dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole9"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="404dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole9Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="498dp">
+
+            <TextView
+                android:id="@+id/hole9text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 9"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="498dp" />
+
+            <EditText
+                android:id="@+id/hole9par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="498dp" />
+
+            <EditText
+                android:id="@+id/hole9distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="498dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/createScorecardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Scorecard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.986" />
+
+    <Button
+        android:id="@+id/frontNineButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Front Nine"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.118"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hole9"
+        app:layout_constraintVertical_bias="0.181" />
+
+    <Button
+        android:id="@+id/backNineButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha=".5"
+        android:text="Back Nine"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hole9"
+        app:layout_constraintVertical_bias="0.181" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole10"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole10Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="114dp">
+
+            <TextView
+                android:id="@+id/hole10text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 10"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="114dp" />
+
+            <EditText
+                android:id="@+id/hole10par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="114dp" />
+
+            <EditText
+                android:id="@+id/hole10distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="114dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole11"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole11Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="162dp">
+
+            <TextView
+                android:id="@+id/hole11text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 11"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="162dp" />
+
+            <EditText
+                android:id="@+id/hole11par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="162dp" />
+
+            <EditText
+                android:id="@+id/hole11distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="162dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole12"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="116dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole12Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="210dp">
+
+            <TextView
+                android:id="@+id/hole12text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 12"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="210dp" />
+
+            <EditText
+                android:id="@+id/hole12par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="210dp" />
+
+            <EditText
+                android:id="@+id/hole12distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="210dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole13"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="164dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole13Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="258dp">
+
+            <TextView
+                android:id="@+id/hole13text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 13"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+            <EditText
+                android:id="@+id/hole13par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="258dp" />
+
+            <EditText
+                android:id="@+id/hole13distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="258dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole14"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="212dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole14Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="306dp">
+
+            <TextView
+                android:id="@+id/hole14text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 14"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="306dp" />
+
+            <EditText
+                android:id="@+id/hole14par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="306dp" />
+
+            <EditText
+                android:id="@+id/hole14distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="306dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole15"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="260dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole15Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="354dp">
+
+            <TextView
+                android:id="@+id/hole15text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 15"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+            <EditText
+                android:id="@+id/hole15par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="354dp" />
+
+            <EditText
+                android:id="@+id/hole15distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="354dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole16"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="308dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole16Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="402dp">
+
+            <TextView
+                android:id="@+id/hole16text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 16"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="402dp" />
+
+            <EditText
+                android:id="@+id/hole16par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="402dp" />
+
+            <EditText
+                android:id="@+id/hole16distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="402dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole17"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="356dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole17Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="450dp">
+
+            <TextView
+                android:id="@+id/hole17text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 17"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="450dp" />
+
+            <EditText
+                android:id="@+id/hole17par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="450dp" />
+
+            <EditText
+                android:id="@+id/hole17distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="450dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole18"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="404dp"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole18Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="498dp">
+
+            <TextView
+                android:id="@+id/hole18text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 18"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="498dp" />
+
+            <EditText
+                android:id="@+id/hole18par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="171dp"
+                tools:layout_editor_absoluteY="498dp" />
+
+            <EditText
+                android:id="@+id/hole18distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="229dp"
+                tools:layout_editor_absoluteY="498dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/eighteenHolesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha=".5"
+        android:text="18 Holes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/hole1"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nineHolesButton">
+
+        <LinearLayout
+            android:id="@+id/hole1Layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="34dp"
+            tools:layout_editor_absoluteY="114dp">
+
+            <TextView
+                android:id="@+id/hole1text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:text="Hole 1"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:layout_editor_absoluteX="34dp"
+                tools:layout_editor_absoluteY="114dp" />
+
+            <EditText
+                android:id="@+id/hole1par"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Par"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="162dp"
+                tools:layout_editor_absoluteY="114dp" />
+
+            <EditText
+                android:id="@+id/hole1distance"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:ems="10"
+                android:hint="Distance"
+                android:inputType="number"
+                android:textAlignment="center"
+                tools:layout_editor_absoluteX="225dp"
+                tools:layout_editor_absoluteY="114dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
