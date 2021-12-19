@@ -1,4 +1,4 @@
-class mesh:
+class Mesh:
     triangles = []
 
     def __init__(self, listOfTriangles) -> None:

@@ -1,19 +1,16 @@
-class mat4x4:
-    matrix = []
+class Mat4x4:
+    __matrix = [[1,0,0,0], [0,1,0,0], [0,0,1,0], [0,0,0,1]]
     def __init__(self) -> None:
-        self.matrix.append([0,0,0,0])
-        self.matrix.append([0,0,0,0])
-        self.matrix.append([0,0,0,0])
-        self.matrix.append([0,0,0,0])
+        pass
 
     def setIndex(self, row, column, value):
-        self.matrix[row][column] = value
+        self.__matrix[row][column] = value
 
     def getIndex(self, row, column):
-        return self.matrix[row][column]
+        return self.__matrix[row][column]
 
     def printMatrix(self):
-        for x in self.matrix:
+        for x in self.__matrix:
             for y in x:
                 print(y, end=" ")
             print()
