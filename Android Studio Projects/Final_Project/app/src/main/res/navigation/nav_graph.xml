@@ -30,8 +30,8 @@
             android:id="@+id/action_profileFragment_to_createScorecardFragment"
             app:destination="@id/createScorecardFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_holeFragment"
-            app:destination="@id/holeFragment" />
+            android:id="@+id/action_profileFragment_to_hole1"
+            app:destination="@id/fragmenthole1" />
     </fragment>
     <fragment
         android:id="@+id/signUpFragment"
@@ -51,7 +51,102 @@
             app:destination="@id/profileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/holeFragment"
-        android:name="com.example.cs3200_hw3.ui.HoleFragment"
-        android:label="HoleFragment" />
+        android:id="@+id/fragmenthole1"
+        android:name="com.example.cs3200_hw3.ui.Hole1"
+        android:label="Hole1" >
+        <action
+            android:id="@+id/action_fragmenthole1_to_fragmenthole2"
+            app:destination="@id/fragmenthole2" />
+        <action
+            android:id="@+id/action_fragmenthole1_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole2"
+        android:name="com.example.cs3200_hw3.ui.Hole2"
+        android:label="Hole2" >
+        <action
+            android:id="@+id/action_fragmenthole2_to_fragmenthole3"
+            app:destination="@id/fragmenthole3" />
+        <action
+            android:id="@+id/action_fragmenthole2_to_fragmenthole1"
+            app:destination="@id/fragmenthole1" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole3"
+        android:name="com.example.cs3200_hw3.ui.Hole3"
+        android:label="Hole3" >
+        <action
+            android:id="@+id/action_fragmenthole3_to_fragmenthole4"
+            app:destination="@id/fragmenthole4" />
+        <action
+            android:id="@+id/action_fragmenthole3_to_fragmenthole2"
+            app:destination="@id/fragmenthole2" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole4"
+        android:name="com.example.cs3200_hw3.ui.Hole4"
+        android:label="Hole4" >
+        <action
+            android:id="@+id/action_fragmenthole4_to_fragmenthole5"
+            app:destination="@id/fragmenthole5" />
+        <action
+            android:id="@+id/action_fragmenthole4_to_fragmenthole3"
+            app:destination="@id/fragmenthole3" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole5"
+        android:name="com.example.cs3200_hw3.ui.Hole5"
+        android:label="Hole5" >
+        <action
+            android:id="@+id/action_fragmenthole5_to_fragmenthole6"
+            app:destination="@id/fragmenthole6" />
+        <action
+            android:id="@+id/action_fragmenthole5_to_fragmenthole4"
+            app:destination="@id/fragmenthole4" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole6"
+        android:name="com.example.cs3200_hw3.ui.Hole6"
+        android:label="Hole6" >
+        <action
+            android:id="@+id/action_fragmenthole6_to_fragmenthole7"
+            app:destination="@id/fragmenthole7" />
+        <action
+            android:id="@+id/action_fragmenthole6_to_fragmenthole5"
+            app:destination="@id/fragmenthole5" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole7"
+        android:name="com.example.cs3200_hw3.ui.Hole7"
+        android:label="Hole7" >
+        <action
+            android:id="@+id/action_fragmenthole7_to_fragmenthole8"
+            app:destination="@id/fragmenthole8" />
+        <action
+            android:id="@+id/action_fragmenthole7_to_fragmenthole6"
+            app:destination="@id/fragmenthole6" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole8"
+        android:name="com.example.cs3200_hw3.ui.Hole8"
+        android:label="Hole8" >
+        <action
+            android:id="@+id/action_fragmenthole8_to_fragmenthole9"
+            app:destination="@id/fragmenthole9" />
+        <action
+            android:id="@+id/action_fragmenthole8_to_fragmenthole7"
+            app:destination="@id/fragmenthole7" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmenthole9"
+        android:name="com.example.cs3200_hw3.ui.Hole9"
+        android:label="Hole9" >
+        <action
+            android:id="@+id/action_fragmenthole9_to_fragmenthole8"
+            app:destination="@id/fragmenthole8" />
+        <action
+            android:id="@+id/action_fragmenthole9_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

@@ -4,7 +4,8 @@ public class Scorecard {
     public String user;
     public boolean isNineHoles;
     public boolean isEighteenHoles;
-    public boolean isFinished;
+    public boolean isFinished = false;
+    private String scorecardId;
     private int hole1Score;
     private int hole1par;
     private int hole1distance;
@@ -104,6 +105,8 @@ public class Scorecard {
         this.totalScore = 0;
         this.isNineHoles = isNineHoles;
         this.isEighteenHoles = false;
+
+        scorecardId = "scorecard" + Math.random();
     }
 
     public Scorecard(String user, boolean isEighteenHoles, int hole1Score, int hole1Par, int hole1Distance,
@@ -147,7 +150,11 @@ public class Scorecard {
         this.totalScore = 0;
         this.isEighteenHoles = isEighteenHoles;
         this.isNineHoles = false;
+
+        scorecardId = "scorecard" + Math.random();
     }
+
+    public String getScorecardId() {return scorecardId; }
 
     public int getHole1Score() {
         return hole1Score;
@@ -370,7 +377,7 @@ public class Scorecard {
     }
 
     public boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     public boolean isNineHoles() {

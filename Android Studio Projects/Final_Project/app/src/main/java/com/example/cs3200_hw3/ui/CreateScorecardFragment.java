@@ -17,6 +17,7 @@ import com.example.cs3200_hw3.databinding.FragmentCreateScorecardBinding;
 import com.example.cs3200_hw3.databinding.FragmentProfileBinding;
 import com.example.cs3200_hw3.models.Scorecard;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
+import com.google.android.gms.ads.AdRequest;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateScorecardFragment extends Fragment {
@@ -25,6 +26,11 @@ public class CreateScorecardFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         UserViewModel userViewModel = new UserViewModel();
         FragmentCreateScorecardBinding binding = FragmentCreateScorecardBinding.inflate(inflater, container, false);
+
+        binding.bannerAd2.loadAd(
+                new AdRequest.Builder().build()
+        );
+
         NavController controller = NavHostFragment.findNavController(this);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CardView hole1 = binding.hole1;

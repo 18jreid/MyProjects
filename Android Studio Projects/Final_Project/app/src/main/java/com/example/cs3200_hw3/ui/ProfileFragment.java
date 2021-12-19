@@ -1,13 +1,16 @@
 package com.example.cs3200_hw3.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.ObservableArrayList;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -17,6 +20,7 @@ import com.example.cs3200_hw3.R;
 import com.example.cs3200_hw3.databinding.FragmentProfileBinding;
 import com.example.cs3200_hw3.models.Scorecard;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -32,6 +36,9 @@ public class ProfileFragment extends Fragment {
         FragmentProfileBinding binding = FragmentProfileBinding.inflate(inflater, container, false);
         NavController controller = NavHostFragment.findNavController(this);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        binding.bannerAd2.loadAd(
+                new AdRequest.Builder().build()
+        );
 
 
         binding.logOutButton.setOnClickListener((v) -> {
@@ -51,14 +58,35 @@ public class ProfileFragment extends Fragment {
                 int index = 1;
                 for (QueryDocumentSnapshot document : collection) {
                     Scorecard scorecard = document.toObject(Scorecard.class);
+                    CardView card = new CardView(getContext());
+                    LinearLayout layout = new LinearLayout(getContext());
+                    card.addView(layout);
 
-                    TextView test = new TextView(getContext());
-                    test.setText("Scorecard " + index + " Total Score: " + scorecard.getTotalScore() + " Finished: " + scorecard.isFinished());
-                    binding.scorecardsLayout.addView(test);
+                    TextView name = new TextView(getContext());
+                    layout.addView(name);
+                    name.setText("Scorecard " + index);
+                    name.setTextSize(22);
+                    name.setTextColor(Color.BLACK);
+
+                    TextView score = new TextView(getContext());
+                    layout.addView(score);
+                    score.setText(" Total Score: " + scorecard.getTotalScore());
+                    score.setTextSize(22);
+                    score.setTextColor(Color.GREEN);
+
+                    TextView finished = new TextView(getContext());
+                    layout.addView(finished);
+                    finished.setText(" Finished: " + scorecard.isFinished());
+                    finished.setTextSize(22);
+                    finished.setTextColor(Color.BLUE);
+
+                    binding.scorecardsLayout.addView(card);
                     index += 1;
 
-                    test.setOnClickListener((v) -> {
-                        controller.navigate(R.id.action_profileFragment_to_holeFragment);
+                    card.setOnClickListener((v) -> {
+                        Bundle myBundle = new Bundle();
+                        myBundle.putString("scorecard", scorecard.getScorecardId());
+                        controller.navigate(R.id.action_profileFragment_to_hole1, myBundle);
                     });
                 }
             }

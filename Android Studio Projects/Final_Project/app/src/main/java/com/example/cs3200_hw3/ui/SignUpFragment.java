@@ -19,6 +19,7 @@ import com.example.cs3200_hw3.R;
 import com.example.cs3200_hw3.databinding.FragmentSigninBinding;
 import com.example.cs3200_hw3.databinding.FragmentSignupBinding;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
+import com.google.android.gms.ads.AdRequest;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpFragment extends Fragment {
@@ -28,6 +29,10 @@ public class SignUpFragment extends Fragment {
         UserViewModel userViewModel = new UserViewModel();
         FragmentSignupBinding binding = FragmentSignupBinding.inflate(inflater, container, false);
         NavController controller = NavHostFragment.findNavController(this);
+
+        binding.bannerAd1.loadAd(
+                new AdRequest.Builder().build()
+        );
 
         EditText email = binding.emailSignUpEditText;
         EditText emailConfirmation = binding.emailSignUpConfirmEditText;

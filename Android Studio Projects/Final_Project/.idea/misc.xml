@@ -12,7 +12,15 @@
         <entry key="app/src/main/res/layout/fragment_create_scorecard.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_fullscreen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_hole.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_hole1.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/fragment_hole1.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_hole2.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_hole3.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hole4.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hole5.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hole6.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hole7.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hole8.xml" value="0.21014492753623187" />
+        <entry key="app/src/main/res/layout/fragment_hole9.xml" value="0.21014492753623187" />
         <entry key="app/src/main/res/layout/fragment_note_viewer.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_sign_in.xml" value="0.335" />

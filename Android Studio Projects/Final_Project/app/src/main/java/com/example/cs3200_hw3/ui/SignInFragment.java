@@ -1,5 +1,6 @@
 package com.example.cs3200_hw3.ui;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.cs3200_hw3.R;
 import com.example.cs3200_hw3.databinding.FragmentSigninBinding;
 import com.example.cs3200_hw3.viewmodels.UserViewModel;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.MobileAds;
 
 public class SignInFragment extends Fragment {
     @Nullable
@@ -24,6 +27,9 @@ public class SignInFragment extends Fragment {
         UserViewModel userViewModel = new UserViewModel();
         FragmentSigninBinding binding = FragmentSigninBinding.inflate(inflater, container, false);
         NavController controller = NavHostFragment.findNavController(this);
+        binding.bannerAd.loadAd(
+                new AdRequest.Builder().build()
+        );
 
         EditText email = binding.emailEditText;
         EditText password = binding.editTextTextPassword;
