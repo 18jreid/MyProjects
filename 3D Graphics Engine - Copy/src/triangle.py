@@ -1,4 +1,4 @@
-from vec3d import vec3d
+from Vec3D import Vec3D
 
 
 class Triangle:
@@ -6,7 +6,7 @@ class Triangle:
     vertice1 = None
     vertice2 = None
 
-    def __init__(self, v0=vec3d(0,0,0), v1=vec3d(0,0,0), v2=vec3d(0,0,0)) -> None:
+    def __init__(self, v0=Vec3D(0,0,0), v1=Vec3D(0,0,0), v2=Vec3D(0,0,0)) -> None:
         self.vertice0 = v0
         self.vertice1 = v1
         self.vertice2 = v2

@@ -2,7 +2,7 @@
 # Utah State University
 # jsreid27@gmail.com
 import pygame
-from vec3d import vec3d
+from Vec3D import Vec3D
 from Triangle import Triangle
 from Mat4x4 import Mat4x4
 from Mesh import Mesh
@@ -11,7 +11,7 @@ import time
 
 # Multiplies matrices together
 def multiplyMatrixVector(vector, matrix):
-    resultVector = vec3d(0,0,0)
+    resultVector = Vec3D(0,0,0)
 
     resultVector.setX((vector.getX() * matrix.getIndex(0,0)) + (vector.getY() * matrix.getIndex(1,0)) + (vector.getZ() * matrix.getIndex(2,0)) + (matrix.getIndex(3,0)))
     resultVector.setY((vector.getX() * matrix.getIndex(0,1)) + (vector.getY() * matrix.getIndex(1,1)) + (vector.getZ() * matrix.getIndex(2,1)) + (matrix.getIndex(3,1)))
@@ -27,40 +27,40 @@ def multiplyMatrixVector(vector, matrix):
 # Points for cube
 cubeTriangles = [
     # SOUTH FACE
-    Triangle(vec3d(0,0,0), vec3d(0,1,0), vec3d(1,1,0)),
-    Triangle(vec3d(0,0,0), vec3d(1,1,0), vec3d(1,0,0)),
+    Triangle(Vec3D(0,0,0), Vec3D(0,1,0), Vec3D(1,1,0)),
+    Triangle(Vec3D(0,0,0), Vec3D(1,1,0), Vec3D(1,0,0)),
 
     # EAST FACE
-    Triangle(vec3d(1,0,0), vec3d(1,1,0), vec3d(1,1,1)),
-    Triangle(vec3d(1,0,0), vec3d(1,1,1), vec3d(1,0,1)),
+    Triangle(Vec3D(1,0,0), Vec3D(1,1,0), Vec3D(1,1,1)),
+    Triangle(Vec3D(1,0,0), Vec3D(1,1,1), Vec3D(1,0,1)),
 
     # NORTH FACE
-    Triangle(vec3d(1,0,1), vec3d(1,1,1), vec3d(0,1,1)),
-    Triangle(vec3d(1,0,1), vec3d(0,1,1), vec3d(0,0,1)),
+    Triangle(Vec3D(1,0,1), Vec3D(1,1,1), Vec3D(0,1,1)),
+    Triangle(Vec3D(1,0,1), Vec3D(0,1,1), Vec3D(0,0,1)),
 
     # WEST FACE
-    Triangle(vec3d(0,0,1), vec3d(0,1,1), vec3d(0,1,0)),
-    Triangle(vec3d(0,0,1), vec3d(0,1,0), vec3d(0,0,0)),
+    Triangle(Vec3D(0,0,1), Vec3D(0,1,1), Vec3D(0,1,0)),
+    Triangle(Vec3D(0,0,1), Vec3D(0,1,0), Vec3D(0,0,0)),
 
     # TOP FACE
-    Triangle(vec3d(0,1,0), vec3d(0,1,1), vec3d(1,1,1)),
-    Triangle(vec3d(0,1,0), vec3d(1,1,1), vec3d(1,1,0)),
+    Triangle(Vec3D(0,1,0), Vec3D(0,1,1), Vec3D(1,1,1)),
+    Triangle(Vec3D(0,1,0), Vec3D(1,1,1), Vec3D(1,1,0)),
 
     # BOTTOM FACE
-    Triangle(vec3d(1,0,1), vec3d(0,0,1), vec3d(0,0,0)),
-    Triangle(vec3d(1,0,1), vec3d(0,0,0), vec3d(1,0,0))
+    Triangle(Vec3D(1,0,1), Vec3D(0,0,1), Vec3D(0,0,0)),
+    Triangle(Vec3D(1,0,1), Vec3D(0,0,0), Vec3D(1,0,0))
 ]
 
 # Create cube object and offset it into screen
 cubeMesh = Mesh(cubeTriangles)
 for tri in cubeMesh.getMesh():
-    tri.getVertice0().setZ(tri.getVertice0().getZ() + 3)
-    tri.getVertice1().setZ(tri.getVertice1().getZ() + 3)
-    tri.getVertice2().setZ(tri.getVertice2().getZ() + 3)
+    tri.getVertice0().setZ(tri.getVertice0().getZ() + 2)
+    tri.getVertice1().setZ(tri.getVertice1().getZ() + 2)
+    tri.getVertice2().setZ(tri.getVertice2().getZ() + 2)
 
 # Constants needed for projection matrix
-width = 500
-height = 500
+width = 1000
+height = 1000
 fNear = float(0.1)
 fFar = float(1000.0)
 fFov = float(90.0)

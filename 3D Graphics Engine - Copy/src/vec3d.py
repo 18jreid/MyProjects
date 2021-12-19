@@ -1,4 +1,4 @@
-class vec3d:
+class Vec3D:
     x = None
     y = None
     z = None
