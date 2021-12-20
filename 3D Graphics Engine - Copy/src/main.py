@@ -99,6 +99,7 @@ def getProjectedCube():
     for tri in cubeMesh.getMesh():
         triRotatedZ, triRotatedZX, triProjected= Triangle(), Triangle(), Triangle()
 
+        # Rotations
         triRotatedZ.setVertice0(multiplyMatrixVector(tri.getVertice0(), matRotZ))
         triRotatedZ.setVertice1(multiplyMatrixVector(tri.getVertice1(), matRotZ))
         triRotatedZ.setVertice2(multiplyMatrixVector(tri.getVertice2(), matRotZ))
@@ -125,12 +126,18 @@ def getProjectedCube():
         triProjected.getVertice1().setY(triProjected.getVertice1().getY() + 1)
         triProjected.getVertice2().setX(triProjected.getVertice2().getX() + 1)
         triProjected.getVertice2().setY(triProjected.getVertice2().getY() + 1)
-        triProjected.getVertice0().setX(triProjected.getVertice0().getX() * .5 * width)
-        triProjected.getVertice0().setY(triProjected.getVertice0().getY() * .5 * height)
-        triProjected.getVertice1().setX(triProjected.getVertice1().getX() * .5 * width)
-        triProjected.getVertice1().setY(triProjected.getVertice1().getY() * .5 * height)
-        triProjected.getVertice2().setX(triProjected.getVertice2().getX() * .5 * width)
-        triProjected.getVertice2().setY(triProjected.getVertice2().getY() * .5 * height)
+
+        xScale = float(0.5) * width
+        yScale = float(0.5) * width
+
+        triProjected.getVertice0().setX(triProjected.getVertice0().getX() * xScale)
+        triProjected.getVertice0().setY(triProjected.getVertice0().getY() * yScale)
+
+        triProjected.getVertice1().setX(triProjected.getVertice1().getX() * xScale)
+        triProjected.getVertice1().setY(triProjected.getVertice1().getY() * yScale)
+
+        triProjected.getVertice2().setX(triProjected.getVertice2().getX() * xScale)
+        triProjected.getVertice2().setY(triProjected.getVertice2().getY() * yScale)
 
         # Draw Triangle
         pygame.draw.line(screen, (255,255,255), (triProjected.getVertice0().getX(), triProjected.getVertice0().getY()), (triProjected.getVertice1().getX(), triProjected.getVertice1().getY()), 3)
