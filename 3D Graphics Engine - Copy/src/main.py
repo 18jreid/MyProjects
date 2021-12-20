@@ -2,7 +2,7 @@
 # Utah State University
 # jsreid27@gmail.com
 import pygame
-from vec3d import vec3d
+from Vec3D import Vec3D
 from Triangle import Triangle
 from Mat4x4 import Mat4x4
 from Mesh import Mesh
@@ -15,28 +15,28 @@ height = 750
 # Points for cube
 cubeTriangles = [
     # SOUTH FACE
-    Triangle(vec3d(0,0,0), vec3d(0,1,0), vec3d(1,1,0)),
-    Triangle(vec3d(0,0,0), vec3d(1,1,0), vec3d(1,0,0)),
+    Triangle(Vec3D(0,0,0), Vec3D(0,1,0), Vec3D(1,1,0)),
+    Triangle(Vec3D(0,0,0), Vec3D(1,1,0), Vec3D(1,0,0)),
 
     # EAST FACE
-    Triangle(vec3d(1,0,0), vec3d(1,1,0), vec3d(1,1,1)),
-    Triangle(vec3d(1,0,0), vec3d(1,1,1), vec3d(1,0,1)),
+    Triangle(Vec3D(1,0,0), Vec3D(1,1,0), Vec3D(1,1,1)),
+    Triangle(Vec3D(1,0,0), Vec3D(1,1,1), Vec3D(1,0,1)),
 
     # NORTH FACE
-    Triangle(vec3d(1,0,1), vec3d(1,1,1), vec3d(0,1,1)),
-    Triangle(vec3d(1,0,1), vec3d(0,1,1), vec3d(0,0,1)),
+    Triangle(Vec3D(1,0,1), Vec3D(1,1,1), Vec3D(0,1,1)),
+    Triangle(Vec3D(1,0,1), Vec3D(0,1,1), Vec3D(0,0,1)),
 
     # WEST FACE
-    Triangle(vec3d(0,0,1), vec3d(0,1,1), vec3d(0,1,0)),
-    Triangle(vec3d(0,0,1), vec3d(0,1,0), vec3d(0,0,0)),
+    Triangle(Vec3D(0,0,1), Vec3D(0,1,1), Vec3D(0,1,0)),
+    Triangle(Vec3D(0,0,1), Vec3D(0,1,0), Vec3D(0,0,0)),
 
     # TOP FACE
-    Triangle(vec3d(0,1,0), vec3d(0,1,1), vec3d(1,1,1)),
-    Triangle(vec3d(0,1,0), vec3d(1,1,1), vec3d(1,1,0)),
+    Triangle(Vec3D(0,1,0), Vec3D(0,1,1), Vec3D(1,1,1)),
+    Triangle(Vec3D(0,1,0), Vec3D(1,1,1), Vec3D(1,1,0)),
 
     # BOTTOM FACE
-    Triangle(vec3d(1,0,1), vec3d(0,0,1), vec3d(0,0,0)),
-    Triangle(vec3d(1,0,1), vec3d(0,0,0), vec3d(1,0,0))
+    Triangle(Vec3D(1,0,1), Vec3D(0,0,1), Vec3D(0,0,0)),
+    Triangle(Vec3D(1,0,1), Vec3D(0,0,0), Vec3D(1,0,0))
 ]
 
 # Create cube object and offset it into screen
@@ -60,7 +60,7 @@ matProj.setIndex(3,3, 0)
 
 # Multiplies matrices together
 def multiplyMatrixVector(vector, matrix):
-    resultVector = vec3d()
+    resultVector = Vec3D()
 
     resultVector.setX(vector.getX() * matrix.getIndex(0,0) + vector.getY() * matrix.getIndex(1,0) + vector.getZ() * matrix.getIndex(2,0) + matrix.getIndex(3,0))
     resultVector.setY(vector.getX() * matrix.getIndex(0,1) + vector.getY() * matrix.getIndex(1,1) + vector.getZ() * matrix.getIndex(2,1) + matrix.getIndex(3,1))
