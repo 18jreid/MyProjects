@@ -6,23 +6,11 @@ from vec3d import vec3d
 from Triangle import Triangle
 from Mat4x4 import Mat4x4
 from Mesh import Mesh
-from math import pi, sin, cos, tan, asin, acos, atan
+from math import pi, radians, sin, cos, tan, asin, acos, atan
 import time
 
-# Multiplies matrices together
-def multiplyMatrixVector(vector, matrix):
-    resultVector = vec3d(0,0,0)
-
-    resultVector.setX((vector.getX() * matrix.getIndex(0,0)) + (vector.getY() * matrix.getIndex(1,0)) + (vector.getZ() * matrix.getIndex(2,0)) + (matrix.getIndex(3,0)))
-    resultVector.setY((vector.getX() * matrix.getIndex(0,1)) + (vector.getY() * matrix.getIndex(1,1)) + (vector.getZ() * matrix.getIndex(2,1)) + (matrix.getIndex(3,1)))
-    resultVector.setZ((vector.getX() * matrix.getIndex(0,2)) + (vector.getY() * matrix.getIndex(1,2)) + (vector.getZ() * matrix.getIndex(2,2)) + (matrix.getIndex(3,2)))
-    w = (vector.getX() * matrix.getIndex(0,3)) + (vector.getY() + matrix.getIndex(1,3)) + (vector.getZ() + matrix.getIndex(2,3)) + (matrix.getIndex(3,3))
-
-    if (w != 0):
-        resultVector.setX(resultVector.getX() / w)
-        resultVector.setY(resultVector.getY() / w)
-        resultVector.setZ(resultVector.getZ() / w)
-    return resultVector
+width = 750
+height = 750
 
 # Points for cube
 cubeTriangles = [
@@ -53,33 +41,40 @@ cubeTriangles = [
 
 # Create cube object and offset it into screen
 cubeMesh = Mesh(cubeTriangles)
-for tri in cubeMesh.getMesh():
-    tri.getVertice0().setZ(tri.getVertice0().getZ() + 3)
-    tri.getVertice1().setZ(tri.getVertice1().getZ() + 3)
-    tri.getVertice2().setZ(tri.getVertice2().getZ() + 3)
 
 # Constants needed for projection matrix
-width = 500
-height = 500
 fNear = float(0.1)
 fFar = float(1000.0)
 fFov = float(90.0)
 fAspectRatio = float(height) / float(width)
-fFovRad = float(1.0) / tan(fFov * float(0.5) / float(180.0) * pi)
+fFovRad = atan(radians(fFov * float(0.5)))
 
 # Projection matrix created and filled correctly
 matProj = Mat4x4()
-matProj.setIndex(0, 0, (fAspectRatio * fFovRad))
-matProj.setIndex(1, 1, (fFovRad))
-matProj.setIndex(2, 2, (fFar / (fFar - fNear)))
+matProj.setIndex(0, 0, fAspectRatio * fFovRad)
+matProj.setIndex(1, 1, fFovRad)
+matProj.setIndex(2, 2, fFar / (fFar - fNear))
 matProj.setIndex(3, 2, (-fFar * fNear) / (fFar - fNear))
 matProj.setIndex(2,3, 1)
 matProj.setIndex(3,3, 0)
 
-# Projects cubes points to correct positions from projection matrix
-def getProjectedCube(fTheta):
-    fTheta += 1.0 * elapsedTime
+# Multiplies matrices together
+def multiplyMatrixVector(vector, matrix):
+    resultVector = vec3d()
 
+    resultVector.setX(vector.getX() * matrix.getIndex(0,0) + vector.getY() * matrix.getIndex(1,0) + vector.getZ() * matrix.getIndex(2,0) + matrix.getIndex(3,0))
+    resultVector.setY(vector.getX() * matrix.getIndex(0,1) + vector.getY() * matrix.getIndex(1,1) + vector.getZ() * matrix.getIndex(2,1) + matrix.getIndex(3,1))
+    resultVector.setZ(vector.getX() * matrix.getIndex(0,2) + vector.getY() * matrix.getIndex(1,2) + vector.getZ() * matrix.getIndex(2,2) + matrix.getIndex(3,2))
+    w = vector.getX() * matrix.getIndex(0,3) + vector.getY() + matrix.getIndex(1,3) + vector.getZ() + matrix.getIndex(2,3) + matrix.getIndex(3,3)
+
+    if (w != 0.0):
+        resultVector.setX(resultVector.getX() / w)
+        resultVector.setY(resultVector.getY() / w)
+        resultVector.setZ(resultVector.getZ() / w)
+    return resultVector
+
+# Projects cubes points to correct positions from projection matrix
+def getProjectedCube():
     #########################################
     #########################################
     # Here's where errors are being produced
@@ -88,29 +83,40 @@ def getProjectedCube(fTheta):
     matRotX = Mat4x4()
     matRotZ = Mat4x4()
 
-    matRotX.setIndex(0,0, 1)
-    matRotX.setIndex(1,1, cos(fTheta * 0.5))
-    matRotX.setIndex(1,2, sin(fTheta * 0.5))
-    matRotX.setIndex(2,1, (-1 * sin(fTheta * 0.5)))
-    matRotX.setIndex(2,2, cos(fTheta * 0.5))
-    matRotX.setIndex(3,3, 1)
-
     matRotZ.setIndex(0,0, cos(fTheta))
-    matRotZ.setIndex(0,1, sin(fTheta))
-    matRotZ.setIndex(1,0, -sin(fTheta))
+    matRotZ.setIndex(0,1, -sin(fTheta))
+    matRotZ.setIndex(1,0, sin(fTheta))
     matRotZ.setIndex(1,1, cos(fTheta))
-    matRotZ.setIndex(2,2, 1)
-    matRotZ.setIndex(3,3, 1)
+
+    matRotX.setIndex(1,1, cos(fTheta * float(0.5)))
+    matRotX.setIndex(1,2, sin(fTheta * float(0.5)))
+    matRotX.setIndex(2,1, -sin(fTheta * float(0.5)))
+    matRotX.setIndex(2,2, cos(fTheta * float(0.5)))
+
     #########################################
     #########################################
 
     for tri in cubeMesh.getMesh():
         triRotatedZ, triRotatedZX, triProjected= Triangle(), Triangle(), Triangle()
 
+        triRotatedZ.setVertice0(multiplyMatrixVector(tri.getVertice0(), matRotZ))
+        triRotatedZ.setVertice1(multiplyMatrixVector(tri.getVertice1(), matRotZ))
+        triRotatedZ.setVertice2(multiplyMatrixVector(tri.getVertice2(), matRotZ))
+
+        triRotatedZX.setVertice0(multiplyMatrixVector(triRotatedZ.getVertice0(), matRotX))
+        triRotatedZX.setVertice1(multiplyMatrixVector(triRotatedZ.getVertice1(), matRotX))
+        triRotatedZX.setVertice2(multiplyMatrixVector(triRotatedZ.getVertice2(), matRotX))
+
+        triTranslated = triRotatedZX
+        triTranslated.getVertice0().setZ(triRotatedZX.getVertice0().getZ() + 3)
+        triTranslated.getVertice1().setZ(triRotatedZX.getVertice1().getZ() + 3)
+        triTranslated.getVertice2().setZ(triRotatedZX.getVertice2().getZ() + 3)
+        
+
         # Project triangles from 3D --> 2D
-        triProjected.setVertice0(multiplyMatrixVector(tri.getVertice0(), matProj))
-        triProjected.setVertice1(multiplyMatrixVector(tri.getVertice1(), matProj))
-        triProjected.setVertice2(multiplyMatrixVector(tri.getVertice2(), matProj))
+        triProjected.setVertice0(multiplyMatrixVector(triTranslated.getVertice0(), matProj))
+        triProjected.setVertice1(multiplyMatrixVector(triTranslated.getVertice1(), matProj))
+        triProjected.setVertice2(multiplyMatrixVector(triTranslated.getVertice2(), matProj))
 
         # Scale into view
         triProjected.getVertice0().setX(triProjected.getVertice0().getX() + 1)
@@ -143,8 +149,9 @@ while running:
             running = False
     
     screen.fill((0, 0, 0))
-    getProjectedCube(fTheta)
+    getProjectedCube()
 
     pygame.display.flip()
     time.sleep(.025)
     elapsedTime += .025
+    fTheta = 1.0 * elapsedTime

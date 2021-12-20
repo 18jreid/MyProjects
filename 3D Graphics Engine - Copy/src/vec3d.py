@@ -1,9 +1,5 @@
 class vec3d:
-    x = None
-    y = None
-    z = None
-
-    def __init__(self, x, y ,z) -> None:
+    def __init__(self, x=0, y=0 ,z=0) -> None:
         self.x = x
         self.y = y
         self.z = z
@@ -22,6 +18,9 @@ class vec3d:
     
     def getZ(self):
         return self.z
+
+    def addOntoZ(self, num):
+        self.z += num
     
     def setZ(self, v):
         self.z = v

@@ -1,7 +1,10 @@
 class Mesh:
-    triangles = []
+    def __init__(self, listOfTriangles=[]):
+        self.triangles = []
 
-    def __init__(self, listOfTriangles) -> None:
+        self.setTriangleList(listOfTriangles)
+    
+    def setTriangleList(self, listOfTriangles):
         for x in listOfTriangles:
             self.triangles.append(x)
 
