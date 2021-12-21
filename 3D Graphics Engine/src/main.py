@@ -56,8 +56,8 @@ fTheta:float = 0.0
 fNear:float = 0.1
 fFar:float = 1000.0
 fFov:float = 90.0
-fAspectRatio:float = screen_height / screen_width
-fFovRad:float = 1.0 / math.tan(fFov * 0.5 / 180.0 * 3.14159)
+fAspectRatio:float = (screen_height / screen_width)
+fFovRad:float = math.atan(math.radians(fFov * 0.5))
 
 matProj:Mat4x4 = Mat4x4()
 matProj.setIndex(0,0, fAspectRatio * fFovRad)
@@ -93,6 +93,7 @@ while running:
     # Rotation Matrices
     matRotZ:Mat4x4 = Mat4x4()
     matRotX:Mat4x4 = Mat4x4()
+    matRotY:Mat4x4 = Mat4x4()
     fTheta = 1.0 * elapsedTime
 
     # Z ROT
@@ -131,23 +132,39 @@ while running:
     matRotX.setIndex(3,2, 0)
     matRotX.setIndex(3,3, 1)
 
+    matRotY.setIndex(0,0, math.cos(fTheta))
+    matRotY.setIndex(0,1, 0)
+    matRotY.setIndex(0,2, math.sin(fTheta))
+    matRotY.setIndex(0,3, 0)
+    matRotY.setIndex(1,0, 0)
+    matRotY.setIndex(1,1, 1)
+    matRotY.setIndex(1,2, 0)
+    matRotY.setIndex(1,3, 0)
+    matRotY.setIndex(2,0, -math.sin(fTheta))
+    matRotY.setIndex(2,1, 0)
+    matRotY.setIndex(2,2, math.cos(fTheta))
+    matRotY.setIndex(2,3, 0)
+    matRotY.setIndex(3,0, 0)
+    matRotY.setIndex(3,1, 0)
+    matRotY.setIndex(3,2, 0)
+    matRotY.setIndex(3,3, 1)
+
     # Draw Triangles
     for tri in meshCube.getMesh():
         triProjected, triTranslated, triRotatedZ, triRotatedZX = Triangle(), Triangle(), Triangle(), Triangle()
 
-        multiplyMatrixVector(tri.getV0(), triRotatedZ.getV0(), matRotZ)
-        multiplyMatrixVector(tri.getV1(), triRotatedZ.getV1(), matRotZ)
-        multiplyMatrixVector(tri.getV2(), triRotatedZ.getV2(), matRotZ)
-
-        multiplyMatrixVector(triRotatedZ.getV0(), triRotatedZX.getV0(), matRotX)
-        multiplyMatrixVector(triRotatedZ.getV1(), triRotatedZX.getV1(), matRotX)
-        multiplyMatrixVector(triRotatedZ.getV2(), triRotatedZX.getV2(), matRotX)
+        multiplyMatrixVector(tri.getV0(), triRotatedZ.getV0(), matRotY)
+        multiplyMatrixVector(tri.getV1(), triRotatedZ.getV1(), matRotY)
+        multiplyMatrixVector(tri.getV2(), triRotatedZ.getV2(), matRotY)
 
 
-        triTranslated = triRotatedZX
-        triTranslated.getV0().setZ(triRotatedZX.getV0().getZ() + 6)
-        triTranslated.getV1().setZ(triRotatedZX.getV1().getZ() + 6)
-        triTranslated.getV2().setZ(triRotatedZX.getV2().getZ() + 6)
+        triTranslated = triRotatedZ
+        triTranslated.getV0().setZ(triRotatedZ.getV0().getZ() + 4)
+        triTranslated.getV1().setZ(triRotatedZ.getV1().getZ() + 4)
+        triTranslated.getV2().setZ(triRotatedZ.getV2().getZ() + 4)
+        triTranslated.getV0().setY(triRotatedZ.getV0().getY() + 1)
+        triTranslated.getV1().setY(triRotatedZ.getV1().getY() + 1)
+        triTranslated.getV2().setY(triRotatedZ.getV2().getY() + 1)
 
         # Project triangles from 3D --> 2D
         multiplyMatrixVector(triTranslated.getV0(), triProjected.getV0(), matProj)
