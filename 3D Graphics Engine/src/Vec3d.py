@@ -1,5 +1,5 @@
 class Vec3d:
-    def __init__(self, x:float=0.0, y:float=0.0, z:float=0.0):
+    def __init__(self, x:float, y:float, z:float):
         self.__x : float = x
         self.__y : float = y
         self.__z : float = z

@@ -1,4 +1,5 @@
 import pygame
+from pygame.version import rev
 from Mat4x4 import Mat4x4
 from Vec3d import Vec3d
 from Triangle import Triangle
@@ -20,16 +21,22 @@ def multiplyMatrixVector(input:Vec3d, output:Vec3d, matrix:Mat4x4) -> None:
         output.setZ(output.getZ() / w)
 
 # Draws object specified
-def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d()):
+def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d(0,0,0)):
     for tri in mesh.getMesh():
-        triProjected, triTranslated, triRotatedZ, triRotatedZX, triRotatedZXY, triIdentity = Triangle(), Triangle(), Triangle(), Triangle(), Triangle(), Triangle()
+        triProjected = Triangle(Vec3d(1,1,1), Vec3d(1,1,1), Vec3d(1,1,1))
+        triTranslated = Triangle(Vec3d(1,1,1), Vec3d(1,1,1), Vec3d(1,1,1))
+        triRotatedZ = Triangle(Vec3d(1,1,1), Vec3d(1,1,1), Vec3d(1,1,1))
+        triRotatedZX = Triangle(Vec3d(1,1,1), Vec3d(1,1,1), Vec3d(1,1,1))
 
+        # Rotate object
         multiplyMatrixVector(tri.getV0(), triRotatedZ.getV0(), matRotZ)
         multiplyMatrixVector(tri.getV1(), triRotatedZ.getV1(), matRotZ)
         multiplyMatrixVector(tri.getV2(), triRotatedZ.getV2(), matRotZ)
-        multiplyMatrixVector(triRotatedZ.getV0(), triRotatedZX.getV0(), matRotX)
-        multiplyMatrixVector(triRotatedZ.getV1(), triRotatedZX.getV1(), matRotX)
-        multiplyMatrixVector(triRotatedZ.getV2(), triRotatedZX.getV2(), matRotX)
+        multiplyMatrixVector(triRotatedZ.getV0(), triRotatedZX.getV0(), matRotY)
+        multiplyMatrixVector(triRotatedZ.getV1(), triRotatedZX.getV1(), matRotY)
+        multiplyMatrixVector(triRotatedZ.getV2(), triRotatedZX.getV2(), matRotY)
+
+        # Add coordinate offset
         triTranslated = triRotatedZX
         triTranslated.getV0().setZ(triRotatedZX.getV0().getZ() + zOffset)
         triTranslated.getV1().setZ(triRotatedZX.getV1().getZ() + zOffset)
@@ -41,7 +48,10 @@ def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d()):
         triTranslated.getV1().setX(triRotatedZX.getV1().getX() + xOffset)
         triTranslated.getV2().setX(triRotatedZX.getV2().getX() + xOffset)
 
-        normal, line1, line2 = Vec3d(), Vec3d(), Vec3d() 
+        # Calculate normal vector for drawing of faces
+        normal = Vec3d(1,1,1)
+        line1 = Vec3d(1,1,1)
+        line2 = Vec3d(1,1,1)
         line1.setX(triTranslated.getV1().getX() - triTranslated.getV0().getX())
         line1.setY(triTranslated.getV1().getY() - triTranslated.getV0().getY())
         line1.setZ(triTranslated.getV1().getZ() - triTranslated.getV0().getZ())
@@ -59,8 +69,7 @@ def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d()):
         normal.setY(normal.getY() / length)
         normal.setZ(normal.getZ() / length)
 
-        trianglesToRaster:Triangle() = []
-        # if (normal.getZ() < 0):
+        trianglesToRaster:list[Triangle] = []
         if (normal.getX() * (triTranslated.getV0().getX() - vCamera.getX()) + normal.getY() * (triTranslated.getV0().getY() - vCamera.getY()) + normal.getZ() * (triTranslated.getV0().getZ() - vCamera.getZ()) < 0):
             # Illumination
             light_direction = Vec3d(0,0, -1)
@@ -92,9 +101,12 @@ def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d()):
             triProjected.getV2().setY(triProjected.getV2().getY() * float(0.5) * screen_height)
 
             trianglesToRaster.append(triProjected)
+        
+
+        # Sort triangles by order to be drawn
         testDraw(trianglesToRaster)
 
-def testDraw(triangles): 
+def testDraw(triangles:list[Triangle]):
     for x in triangles:
         pygame.draw.polygon(screen, (255 * x.getDp(), 255 * x.getDp() , 255 * x.getDp()), 
                 [(x.getV0().getX(), x.getV0().getY()), 
@@ -117,51 +129,61 @@ screenSize = pygame.display.Info()
 screen_width:float = screenSize.current_w * .75
 screen_height:float = screenSize.current_h * .75
 
-# # Points for cube
-# cubeTriangles = [
-#     # SOUTH FACE
-#     Triangle(Vec3d(0,0,0), Vec3d(0,1,0), Vec3d(1,1,0)),
-#     Triangle(Vec3d(0,0,0), Vec3d(1,1,0), Vec3d(1,0,0)),
+# Points for cube
+cubeTriangles = [
+    # SOUTH FACE
+    Triangle(Vec3d(0,0,0), Vec3d(0,1,0), Vec3d(1,1,0)),
+    Triangle(Vec3d(0,0,0), Vec3d(1,1,0), Vec3d(1,0,0)),
 
-#     # EAST FACE
-#     Triangle(Vec3d(1,0,0), Vec3d(1,1,0), Vec3d(1,1,1)),
-#     Triangle(Vec3d(1,0,0), Vec3d(1,1,1), Vec3d(1,0,1)),
+    # EAST FACE
+    Triangle(Vec3d(1,0,0), Vec3d(1,1,0), Vec3d(1,1,1)),
+    Triangle(Vec3d(1,0,0), Vec3d(1,1,1), Vec3d(1,0,1)),
 
-#     # NORTH FACE
-#     Triangle(Vec3d(1,0,1), Vec3d(1,1,1), Vec3d(0,1,1)),
-#     Triangle(Vec3d(1,0,1), Vec3d(0,1,1), Vec3d(0,0,1)),
+    # NORTH FACE
+    Triangle(Vec3d(1,0,1), Vec3d(1,1,1), Vec3d(0,1,1)),
+    Triangle(Vec3d(1,0,1), Vec3d(0,1,1), Vec3d(0,0,1)),
 
-#     # WEST FACE
-#     Triangle(Vec3d(0,0,1), Vec3d(0,1,1), Vec3d(0,1,0)),
-#     Triangle(Vec3d(0,0,1), Vec3d(0,1,0), Vec3d(0,0,0)),
+    # WEST FACE
+    Triangle(Vec3d(0,0,1), Vec3d(0,1,1), Vec3d(0,1,0)),
+    Triangle(Vec3d(0,0,1), Vec3d(0,1,0), Vec3d(0,0,0)),
 
-#     # TOP FACE
-#     Triangle(Vec3d(0,1,0), Vec3d(0,1,1), Vec3d(1,1,1)),
-#     Triangle(Vec3d(0,1,0), Vec3d(1,1,1), Vec3d(1,1,0)),
+    # TOP FACE
+    Triangle(Vec3d(0,1,0), Vec3d(0,1,1), Vec3d(1,1,1)),
+    Triangle(Vec3d(0,1,0), Vec3d(1,1,1), Vec3d(1,1,0)),
 
-#     # BOTTOM FACE
-#     Triangle(Vec3d(1,0,1), Vec3d(0,0,1), Vec3d(0,0,0)),
-#     Triangle(Vec3d(1,0,1), Vec3d(0,0,0), Vec3d(1,0,0))
-# ]
+    # BOTTOM FACE
+    Triangle(Vec3d(1,0,1), Vec3d(0,0,1), Vec3d(0,0,0)),
+    Triangle(Vec3d(1,0,1), Vec3d(0,0,0), Vec3d(1,0,0))
+]
 
 meshCube = Mesh()
 meshCube.loadFromObjectFile("MyPlane.obj")
 fTheta:float = 0.0
-vCamera:Vec3d() = Vec3d(0, 0, 0)
+vCamera:Vec3d = Vec3d(0, 0, 0)
 
 # Projection Matrix Constants
 fNear:float = 0.1
 fFar:float = 1000.0
-fFov:float = 180
+fFov:float = 90
 fAspectRatio:float = (screen_height / screen_width)
 fFovRad:float = 1 / math.tan(((fFov * 0.5) / (180.0 * math.pi)))
 
 matProj:Mat4x4 = Mat4x4()
 matProj.setIndex(0,0, (fAspectRatio * fFovRad))
+matProj.setIndex(0,1, 0)
+matProj.setIndex(0,2, 0)
+matProj.setIndex(0,3, 0)
+matProj.setIndex(1,0, 0)
 matProj.setIndex(1,1, fFovRad)
-matProj.setIndex(2,2, (fFar) / (fFar - fNear))
+matProj.setIndex(1,2, 0)
+matProj.setIndex(1,3, 0)
+matProj.setIndex(2,0, 0)
+matProj.setIndex(2,1, 0)
+matProj.setIndex(2,2, (fFar + fNear) / (fFar - fNear))
 matProj.setIndex(2,3, 1)
-matProj.setIndex(3,2, (-fFar * fNear) / (fFar - fNear))
+matProj.setIndex(3,0, 0)
+matProj.setIndex(3,1, 0)
+matProj.setIndex(3,2, (2 * fNear * fFar) / (fNear - fFar))
 matProj.setIndex(3,3, 0)
 
 ### ON USER UPDATE
@@ -196,13 +218,12 @@ while running:
     matRotX.setIndex(2,2, math.cos(fTheta * 0.5))
 
     # Y ROT
-    matRotY.setIndex(0,0, math.cos(fTheta))
-    matRotY.setIndex(0,2, -math.sin(fTheta))
-    matRotY.setIndex(2,0, math.sin(fTheta))
-    matRotY.setIndex(2,2, math.cos(fTheta))
+    matRotY.setIndex(0,0, math.cos(fTheta * 0.5))
+    matRotY.setIndex(0,2, -math.sin(fTheta * 0.5))
+    matRotY.setIndex(2,0, math.sin(fTheta * 0.5))
+    matRotY.setIndex(2,2, math.cos(fTheta * 0.5))
     
-    drawObject(meshCube, 0, 0, 64, vCamera)
-    
+    drawObject(meshCube, 0, 0, 128, vCamera)
 
     pygame.display.flip()
     time.sleep(0.015)
