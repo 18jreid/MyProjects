@@ -5,6 +5,7 @@ from Triangle import Triangle
 from Mesh import Mesh
 import math
 import time
+import operator
 
 # Multiplies a vector and matrix together
 def multiplyMatrixVector(input:Vec3d, output:Vec3d, matrix:Mat4x4) -> None:
@@ -19,81 +20,46 @@ def multiplyMatrixVector(input:Vec3d, output:Vec3d, matrix:Mat4x4) -> None:
         output.setZ(output.getZ() / w)
 
 # Draws object specified
-def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, applyRotation=True, vCamera=Vec3d()):
+def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d()):
     for tri in mesh.getMesh():
         triProjected, triTranslated, triRotatedZ, triRotatedZX, triRotatedZXY, triIdentity = Triangle(), Triangle(), Triangle(), Triangle(), Triangle(), Triangle()
 
-        if applyRotation:
-            # Apply rotations
-            multiplyMatrixVector(tri.getV0(), triRotatedZ.getV0(), matRotZ)
-            multiplyMatrixVector(tri.getV1(), triRotatedZ.getV1(), matRotZ)
-            multiplyMatrixVector(tri.getV2(), triRotatedZ.getV2(), matRotZ)
-            multiplyMatrixVector(triRotatedZ.getV0(), triRotatedZX.getV0(), matRotX)
-            multiplyMatrixVector(triRotatedZ.getV1(), triRotatedZX.getV1(), matRotX)
-            multiplyMatrixVector(triRotatedZ.getV2(), triRotatedZX.getV2(), matRotX)
-            
+        multiplyMatrixVector(tri.getV0(), triRotatedZ.getV0(), matRotZ)
+        multiplyMatrixVector(tri.getV1(), triRotatedZ.getV1(), matRotZ)
+        multiplyMatrixVector(tri.getV2(), triRotatedZ.getV2(), matRotZ)
+        multiplyMatrixVector(triRotatedZ.getV0(), triRotatedZX.getV0(), matRotX)
+        multiplyMatrixVector(triRotatedZ.getV1(), triRotatedZX.getV1(), matRotX)
+        multiplyMatrixVector(triRotatedZ.getV2(), triRotatedZX.getV2(), matRotX)
+        triTranslated = triRotatedZX
+        triTranslated.getV0().setZ(triRotatedZX.getV0().getZ() + zOffset)
+        triTranslated.getV1().setZ(triRotatedZX.getV1().getZ() + zOffset)
+        triTranslated.getV2().setZ(triRotatedZX.getV2().getZ() + zOffset)
+        triTranslated.getV0().setY(triRotatedZX.getV0().getY() + yOffset)
+        triTranslated.getV1().setY(triRotatedZX.getV1().getY() + yOffset)
+        triTranslated.getV2().setY(triRotatedZX.getV2().getY() + yOffset)
+        triTranslated.getV0().setX(triRotatedZX.getV0().getX() + xOffset)
+        triTranslated.getV1().setX(triRotatedZX.getV1().getX() + xOffset)
+        triTranslated.getV2().setX(triRotatedZX.getV2().getX() + xOffset)
 
-            triTranslated = triRotatedZX
-            triTranslated.getV0().setZ(triRotatedZX.getV0().getZ() + zOffset)
-            triTranslated.getV1().setZ(triRotatedZX.getV1().getZ() + zOffset)
-            triTranslated.getV2().setZ(triRotatedZX.getV2().getZ() + zOffset)
-            triTranslated.getV0().setY(triRotatedZX.getV0().getY() + yOffset)
-            triTranslated.getV1().setY(triRotatedZX.getV1().getY() + yOffset)
-            triTranslated.getV2().setY(triRotatedZX.getV2().getY() + yOffset)
-            triTranslated.getV0().setX(triRotatedZX.getV0().getX() + xOffset)
-            triTranslated.getV1().setX(triRotatedZX.getV1().getX() + xOffset)
-            triTranslated.getV2().setX(triRotatedZX.getV2().getX() + xOffset)
+        normal, line1, line2 = Vec3d(), Vec3d(), Vec3d() 
+        line1.setX(triTranslated.getV1().getX() - triTranslated.getV0().getX())
+        line1.setY(triTranslated.getV1().getY() - triTranslated.getV0().getY())
+        line1.setZ(triTranslated.getV1().getZ() - triTranslated.getV0().getZ())
 
-            normal, line1, line2 = Vec3d(), Vec3d(), Vec3d() 
-            line1.setX(triTranslated.getV1().getX() - triTranslated.getV0().getX())
-            line1.setY(triTranslated.getV1().getY() - triTranslated.getV0().getY())
-            line1.setZ(triTranslated.getV1().getZ() - triTranslated.getV0().getZ())
+        line2.setX(triTranslated.getV2().getX() - triTranslated.getV0().getX())
+        line2.setY(triTranslated.getV2().getY() - triTranslated.getV0().getY())
+        line2.setZ(triTranslated.getV2().getZ() - triTranslated.getV0().getZ())
 
-            line2.setX(triTranslated.getV2().getX() - triTranslated.getV0().getX())
-            line2.setY(triTranslated.getV2().getY() - triTranslated.getV0().getY())
-            line2.setZ(triTranslated.getV2().getZ() - triTranslated.getV0().getZ())
+        normal.setX(line1.getY() * line2.getZ() - line1.getZ() * line2.getY())
+        normal.setY(line1.getZ() * line2.getX() - line1.getX() * line2.getZ())
+        normal.setZ(line1.getX() * line2.getY() - line1.getY() * line2.getX())
 
-            normal.setX(line1.getY() * line2.getZ() - line1.getZ() * line2.getY())
-            normal.setY(line1.getZ() * line2.getX() - line1.getX() * line2.getZ())
-            normal.setZ(line1.getX() * line2.getY() - line1.getY() * line2.getX())
+        length = math.sqrt(math.pow(normal.getX(), 2) + math.pow(normal.getY(), 2) + math.pow(normal.getZ(), 2))
+        normal.setX(normal.getX() / length)
+        normal.setY(normal.getY() / length)
+        normal.setZ(normal.getZ() / length)
 
-            length = math.sqrt(math.pow(normal.getX(), 2) + math.pow(normal.getY(), 2) + math.pow(normal.getZ(), 2))
-            normal.setX(normal.getX() / length)
-            normal.setY(normal.getY() / length)
-            normal.setZ(normal.getZ() / length)
-        else:
-            multiplyMatrixVector(tri.getV0(), triIdentity.getV0(), Mat4x4())
-            multiplyMatrixVector(tri.getV1(), triIdentity.getV1(), Mat4x4())
-            multiplyMatrixVector(tri.getV2(), triIdentity.getV2(), Mat4x4())
-            triTranslated = triIdentity
-            triTranslated.getV0().setZ(triIdentity.getV0().getZ() + zOffset)
-            triTranslated.getV1().setZ(triIdentity.getV1().getZ() + zOffset)
-            triTranslated.getV2().setZ(triIdentity.getV2().getZ() + zOffset)
-            triTranslated.getV0().setY(triIdentity.getV0().getY() + yOffset)
-            triTranslated.getV1().setY(triIdentity.getV1().getY() + yOffset)
-            triTranslated.getV2().setY(triIdentity.getV2().getY() + yOffset)
-            triTranslated.getV0().setX(triIdentity.getV0().getX() + xOffset)
-            triTranslated.getV1().setX(triIdentity.getV1().getX() + xOffset)
-            triTranslated.getV2().setX(triIdentity.getV2().getX() + xOffset)
-
-            normal, line1, line2 = Vec3d(), Vec3d(), Vec3d() 
-            line1.setX(triTranslated.getV1().getX() - triTranslated.getV0().getX())
-            line1.setY(triTranslated.getV1().getY() - triTranslated.getV0().getY())
-            line1.setZ(triTranslated.getV1().getZ() - triTranslated.getV0().getZ())
-
-            line2.setX(triTranslated.getV2().getX() - triTranslated.getV0().getX())
-            line2.setY(triTranslated.getV2().getY() - triTranslated.getV0().getY())
-            line2.setZ(triTranslated.getV2().getZ() - triTranslated.getV0().getZ())
-
-            normal.setX(line1.getY() * line2.getZ() - line1.getZ() * line2.getY())
-            normal.setY(line1.getZ() * line2.getX() - line1.getX() * line2.getZ())
-            normal.setZ(line1.getX() * line2.getY() - line1.getY() * line2.getX())
-
-            length = math.sqrt(math.pow(normal.getX(), 2) + math.pow(normal.getY(), 2) + math.pow(normal.getZ(), 2))
-            normal.setX(normal.getX() / length)
-            normal.setY(normal.getY() / length)
-            normal.setZ(normal.getZ() / length)
-        
+        trianglesToRaster:Triangle() = []
         # if (normal.getZ() < 0):
         if (normal.getX() * (triTranslated.getV0().getX() - vCamera.getX()) + normal.getY() * (triTranslated.getV0().getY() - vCamera.getY()) + normal.getZ() * (triTranslated.getV0().getZ() - vCamera.getZ()) < 0):
             # Illumination
@@ -103,90 +69,92 @@ def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, applyRotation=True, vCamer
             light_direction.setY(light_direction.getY() / length)
             light_direction.setZ(light_direction.getZ() / length)
             dp = normal.getX() * light_direction.getX() + normal.getY() * light_direction.getY() + normal.getZ() * light_direction.getZ()
+            triProjected.setDp(dp)
 
-            if (dp > 0):
-                # Project triangles from 3D --> 2D
-                multiplyMatrixVector(triTranslated.getV0(), triProjected.getV0(), matProj)
-                multiplyMatrixVector(triTranslated.getV1(), triProjected.getV1(), matProj)
-                multiplyMatrixVector(triTranslated.getV2(), triProjected.getV2(), matProj)
-                # Scale into view
-                triProjected.getV0().setX(triProjected.getV0().getX() + 1.0)
-                triProjected.getV0().setY(triProjected.getV0().getY() + 1.0)
-                triProjected.getV1().setX(triProjected.getV1().getX() + 1.0)
-                triProjected.getV1().setY(triProjected.getV1().getY() + 1.0)
-                triProjected.getV2().setX(triProjected.getV2().getX() + 1.0)
-                triProjected.getV2().setY(triProjected.getV2().getY() + 1.0)
+            # Project triangles from 3D --> 2D
+            multiplyMatrixVector(triTranslated.getV0(), triProjected.getV0(), matProj)
+            multiplyMatrixVector(triTranslated.getV1(), triProjected.getV1(), matProj)
+            multiplyMatrixVector(triTranslated.getV2(), triProjected.getV2(), matProj)
 
-                xScale = float(0.5) * screen_width
-                yScale = float(0.5) * screen_height
-                triProjected.getV0().setX(triProjected.getV0().getX() * xScale)
-                triProjected.getV0().setY(triProjected.getV0().getY() * yScale)
-                triProjected.getV1().setX(triProjected.getV1().getX() * xScale)
-                triProjected.getV1().setY(triProjected.getV1().getY() * yScale)
-                triProjected.getV2().setX(triProjected.getV2().getX() * xScale)
-                triProjected.getV2().setY(triProjected.getV2().getY() * yScale)
+            # Scale into view
+            triProjected.getV0().setX(triProjected.getV0().getX() + 1.0)
+            triProjected.getV0().setY(triProjected.getV0().getY() + 1.0)
+            triProjected.getV1().setX(triProjected.getV1().getX() + 1.0)
+            triProjected.getV1().setY(triProjected.getV1().getY() + 1.0)
+            triProjected.getV2().setX(triProjected.getV2().getX() + 1.0)
+            triProjected.getV2().setY(triProjected.getV2().getY() + 1.0)
 
-                pygame.draw.polygon(screen, (abs(255 * dp),abs(255 * dp),abs(255 * dp)), 
-                [(triProjected.getV0().getX(), triProjected.getV0().getY()), 
-                (triProjected.getV1().getX(), triProjected.getV1().getY()),
-                (triProjected.getV2().getX(), triProjected.getV2().getY()),
-                (triProjected.getV0().getX(), triProjected.getV0().getY())],
+            triProjected.getV0().setX(triProjected.getV0().getX() * float(0.5) * screen_width)
+            triProjected.getV0().setY(triProjected.getV0().getY() * float(0.5) * screen_height)
+            triProjected.getV1().setX(triProjected.getV1().getX() * float(0.5) * screen_width)
+            triProjected.getV1().setY(triProjected.getV1().getY() * float(0.5) * screen_height)
+            triProjected.getV2().setX(triProjected.getV2().getX() * float(0.5) * screen_width)
+            triProjected.getV2().setY(triProjected.getV2().getY() * float(0.5) * screen_height)
+
+            trianglesToRaster.append(triProjected)
+        testDraw(trianglesToRaster)
+
+def testDraw(triangles): 
+    for x in triangles:
+        pygame.draw.polygon(screen, (255 * x.getDp(), 255 * x.getDp() , 255 * x.getDp()), 
+                [(x.getV0().getX(), x.getV0().getY()), 
+                (x.getV1().getX(), x.getV1().getY()),
+                (x.getV2().getX(), x.getV2().getY()),
+                (x.getV0().getX(), x.getV0().getY())],
                 0)
-
-                pygame.draw.line(screen, (0,0,0),
-                                (triProjected.getV0().getX(), triProjected.getV0().getY()),
-                                (triProjected.getV1().getX(), triProjected.getV1().getY()), 3)
-                pygame.draw.line(screen, (0,0,0),
-                                (triProjected.getV1().getX(), triProjected.getV1().getY()),
-                                (triProjected.getV2().getX(), triProjected.getV2().getY()), 3)
-                pygame.draw.line(screen, (0,0,0),
-                                (triProjected.getV2().getX(), triProjected.getV2().getY()),
-                                (triProjected.getV0().getX(), triProjected.getV0().getY()), 3)
-            
-
-### ON USER CREATE
+        pygame.draw.line(screen, (0,0,0),
+                        (x.getV0().getX(), x.getV0().getY()),
+                        (x.getV1().getX(), x.getV1().getY()), 3)
+        pygame.draw.line(screen, (0,0,0),
+                        (x.getV1().getX(), x.getV1().getY()),
+                        (x.getV2().getX(), x.getV2().getY()), 3)
+        pygame.draw.line(screen, (0,0,0),
+                        (x.getV2().getX(), x.getV2().getY()),
+                        (x.getV0().getX(), x.getV0().getY()), 3)
+### ON USER x
 pygame.init()
 screenSize = pygame.display.Info()
 screen_width:float = screenSize.current_w * .75
 screen_height:float = screenSize.current_h * .75
 
-# Points for cube
-cubeTriangles = [
-    # SOUTH FACE
-    Triangle(Vec3d(0,0,0), Vec3d(0,1,0), Vec3d(1,1,0)),
-    Triangle(Vec3d(0,0,0), Vec3d(1,1,0), Vec3d(1,0,0)),
+# # Points for cube
+# cubeTriangles = [
+#     # SOUTH FACE
+#     Triangle(Vec3d(0,0,0), Vec3d(0,1,0), Vec3d(1,1,0)),
+#     Triangle(Vec3d(0,0,0), Vec3d(1,1,0), Vec3d(1,0,0)),
 
-    # EAST FACE
-    Triangle(Vec3d(1,0,0), Vec3d(1,1,0), Vec3d(1,1,1)),
-    Triangle(Vec3d(1,0,0), Vec3d(1,1,1), Vec3d(1,0,1)),
+#     # EAST FACE
+#     Triangle(Vec3d(1,0,0), Vec3d(1,1,0), Vec3d(1,1,1)),
+#     Triangle(Vec3d(1,0,0), Vec3d(1,1,1), Vec3d(1,0,1)),
 
-    # NORTH FACE
-    Triangle(Vec3d(1,0,1), Vec3d(1,1,1), Vec3d(0,1,1)),
-    Triangle(Vec3d(1,0,1), Vec3d(0,1,1), Vec3d(0,0,1)),
+#     # NORTH FACE
+#     Triangle(Vec3d(1,0,1), Vec3d(1,1,1), Vec3d(0,1,1)),
+#     Triangle(Vec3d(1,0,1), Vec3d(0,1,1), Vec3d(0,0,1)),
 
-    # WEST FACE
-    Triangle(Vec3d(0,0,1), Vec3d(0,1,1), Vec3d(0,1,0)),
-    Triangle(Vec3d(0,0,1), Vec3d(0,1,0), Vec3d(0,0,0)),
+#     # WEST FACE
+#     Triangle(Vec3d(0,0,1), Vec3d(0,1,1), Vec3d(0,1,0)),
+#     Triangle(Vec3d(0,0,1), Vec3d(0,1,0), Vec3d(0,0,0)),
 
-    # TOP FACE
-    Triangle(Vec3d(0,1,0), Vec3d(0,1,1), Vec3d(1,1,1)),
-    Triangle(Vec3d(0,1,0), Vec3d(1,1,1), Vec3d(1,1,0)),
+#     # TOP FACE
+#     Triangle(Vec3d(0,1,0), Vec3d(0,1,1), Vec3d(1,1,1)),
+#     Triangle(Vec3d(0,1,0), Vec3d(1,1,1), Vec3d(1,1,0)),
 
-    # BOTTOM FACE
-    Triangle(Vec3d(1,0,1), Vec3d(0,0,1), Vec3d(0,0,0)),
-    Triangle(Vec3d(1,0,1), Vec3d(0,0,0), Vec3d(1,0,0))
-]
+#     # BOTTOM FACE
+#     Triangle(Vec3d(1,0,1), Vec3d(0,0,1), Vec3d(0,0,0)),
+#     Triangle(Vec3d(1,0,1), Vec3d(0,0,0), Vec3d(1,0,0))
+# ]
 
-meshCube = Mesh(cubeTriangles)
+meshCube = Mesh()
+meshCube.loadFromObjectFile("MyPlane.obj")
 fTheta:float = 0.0
-vCamera:Vec3d() = Vec3d()
+vCamera:Vec3d() = Vec3d(0, 0, 0)
 
 # Projection Matrix Constants
 fNear:float = 0.1
 fFar:float = 1000.0
 fFov:float = 180
 fAspectRatio:float = (screen_height / screen_width)
-fFovRad:float = 1 / math.tan(((fFov * 0.5) / (180.0 * 3.14159)))
+fFovRad:float = 1 / math.tan(((fFov * 0.5) / (180.0 * math.pi)))
 
 matProj:Mat4x4 = Mat4x4()
 matProj.setIndex(0,0, (fAspectRatio * fFovRad))
@@ -213,7 +181,7 @@ while running:
     matRotZ:Mat4x4 = Mat4x4()
     matRotX:Mat4x4 = Mat4x4()
     matRotY:Mat4x4 = Mat4x4()
-    fTheta = elapsedTime * 0.5
+    fTheta = elapsedTime
 
     # Z ROT
     matRotZ.setIndex(0,0, math.cos(fTheta))
@@ -222,21 +190,20 @@ while running:
     matRotZ.setIndex(1,1, math.cos(fTheta))
 
     # X ROT
-    matRotX.setIndex(1,1, math.cos(fTheta))
-    matRotX.setIndex(1,2, math.sin(fTheta))
-    matRotX.setIndex(2,1, -math.sin(fTheta))
-    matRotX.setIndex(2,2, math.cos(fTheta))
+    matRotX.setIndex(1,1, math.cos(fTheta * 0.5))
+    matRotX.setIndex(1,2, math.sin(fTheta * 0.5))
+    matRotX.setIndex(2,1, -math.sin(fTheta * 0.5))
+    matRotX.setIndex(2,2, math.cos(fTheta * 0.5))
 
     # Y ROT
     matRotY.setIndex(0,0, math.cos(fTheta))
     matRotY.setIndex(0,2, -math.sin(fTheta))
     matRotY.setIndex(2,0, math.sin(fTheta))
     matRotY.setIndex(2,2, math.cos(fTheta))
+    
+    drawObject(meshCube, 0, 0, 64, vCamera)
+    
 
-    # Rotating pillar of cubes
-    
-    
-    drawObject(meshCube, 0, 0, 22)
     pygame.display.flip()
     time.sleep(0.015)
     elapsedTime = time.time() - startTime
