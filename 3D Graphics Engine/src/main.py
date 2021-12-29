@@ -165,7 +165,7 @@ cubeTriangles = [
 ]
 
 meshSphere = Mesh()
-meshSphere.loadFromObjectFile("pyramidd.obj")
+meshSphere.loadFromObjectFile("sphere.obj")
 meshCube = Mesh(cubeTriangles)
 meshCone = Mesh()
 meshCone.loadFromObjectFile("cone.obj")
