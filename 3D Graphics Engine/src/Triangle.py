@@ -6,6 +6,7 @@ class Triangle:
         self.__v1: Vec3d = v1
         self.__v2: Vec3d = v2
         self.__dp = 0
+        self.__zPrime = 0
 
     def getV0(self) -> Vec3d:
         return self.__v0
@@ -27,3 +28,9 @@ class Triangle:
             self.__dp = 0
         else:
             self.__dp = value
+
+    def getZPrime(self):
+        return self.__zPrime
+
+    def setZPrime(self, value):
+        self.__zPrime = value

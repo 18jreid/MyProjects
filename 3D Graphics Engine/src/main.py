@@ -6,6 +6,7 @@ from Triangle import Triangle
 from Mesh import Mesh
 import math
 import time
+import random
 
 
 # Multiplies a vector and matrix together
@@ -51,9 +52,9 @@ def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d(0,0,0)):
         triTranslated.getV2().setX(triRotatedZX.getV2().getX() + xOffset + vCamera.getX())
 
         # Calculate normal vector for drawing of faces
-        normal = Vec3d(1,1,1)
-        line1 = Vec3d(1,1,1)
-        line2 = Vec3d(1,1,1)
+        normal = Vec3d(0,0,0)
+        line1 = Vec3d(0,0,0)
+        line2 = Vec3d(0,0,0)
         line1.setX(triTranslated.getV1().getX() - triTranslated.getV0().getX())
         line1.setY(triTranslated.getV1().getY() - triTranslated.getV0().getY())
         line1.setZ(triTranslated.getV1().getZ() - triTranslated.getV0().getZ())
@@ -108,8 +109,7 @@ def drawObject(mesh, xOffset=0, yOffset=0, zOffset=0, vCamera=Vec3d(0,0,0)):
 
 
 def rasterTriangles(triangles:list[Triangle]):
-    # Sort Triangles
-    triangles.sort(key=lambda tri: (tri.getV0().getZ() + tri.getV1().getZ() + tri.getV2().getZ()) / 3)
+    triangles.sort(key=lambda x: ((x.getV0().getZ() + x.getV1().getZ() + x.getV2().getZ()) / 3))
 
     for x in triangles:
         pygame.draw.polygon(screen, (255 * x.getDp(), 255 * x.getDp() , 255 * x.getDp()), 
@@ -164,8 +164,11 @@ cubeTriangles = [
     Triangle(Vec3d(1,0,1), Vec3d(0,0,0), Vec3d(1,0,0))
 ]
 
-meshCube = Mesh()
-meshCube.loadFromObjectFile("MyPlane.obj")
+meshSphere = Mesh()
+meshSphere.loadFromObjectFile("pyramidd.obj")
+meshCube = Mesh(cubeTriangles)
+meshCone = Mesh()
+meshCone.loadFromObjectFile("cone.obj")
 fTheta:float = 0.0
 userPositionX:float = 0
 userPositionY:float = 0
@@ -262,7 +265,9 @@ while running:
         elapsedTime = time.time() - startTime
     else:
         elapsedTime = elapsedTime
-    drawObject(meshCube, 0, 0, 64, vCamera)
+    
+    drawObject(meshSphere, 3, 0, 16, vCamera)
+    drawObject(meshCube, -3, 0, 16, vCamera)
 
     pygame.display.flip()
     time.sleep(0.01)
