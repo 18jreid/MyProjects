@@ -6,7 +6,6 @@ from Triangle import Triangle
 from Mesh import Mesh
 import math
 import time
-import random
 
 
 # Multiplies a vector and matrix together
@@ -171,6 +170,8 @@ myPlane.loadFromObjectFile("MyPlane.obj")
 meshCube = Mesh(cubeTriangles)
 meshCone = Mesh()
 meshCone.loadFromObjectFile("cone.obj")
+meshSphere = Mesh()
+meshSphere.loadFromObjectFile("sphere.obj")
 fTheta:float = 0.0
 userPositionX:float = 0
 userPositionY:float = 0
