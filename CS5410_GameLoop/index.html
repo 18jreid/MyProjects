@@ -1,0 +1,33 @@
+
+    <!doctype html>
+    <html>
+        <head>
+            <title>Game Development - Assignment 1</title>
+            <link rel="stylesheet" href="style.css">
+            <script src="script.js"></script> 
+        </head>
+        <body>
+            <h1 class="title">Browser GameLoop</h1>
+            <div class="grid-container">
+                <div id="console"></div>
+                <div>
+                    <div class="input">
+                        <p style="display: inline-block; margin-right: 1em;">Name: </p>
+                        <input id="eventName" type="text" name="name" value="Event">
+                        <p></p>
+    
+                        <p style="display: inline-block; margin-right: 1em;">Interval: </p>
+                        <input id="eventInterval" type="number" name="interval" step="50" min="50" value="1000">
+                        <p></p>
+    
+                        <p style="display: inline-block; margin-right: 1em;"># Times: </p>
+                        <input id="eventTimes" type="number" name="times" step="1" min="1" value="100">
+                        <p></p>
+    
+                        <button onclick="addEvent()">Add Event</button>
+                    </div>
+                </div>
+            </div>
+            <h1 class="title" style="font-size: 30px;">Created for CS 5410 by Justin Reid</h1>
+        </body>
+    </html>
