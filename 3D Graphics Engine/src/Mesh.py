@@ -26,7 +26,7 @@ class Mesh:
                 vertices.append(vector)
 
             if (lineSplit[0] == 'f'):
-                triangle = Triangle(vertices[int(lineSplit[1]) - 1], vertices[int(lineSplit[2]) - 1], vertices[int(lineSplit[3]) - 1])
+                triangle = Triangle(vertices[int(eval(lineSplit[1])) - 1], vertices[int(eval(lineSplit[2])) - 1], vertices[int(eval(lineSplit[3])) - 1])
                 triangles.append(triangle)
 
         for x in triangles:

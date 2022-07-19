@@ -1,3 +1,4 @@
+from unittest.mock import mock_open
 import pygame
 from pygame.version import rev
 from Mat4x4 import Mat4x4
@@ -166,7 +167,7 @@ cubeTriangles = [
 ]
 
 myPlane = Mesh()
-myPlane.loadFromObjectFile("MyPlane.obj")
+myPlane.loadFromObjectFile("boat.obj")
 meshCube = Mesh(cubeTriangles)
 meshCone = Mesh()
 meshCone.loadFromObjectFile("cone.obj")

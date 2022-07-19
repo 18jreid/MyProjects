@@ -5,7 +5,8 @@ class Deck:
     def __init__(self) -> None:
         # Initialize cards
         self.__cards = []
-        for house in range(0, 4):
+        self.__count = 0
+        for house in range(0, 24):
             for num in range(2, 15):
                 houseName = ""
                 if house == 0:
@@ -27,8 +28,7 @@ class Deck:
             print("You're out of cards!")
         else:
             card = self.__cards.pop()
-            card.printCard()
-            self.getCardCount()
+            self.__count += card.getCount()
             return card
     
     def getCardCount(self):
@@ -44,3 +44,6 @@ class Deck:
 
     def shuffleDeck(self):
         random.shuffle(self.__cards)
+
+    def getTrueCount(self):
+        return self.__count / 6
