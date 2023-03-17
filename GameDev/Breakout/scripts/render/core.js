@@ -86,15 +86,7 @@ MyGame.graphics = (function() {
             function moveRight(elapsedTime) {
                 spec.center.x += spec.moveRate * elapsedTime;
             }
-            function moveUp(elapsedTime) {
-                spec.center.y -= spec.moveRate * elapsedTime;
-            }
-            function moveDown(elapsedTime) {
-                spec.center.y += spec.moveRate * elapsedTime;
-            }
         
-            that.moveUp = moveUp;
-            that.moveDown = moveDown;
             that.moveLeft = moveLeft;
             that.moveRight = moveRight;
         }

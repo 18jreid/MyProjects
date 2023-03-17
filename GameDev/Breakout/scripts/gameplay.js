@@ -80,8 +80,6 @@ MyGame.screens['game-play'] = (function(game, input) {
     function initialize() {
         myKeyboard.register('a', myPlayer.moveLeft);
         myKeyboard.register('d', myPlayer.moveRight);
-        myKeyboard.register('w', myPlayer.moveUp);
-        myKeyboard.register('s', myPlayer.moveDown);
 
         myKeyboard.register('Escape', function() {
             //
