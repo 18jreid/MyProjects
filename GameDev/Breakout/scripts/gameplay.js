@@ -6,49 +6,61 @@ MyGame.screens['game-play'] = (function(game, input) {
 
     let myKeyboard = input.Keyboard();
 
-    function processInput(elapsedTime) {
-        myKeyboard.update(elapsedTime);
+    let myPlayer = MyGame.graphics.defineObject({
+        imageSrc: 'assets/paddle.png',
+        size: { width: MyGame.graphics.canvas.width / 8, height: 40 },
+        center: { x: MyGame.graphics.canvas.width / 2, y: (MyGame.graphics.canvas.height - 80) },
+        rotation: 0,
+        moveRate: 1 // units per millisecond
+    })
+
+    let myBricks = [];
+    for (let i = 0; i < 14; i++) {
+        let row = [];
+        for (let j = 0; j < 8; j++) {
+            let brick = MyGame.graphics.defineObject({
+                imageSrc: "assets/greenBrick.png",
+                size: { width: 50, height: 25 },
+                center: { x: 150 + ((i * 55) ), y: 150 + (j * 25) },
+                rotation: 0,
+                moveRate: 1 // units per millisecond
+            });
+            
+            if (i === 0 || i === 1) {
+                brick.texture.imageSrc = "assets/greenBrick.png";
+            }
+            else if (i === 2 || i === 3) {
+                brick.texture.imageSrc = "assets/blueBrick.png";
+            }
+            else if (i === 4 || i === 5) {
+                brick.texture.imageSrc = "assets/orangeBrick.png";
+            }
+            else if (i === 6 || i === 7) {
+                brick.texture.imageSrc = "assets/yellowBrick.png";
+            }
+
+            row.push(brick);
+        }
+        myBricks[i] = row;
     }
 
-    function defineObject(spec) {
-        let that = {};
-    
-        spec.image = new Image();
-        spec.image.ready = false;
-        spec.image.onload = function() {
-            this.ready = true;
-        };
-        spec.image.src = spec.imageSrc;
-    
-        function moveLeft(elapsedTime) {
-            spec.center.x -= spec.moveRate * elapsedTime;
-        }
-        function moveRight(elapsedTime) {
-            spec.center.x += spec.moveRate * elapsedTime;
-        }
-        function moveUp(elapsedTime) {
-            spec.center.y -= spec.moveRate * elapsedTime;
-        }
-        function moveDown(elapsedTime) {
-            spec.center.y += spec.moveRate * elapsedTime;
-        }
-    
-        that.moveUp = moveUp;
-        that.moveDown = moveDown;
-        that.moveLeft = moveLeft;
-        that.moveRight = moveRight;
-    
-        that.texture = spec;
-    
-        return that;
+    console.log(myBricks)
+
+    function processInput(elapsedTime) {
+        myKeyboard.update(elapsedTime);
     }
 
     function update() {
     }
 
     function render() {
-        
-        MyGame.graphics.drawTexture(myObject.texture);
+        MyGame.graphics.clear();
+        MyGame.graphics.drawTexture(myPlayer.texture.image, myPlayer.texture.center, myPlayer.texture.rotation, myPlayer.texture.size);
+        for (let i = 0; i < myBricks.length; i++) {
+            for (let j = 0; j < myBricks[i].length; j++) {
+                MyGame.graphics.drawTexture(myBricks[i][j].texture.image, myBricks[i][j].texture.center, myBricks[i][j].texture.rotation, myBricks[i][j].texture.size)
+            }
+        }
     }
 
     function gameLoop(time) {

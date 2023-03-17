@@ -4,9 +4,10 @@ body {
 
 #game {
     margin: auto;
+    margin-top: 2em;
     display: block;
-    width: 500px;
-    height: 500px;
+    width: 1000px;
+    height: 1000px;
     border-style: solid;
     border-width: 1px;
     background-color: rgb(239,239,251);
