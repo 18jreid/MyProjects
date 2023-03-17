@@ -4,35 +4,12 @@ MyGame.graphics = (function() {
     let canvas = document.getElementById('id-canvas');
     let context = canvas.getContext('2d');
 
+    // Clears canvas of all drawings
     function clear() {
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
-    function drawRectangle(spec) {
-        context.save();
-
-        context.translate(spec.center.x, spec.center.y);
-        context.rotate(spec.rotation);
-        context.translate(-spec.center.x, -spec.center.y);
-
-        context.strokeStyle = spec.outlineColor;
-        context.fillStyle = spec.fillColor;
-
-        context.fillRect(spec.center.x - spec.width / 2, spec.center.y - spec.height / 2, spec.width, spec.height);
-
-        context.strokeRect(spec.center.x - spec.width / 2, - spec.center.y - spec.height / 2, spec.width, spec.height);
-
-        context.restore();
-    }
-
-    // --------------------------------------------------------------
-    //
-    // Draws a texture to the canvas with the following specification:
-    //    image: Image
-    //    center: {x: , y: }
-    //    size: { width: , height: }
-    //
-    // --------------------------------------------------------------
+    // Draws desired texture to canvas
     function drawTexture(image, center, rotation, size) {
         context.save();
 
@@ -49,6 +26,7 @@ MyGame.graphics = (function() {
         context.restore();
     }
 
+    // Draws desired text to canvas
     function drawText(spec) {
         context.save();
 
@@ -68,6 +46,7 @@ MyGame.graphics = (function() {
         context.restore();
     }
 
+    // Defines textured object to be drawn to the screen
     function defineObject(spec) {
         let that = {};
     
@@ -99,6 +78,14 @@ MyGame.graphics = (function() {
             that.moveRight = moveRight;
             that.update = update;
         }
+
+        if (spec.type === "moveable") {
+            function update(elapsedTime, object) {
+                
+            }
+        
+            that.update = update;
+        }
     
         that.texture = spec;
     
@@ -110,10 +97,7 @@ MyGame.graphics = (function() {
         clear: clear,
         drawTexture: drawTexture,
         drawText: drawText,
-        drawRectangle: drawRectangle,
-        defineObject: defineObject,
-        width : canvas.width,
-        height : canvas.height
+        defineObject: defineObject
     };
 
     return api;
