@@ -86,9 +86,18 @@ MyGame.graphics = (function() {
             function moveRight(elapsedTime) {
                 spec.center.x += spec.moveRate * elapsedTime;
             }
+            function update(elapsedTime, object) {
+                if (object.center.x <= object.size.width / 2) {
+                    object.center.x += (object.size.width / 6);
+                }
+                if (object.center.x >= canvas.width - (object.size.width / 2)) {
+                    object.center.x -= (object.size.width / 6);
+                }
+            }
         
             that.moveLeft = moveLeft;
             that.moveRight = moveRight;
+            that.update = update;
         }
     
         that.texture = spec;

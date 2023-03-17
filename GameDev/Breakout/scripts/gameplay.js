@@ -9,7 +9,7 @@ MyGame.screens['game-play'] = (function(game, input) {
         size: { width: MyGame.graphics.canvas.width / 8, height: 40 },
         center: { x: MyGame.graphics.canvas.width / 2, y: (MyGame.graphics.canvas.height - 80) },
         rotation: 0,
-        moveRate: 1, // units per millisecond,
+        moveRate: 0.5, // units per millisecond,
         type: "player"
     });
 
@@ -52,6 +52,7 @@ MyGame.screens['game-play'] = (function(game, input) {
     }
 
     function update() {
+        myPlayer.update(lastTimeStamp - performance.now(), myPlayer.texture);
     }
 
     function render() {
