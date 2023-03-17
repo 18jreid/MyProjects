@@ -14,30 +14,33 @@ MyGame.screens['game-play'] = (function(game, input) {
         moveRate: 1 // units per millisecond
     })
 
+    function findRowColor(index) {
+        let src = "assets/greenBrick.png";
+        if (index === 0 || index === 1) {
+            return "assets/greenBrick.png";
+        }
+        else if (index === 2 || index === 3) {
+            return "assets/blueBrick.png";
+        }
+        else if (index === 4 || index === 5) {
+            return "assets/orangeBrick.png";
+        }
+        else if (index === 6 || index === 7) {
+            return "assets/yellowBrick.png";
+        }
+    }
+
     let myBricks = [];
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 8; i++) {
         let row = [];
-        for (let j = 0; j < 8; j++) {
+        for (let j = 0; j < 14; j++) {
             let brick = MyGame.graphics.defineObject({
-                imageSrc: "assets/greenBrick.png",
+                imageSrc: findRowColor(i),
                 size: { width: 50, height: 25 },
-                center: { x: 150 + ((i * 55) ), y: 150 + (j * 30) },
+                center: { x: 150 + (j * 55), y: 150 + (i * 30) },
                 rotation: 0,
                 moveRate: 1 // units per millisecond
             });
-            
-            if (i === 0 || i === 1) {
-                brick.texture.imageSrc = "assets/greenBrick.png";
-            }
-            else if (i === 2 || i === 3) {
-                brick.texture.imageSrc = "assets/blueBrick.png";
-            }
-            else if (i === 4 || i === 5) {
-                brick.texture.imageSrc = "assets/orangeBrick.png";
-            }
-            else if (i === 6 || i === 7) {
-                brick.texture.imageSrc = "assets/yellowBrick.png";
-            }
 
             row.push(brick);
         }
