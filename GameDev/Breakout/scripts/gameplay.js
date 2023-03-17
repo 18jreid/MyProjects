@@ -21,7 +21,7 @@ MyGame.screens['game-play'] = (function(game, input) {
             let brick = MyGame.graphics.defineObject({
                 imageSrc: "assets/greenBrick.png",
                 size: { width: 50, height: 25 },
-                center: { x: 150 + ((i * 55) ), y: 150 + (j * 25) },
+                center: { x: 150 + ((i * 55) ), y: 150 + (j * 30) },
                 rotation: 0,
                 moveRate: 1 // units per millisecond
             });
