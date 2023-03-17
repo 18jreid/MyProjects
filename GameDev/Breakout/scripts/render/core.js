@@ -79,23 +79,25 @@ MyGame.graphics = (function() {
         let pathName = window.location.pathname.replace("index.html", "");
         spec.image.src = pathName + spec.imageSrc;
     
-        function moveLeft(elapsedTime) {
-            spec.center.x -= spec.moveRate * elapsedTime;
+        if (spec.type === "player") {
+            function moveLeft(elapsedTime) {
+                spec.center.x -= spec.moveRate * elapsedTime;
+            }
+            function moveRight(elapsedTime) {
+                spec.center.x += spec.moveRate * elapsedTime;
+            }
+            function moveUp(elapsedTime) {
+                spec.center.y -= spec.moveRate * elapsedTime;
+            }
+            function moveDown(elapsedTime) {
+                spec.center.y += spec.moveRate * elapsedTime;
+            }
+        
+            that.moveUp = moveUp;
+            that.moveDown = moveDown;
+            that.moveLeft = moveLeft;
+            that.moveRight = moveRight;
         }
-        function moveRight(elapsedTime) {
-            spec.center.x += spec.moveRate * elapsedTime;
-        }
-        function moveUp(elapsedTime) {
-            spec.center.y -= spec.moveRate * elapsedTime;
-        }
-        function moveDown(elapsedTime) {
-            spec.center.y += spec.moveRate * elapsedTime;
-        }
-    
-        that.moveUp = moveUp;
-        that.moveDown = moveDown;
-        that.moveLeft = moveLeft;
-        that.moveRight = moveRight;
     
         that.texture = spec;
     
