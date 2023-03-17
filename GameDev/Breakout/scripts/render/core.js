@@ -76,7 +76,8 @@ MyGame.graphics = (function() {
         spec.image.onload = function() {
             this.ready = true;
         };
-        spec.image.src = "file:///C:/Users/jsrei/Desktop/MyProjects/GameDev/Breakout/" + spec.imageSrc;
+        let pathName = window.location.pathname.replace("index.html", "");
+        spec.image.src = pathName + spec.imageSrc;
     
         function moveLeft(elapsedTime) {
             spec.center.x -= spec.moveRate * elapsedTime;
