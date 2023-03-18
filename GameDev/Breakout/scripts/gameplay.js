@@ -7,6 +7,7 @@ MyGame.screens['game-play'] = (function(game, input) {
     let startCountdown = true;
     let countDown = 0;
     let lastCountDown = Date.now();
+    let score = 0;
 
     // Defines player paddle
     let myPlayer = MyGame.graphics.defineObject({
@@ -24,7 +25,7 @@ MyGame.screens['game-play'] = (function(game, input) {
         size: { width: 20, height: 20},
         center: { x: MyGame.graphics.canvas.width / 2, y: MyGame.graphics.canvas.height - (MyGame.graphics.canvas.height / 8)},
         rotation: 0,
-        moveRate: 1,
+        moveRate: 5,
         type: "moveable",
         render: true,
         vector: {startDirection: 3, x: 1, y: 1}
@@ -91,6 +92,7 @@ MyGame.screens['game-play'] = (function(game, input) {
         let elapsedTime = lastTimeStamp - performance.now();
         myPlayer.update(elapsedTime, myPlayer.texture);
         
+        // Handles beginning game countdown
         if (startCountdown) {
             ball.texture.center.x = myPlayer.texture.center.x;
             countDown = lastCountDown - Date.now();
@@ -135,6 +137,25 @@ MyGame.screens['game-play'] = (function(game, input) {
             if ((ball.texture.center.x <= (myPlayer.texture.center.x + myPlayer.texture.size.width / 2)) && (ball.texture.center.x >= (myPlayer.texture.center.x - myPlayer.texture.size.width / 2))) {
                 if ((ball.texture.center.y >= (myPlayer.texture.center.y - myPlayer.texture.size.height / 2))) {
                     ball.texture.vector.y = ball.texture.vector.y * -1;
+                }
+            }
+
+            for (let i = 0; i < myBricks.length; i ++) {
+                let index = 0;
+                for (let j = 0;  j < myBricks[i].length; j++) {
+                    if (ball.texture.center.x > (myBricks[i][j].texture.center.x - (myBricks[i][j].texture.size.width / 2))) {
+                        if (ball.texture.center.x < (myBricks[i][j].texture.center.x + (myBricks[i][j].texture.size.width / 2))) {
+                            if (ball.texture.center.y > (myBricks[i][j].texture.center.y - (myBricks[i][j].texture.size.height / 2))) {
+                                if (ball.texture.center.y < (myBricks[i][j].texture.center.y + (myBricks[i][j].texture.size.height / 2))) {
+                                    ball.texture.vector.y = ball.texture.vector.y * -1;
+                                    myBricks[i].splice(index, 1);
+                                    score += 1;
+                                    console.log(score)
+                                }
+                            }
+                        }
+                    }
+                    index += 1;
                 }
             }
         }
