@@ -91,7 +91,12 @@ MyGame.graphics = (function() {
                     ball.texture.vector.x = ball.texture.vector.x * -1;
                 }
                 if (ball.texture.center.y > (canvas.height - (ball.texture.size.height / 2))) {
-                    ball.texture.vector.y = ball.texture.vector.y * -1;
+                    if (ball.texture.lives >= 0) {
+                        ball.texture.lives -= 1;
+                        ball.texture.moveRate = 0;
+                        ball.texture.static = true;
+                        ball.texture.center.y = canvas.height - 115;
+                    }
                 }
                 if (ball.texture.center.y < ball.texture.size.height / 2) {
                     ball.texture.vector.y = ball.texture.vector.y * -1;

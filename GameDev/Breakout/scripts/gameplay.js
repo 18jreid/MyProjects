@@ -20,16 +20,7 @@ MyGame.screens['game-play'] = (function(game, input) {
         render: true
     });
 
-    let ball = MyGame.graphics.defineObject({
-        imageSrc: 'assets/ball.png',
-        size: { width: 20, height: 20},
-        center: { x: MyGame.graphics.canvas.width / 2, y: MyGame.graphics.canvas.height - (MyGame.graphics.canvas.height / 8)},
-        rotation: 0,
-        moveRate: 5,
-        type: "moveable",
-        render: true,
-        vector: {startDirection: 3, x: 1, y: 1}
-    });
+    let ball;
 
     let number = MyGame.graphics.defineObject({
         imageSrc: "assets/number1.png",
@@ -50,25 +41,17 @@ MyGame.screens['game-play'] = (function(game, input) {
         rotation : 0
     });
 
+    let gameover = MyGame.graphics.Text({
+        text : 'GAME OVER',
+        font : '64px arial',
+        fill : 'red',
+        stroke : 'red',
+        pos : {x : (MyGame.graphics.canvas.width / 2) - 200, y : MyGame.graphics.canvas.height / 2},
+        rotation : 0
+    });
+
     // Defines and creates all bricks for player to destroy
     let myBricks = [];
-    for (let i = 0; i < 8; i++) {
-        let row = [];
-        for (let j = 0; j < 14; j++) {
-            let brick = MyGame.graphics.defineObject({
-                imageSrc: findRowColor(i),
-                size: { width: 50, height: 25 },
-                center: { x: 150 + (j * 55), y: 150 + (i * 30) },
-                rotation: 0,
-                moveRate: 0, // units per millisecond
-                type: "static",
-                render: true
-            });
-
-            row.push(brick);
-        }
-        myBricks[i] = row;
-    }
 
     // Used to find correct color of brick for row
     function findRowColor(index) {
@@ -106,7 +89,10 @@ MyGame.screens['game-play'] = (function(game, input) {
             ball.texture.center.x = myPlayer.texture.center.x;
             countDown = lastCountDown - Date.now();
 
-            if (countDown < -3000) startCountdown = false;
+            if (countDown < -3000) {
+                startCountdown = false;
+                ball.texture.static = false;
+            }
 
             if (Math.abs(countDown) > 0 && Math.abs(countDown) <= 1000) {
                 number = MyGame.graphics.defineObject({
@@ -149,8 +135,8 @@ MyGame.screens['game-play'] = (function(game, input) {
                 }
             }
 
+            // collision detection for balls and bricks
             for (let i = 0; i < myBricks.length; i ++) {
-                let index = 0;
                 for (let j = 0;  j < myBricks[i].length; j++) {
                     if (ball.texture.center.x > (myBricks[i][j].texture.center.x - (myBricks[i][j].texture.size.width / 2))) {
                         if (ball.texture.center.x < (myBricks[i][j].texture.center.x + (myBricks[i][j].texture.size.width / 2))) {
@@ -181,14 +167,25 @@ MyGame.screens['game-play'] = (function(game, input) {
                                         pos : {x : MyGame.graphics.canvas.width - 150, y : 25},
                                         rotation : 0
                                     });
-
-                                    myBricks[i].splice(index, 1);
+                                    
+                                    myBricks[i][j].texture.center.x = 5000;
                                 }
                             }
                         }
                     }
-                    index += 1;
                 }
+            }
+
+            let topRowDestroyed = true;
+            for (let i = 0; i < myBricks[0].length; i++) {
+                if (myBricks[0][i].texture.center.x !== 5000) {
+                    topRowDestroyed = false;
+                }
+            }
+            if (topRowDestroyed) {
+                myPlayer.texture.size.width = MyGame.graphics.canvas.width / 16;
+            } else {
+                myPlayer.texture.size.width = MyGame.graphics.canvas.width / 8;
             }
         }
     }
@@ -215,6 +212,19 @@ MyGame.screens['game-play'] = (function(game, input) {
             for (let j = 0; j < myBricks[i].length; j++) {
                 MyGame.graphics.drawTexture(myBricks[i][j].texture.image, myBricks[i][j].texture.center, myBricks[i][j].texture.rotation, myBricks[i][j].texture.size)
             }
+        }
+
+        if (ball.texture.lives < 0) {
+            gameover.draw();
+            ball.texture.center.y = MyGame.graphics.canvas.height * 2;
+            myScoreText = MyGame.graphics.Text({
+                text : '' + score,
+                font : '64px arial',
+                fill : 'yellow',
+                stroke : 'darkgreen',
+                pos : {x : (MyGame.graphics.canvas.width / 2) - 25, y : (MyGame.graphics.canvas.height / 2) + 100},
+                rotation : 0
+            });
         }
     }
 
@@ -245,17 +255,59 @@ MyGame.screens['game-play'] = (function(game, input) {
             // Then, return to the main menu
             game.showScreen('main-menu');
         });
+
+        myKeyboard.register('f', function() {
+            ball.texture.static = false;
+            ball.texture.moveRate = 5;
+        })
     }
 
     function run() {
         lastTimeStamp = performance.now();
         cancelNextRequest = false;
+        lastCountDown = Date.now();
+
+        for (let i = 0; i < 8; i++) {
+            let row = [];
+            for (let j = 0; j < 14; j++) {
+                let brick = MyGame.graphics.defineObject({
+                    imageSrc: findRowColor(i),
+                    size: { width: 50, height: 25 },
+                    center: { x: 150 + (j * 55), y: 150 + (i * 30) },
+                    rotation: 0,
+                    moveRate: 0, // units per millisecond
+                    type: "static",
+                    render: true
+                });
+    
+                row.push(brick);
+            }
+            myBricks[i] = row;
+        }
+
+        ball = MyGame.graphics.defineObject({
+            imageSrc: 'assets/ball.png',
+            size: { width: 20, height: 20},
+            center: { x: MyGame.graphics.canvas.width / 2, y: MyGame.graphics.canvas.height - (MyGame.graphics.canvas.height / 8)},
+            rotation: 0,
+            moveRate: 5,
+            type: "moveable",
+            render: true,
+            vector: {startDirection: 3, x: 1, y: 1},
+            lives: 2,
+            static: true
+        });
+
+        ball.texture.static = true;
+        startCountdown = true;
+
         requestAnimationFrame(gameLoop);
     }
 
     return {
         initialize : initialize,
-        run : run
+        run : run,
+        player: myPlayer
     };
 
 }(MyGame.game, MyGame.input));
