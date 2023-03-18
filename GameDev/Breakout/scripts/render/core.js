@@ -81,7 +81,7 @@ MyGame.graphics = (function() {
 
         if (spec.type === "moveable") {
             function update(elapsedTime, object) {
-                
+        
             }
         
             that.update = update;

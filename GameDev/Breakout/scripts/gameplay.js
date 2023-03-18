@@ -24,9 +24,10 @@ MyGame.screens['game-play'] = (function(game, input) {
         size: { width: 20, height: 20},
         center: { x: MyGame.graphics.canvas.width / 2, y: MyGame.graphics.canvas.height - (MyGame.graphics.canvas.height / 8)},
         rotation: 0,
-        moveRate: 1,
+        moveRate: 5,
         type: "moveable",
-        render: true
+        render: true,
+        vector: {startDirection: giveRandomUpwardsDirection(), x: 1, y: 1}
     });
 
     let number = MyGame.graphics.defineObject({
@@ -76,6 +77,10 @@ MyGame.screens['game-play'] = (function(game, input) {
         }
     }
 
+    function giveRandomUpwardsDirection() {
+        return Math.random() * Math.PI;
+    }
+
     // Processes user input from the keyboard
     function processInput(elapsedTime) {
         myKeyboard.update(elapsedTime);
@@ -122,10 +127,32 @@ MyGame.screens['game-play'] = (function(game, input) {
                     type: "static",
                     render: true
                 });
+
+            giveRandomUpwardsDirection();
             }
         } else {
             number.texture.render = false;
-            ball.update(elapsedTime, ball.texture)
+
+            ball.texture.center.x += (elapsedTime * ball.texture.moveRate) * ball.texture.vector.x;
+            ball.texture.center.y += (elapsedTime * ball.texture.moveRate) * ball.texture.vector.y;
+
+                if (ball.texture.center.x <= ball.texture.size.width / 2) {
+                    ball.texture.center.x += (ball.texture.size.width / 6);
+                    ball.texture.vector.x *= -1;
+                }
+                if (ball.texture.center.x >= MyGame.graphics.canvas.width - (ball.texture.size.width / 2)) {
+                    ball.texture.center.x -= (ball.texture.size.width / 6);
+                    ball.texture.vector.x = 1;
+                }
+
+                if (ball.texture.center.y <= ball.texture.size.height / 2) {
+                    ball.texture.center.y += (ball.texture.size.width / 6);
+                    ball.texture.vector.y *= -1;
+                }
+                if (ball.texture.center.y >= MyGame.graphics.canvas.height - (ball.texture.size.height / 2)) {
+                    ball.texture.center.y -= (ball.texture.size.height / 6);
+                    ball.texture.vector.y *= -1;
+                }
         }
     }
 
