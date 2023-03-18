@@ -107,12 +107,85 @@ MyGame.graphics = (function() {
         return that;
     }
 
+    //------------------------------------------------------------------
+    //
+    // This is used to create a text function that can be used by client
+    // code for rendering.
+    //
+    //------------------------------------------------------------------
+    function Text(spec) {
+        let that = {};
+        
+        that.updateRotation = function(angle) {
+            spec.rotation += angle;
+        };
+
+        //------------------------------------------------------------------
+        //
+        // This returns the height of the specified font, in pixels.
+        //
+        //------------------------------------------------------------------
+        function measureTextHeight(spec) {
+            context.save();
+
+            context.font = spec.font;
+            let height = context.measureText('m').width;
+
+            context.restore();
+
+            return height;
+        }
+
+        //------------------------------------------------------------------
+        //
+        // This returns the width of the specified font, in pixels.
+        //
+        //------------------------------------------------------------------
+        function measureTextWidth(spec) {
+            context.save();
+
+            context.font = spec.font;
+            let width = context.measureText(spec.text).width;
+
+            context.restore();
+            
+            return width;
+        }
+
+        that.draw = function() {
+            context.save();
+
+            context.font = spec.font;
+            context.fillStyle = spec.fill;
+            context.strokeStyle = spec.stroke;
+            context.textBaseline = 'top';
+
+            context.translate(spec.pos.x + that.width / 2, spec.pos.y + that.height / 2);
+            context.rotate(spec.rotation);
+            context.translate(-(spec.pos.x + that.width / 2), -(spec.pos.y + that.height / 2));
+
+            context.fillText(spec.text, spec.pos.x, spec.pos.y);
+            context.strokeText(spec.text, spec.pos.x, spec.pos.y);
+
+            context.restore();
+        };
+
+        //
+        // Compute and expose some public properties for this text.
+        that.height = measureTextHeight(spec);
+        that.width = measureTextWidth(spec);
+        that.pos = spec.pos;
+
+        return that;
+    }
+
     let api = {
         get canvas() { return canvas; },
         clear: clear,
         drawTexture: drawTexture,
         drawText: drawText,
-        defineObject: defineObject
+        defineObject: defineObject,
+        Text : Text
     };
 
     return api;

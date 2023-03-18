@@ -41,6 +41,15 @@ MyGame.screens['game-play'] = (function(game, input) {
         render: true
     })
 
+    let myScoreText = MyGame.graphics.Text({
+        text : '0',
+        font : '64px arial',
+        fill : 'yellow',
+        stroke : 'darkgreen',
+        pos : {x : MyGame.graphics.canvas.width - 150, y : 25},
+        rotation : 0
+    });
+
     // Defines and creates all bricks for player to destroy
     let myBricks = [];
     for (let i = 0; i < 8; i++) {
@@ -148,9 +157,32 @@ MyGame.screens['game-play'] = (function(game, input) {
                             if (ball.texture.center.y > (myBricks[i][j].texture.center.y - (myBricks[i][j].texture.size.height / 2))) {
                                 if (ball.texture.center.y < (myBricks[i][j].texture.center.y + (myBricks[i][j].texture.size.height / 2))) {
                                     ball.texture.vector.y = ball.texture.vector.y * -1;
+
+                                    switch(myBricks[i][j].texture.imageSrc) {
+                                        case("assets/yellowBrick.png"):
+                                            score += 1;
+                                            break;
+                                        case("assets/orangeBrick.png"):
+                                            score += 2;
+                                            break;
+                                        case("assets/blueBrick.png"):
+                                            score += 3;
+                                            break;
+                                        case("assets/greenBrick.png"):
+                                            score += 5;
+                                            break;
+                                    }
+
+                                    myScoreText = MyGame.graphics.Text({
+                                        text : '' + score,
+                                        font : '64px arial',
+                                        fill : 'yellow',
+                                        stroke : 'darkgreen',
+                                        pos : {x : MyGame.graphics.canvas.width - 150, y : 25},
+                                        rotation : 0
+                                    });
+
                                     myBricks[i].splice(index, 1);
-                                    score += 1;
-                                    console.log(score)
                                 }
                             }
                         }
@@ -175,6 +207,8 @@ MyGame.screens['game-play'] = (function(game, input) {
         if (number.texture.render === true) {
             MyGame.graphics.drawTexture(number.texture.image, number.texture.center, number.texture.rotation, number.texture.size);
         }
+
+        myScoreText.draw();
 
         // Draws bricks onto screen
         for (let i = 0; i < myBricks.length; i++) {
