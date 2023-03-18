@@ -80,8 +80,23 @@ MyGame.graphics = (function() {
         }
 
         if (spec.type === "moveable") {
-            function update(elapsedTime, object) {
-        
+            function update(elapsedTime, ball) {
+                ball.texture.center.x += (ball.texture.moveRate) * ball.texture.vector.x;
+                ball.texture.center.y += (ball.texture.moveRate) * ball.texture.vector.y;
+
+                if (ball.texture.center.x > (canvas.width -(ball.texture.size.width / 2))) {
+                    ball.texture.vector.x = ball.texture.vector.x * -1;
+                }
+                if (ball.texture.center.x < (ball.texture.size.width / 2)) {
+                    ball.texture.vector.x = ball.texture.vector.x * -1;
+                }
+                if (ball.texture.center.y > (canvas.height - (ball.texture.size.height / 2))) {
+                    ball.texture.vector.y = ball.texture.vector.y * -1;
+                }
+                if (ball.texture.center.y < ball.texture.size.height / 2) {
+                    ball.texture.vector.y = ball.texture.vector.y * -1;
+                }
+                
             }
         
             that.update = update;
