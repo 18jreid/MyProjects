@@ -9,6 +9,23 @@ MyGame.graphics = (function() {
         context.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    function drawRectangle(spec) {
+        context.save();
+
+        context.translate(spec.center.x, spec.center.y);
+        context.rotate(spec.rotation);
+        context.translate(-spec.center.x, -spec.center.y);
+
+        context.strokeStyle = spec.outlineColor;
+        context.fillStyle = spec.fillColor;
+
+        context.fillRect(spec.center.x - spec.width / 2, spec.center.y - spec.height / 2, spec.width, spec.height);
+
+        context.strokeRect(spec.center.x - spec.width / 2, - spec.center.y - spec.height / 2, spec.width, spec.height);
+
+        context.restore();
+    }
+
     // Draws desired texture to canvas
     function drawTexture(image, center, rotation, size) {
         context.save();
@@ -61,9 +78,11 @@ MyGame.graphics = (function() {
         if (spec.type === "player") {
             function moveLeft(elapsedTime) {
                 spec.center.x -= spec.moveRate * elapsedTime;
+                spec.vector.x = -1;
             }
             function moveRight(elapsedTime) {
                 spec.center.x += spec.moveRate * elapsedTime;
+                spec.vector.x = 1;
             }
             function update(elapsedTime, object) {
                 if (object.center.x <= object.size.width / 2) {
@@ -96,10 +115,15 @@ MyGame.graphics = (function() {
                         ball.texture.moveRate = 0;
                         ball.texture.static = true;
                         ball.texture.center.y = canvas.height - 115;
+                        ball.texture.vector.y = -ball.texture.vector.y;
                     }
                 }
                 if (ball.texture.center.y < ball.texture.size.height / 2) {
                     ball.texture.vector.y = ball.texture.vector.y * -1;
+                }
+
+                if (ball.texture.static) {
+                    ball.texture.center.x = MyGame.screens['game-play'].player.texture.center.x;
                 }
                 
             }
@@ -190,7 +214,8 @@ MyGame.graphics = (function() {
         drawTexture: drawTexture,
         drawText: drawText,
         defineObject: defineObject,
-        Text : Text
+        Text : Text,
+        drawRectangle: drawRectangle,
     };
 
     return api;
